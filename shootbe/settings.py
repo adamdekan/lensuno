@@ -32,7 +32,13 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["www.lensuno.com", "lensuno.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "www.lensuno.com",
+    "lensuno.com",
+    "localhost",
+    "127.0.0.1",
+    "142.4.9.202",
+]
 
 
 # Application definition
