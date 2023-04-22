@@ -31,20 +31,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 
-if socket.gethostname() == "lensuno.com":
-    # SECURITY WARNING: don't run with debug turned on in production!
-    DEBUG = False
-    ALLOWED_HOSTS = [
-        "www.lensuno.com",
-        "lensuno.com",
-        "142.4.9.202",
-    ]
-else:
-    DEBUG = True
-    ALLOWED_HOSTS = [
-        "localhost",
-        "127.0.0.1",
-    ]
+# if socket.gethostname() == "lensuno":
+DEBUG = False
+ALLOWED_HOSTS = [
+    "www.lensuno.com",
+    "lensuno.com",
+    "142.4.9.202",
+]
+# else:
+#     DEBUG = True
+#     ALLOWED_HOSTS = [
+#         "localhost",
+#         "127.0.0.1",
+#     ]
 
 
 # Application definition
