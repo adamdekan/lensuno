@@ -1,0 +1,11 @@
+{% load static %}
+<a hx-post="{% url 'wishlist:toggle_item' product.id 'card' %}"
+   hx-swap="outerHTML"
+   hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+   class="{{ action }} place-post__like">
+    {% if action == "added" %}
+        <i class="fa fa-heart" aria-hidden="true"></i>
+    {% else %}
+        <i class="fa fa-heart-o" aria-hidden="true"></i>
+    {% endif %}
+</a>

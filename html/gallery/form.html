@@ -1,0 +1,27 @@
+{% extends 'gallery/base.html' %}
+{% load static i18n %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <section class="add-listing">
+        <div class="add-listing__title-box">
+            <div class="container">
+                <h1 class="add-listing__title">Update Gallery</h1>
+            </div>
+        </div>
+        <div class="break"></div>
+        <div class="add-listing__form">
+            <div class="container">
+                <div class="add-listing__form-box element-waypoint">
+                    <h2 class="add-listing__form-title">{{ form_description }}</h2>
+                    <div class="add-listing__form-content">
+                        {% crispy form %}
+                        <a href="{{ gig_detail }}">
+                            <button type="button" class="btn-cancel gallery-widget-submit-button">Back to gig.</button>
+                        </a>
+                    </div>
+                    <div class="break"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

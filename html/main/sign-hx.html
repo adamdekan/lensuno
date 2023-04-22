@@ -1,0 +1,38 @@
+<li>
+    <a href="#ModalCenter2"
+       hx-get="{% url 'users:signin-hx' %}"
+       hx-target="#dialog2"
+       data-toggle="modal">
+        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Login</a>
+</li>
+<li>
+    <a href="#ModalCenter"
+       hx-get="{% url 'users:signup-hx' %}"
+       hx-target="#dialog"
+       data-toggle="modal">
+        <i class="fa fa-user-o" aria-hidden="true"></i> Signup</a>
+</li>
+<div class="modal fade"
+     id="ModalCenter2"
+     tabindex="-1"
+     role="dialog2"
+     aria-labelledby="ModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div id="dialog2" class="modal-body" style="padding: 30px"></div>
+        </div>
+    </div>
+</div>
+<div class="modal fade"
+     id="ModalCenter"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="ModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div id="dialog" class="modal-body" style="padding: 30px"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+{% block content %}
+    {% include "home/discover.html" %}
+    {% include "home/categories.html" %}
+    {% comment %} {% include "home/services.html" %} {% endcomment %}
+    {% include "home/trending-gigs.html" %}
+    {% include "home/trending-lensmen.html" %}
+    {% comment %} {% include "home/trending-events.html" %} {% endcomment %}
+    {% include "home/post-production.html" %}
+    {% if not user.is_authenticated %}
+        {% include "home/banner.html" %}
+    {% endif %}
+    {% include "home/how-it-work.html" %}
+    {% comment %} {% include "home/statistic.html" %} {% endcomment %}
+{% endblock content %}

@@ -1,0 +1,81 @@
+<!-- testimonial-block
+    ================================================== -->
+<section class="testimonial">
+    <div class="container">
+        <!-- section-header module -->
+        <div class="section-header">
+            <h1 class="section-header__title">Spotlight</h1>
+            <p class="section-header__description">
+                We are a community of passionate professionals who are dedicated to the craft of visual storytelling.
+            </p>
+        </div>
+        <!-- end section-header module -->
+        <div class="testimonial__box owl-wrapper">
+            <div class="owl-carousel" data-num="4">
+                <!-- testimonial-post module -->
+                {% for portfolio in portfolios %}
+                    <div class="item">
+                        <div class="testimonial-post">
+                            <div class="testimonial-post__content">
+                                {% comment %} <span class="testimonial-post__quote">"</span> {% endcomment %}
+                                <p class="testimonial-post__description">{{ portfolio.about|truncatechars:100 }}</p>
+                            </div>
+                            <a href="{{ portfolio.get_absolute_url }}">
+                                <img class="testimonial-post__image"
+                                     src="{{ portfolio.user.avatar.url }}"
+                                     alt="testimonial-image">
+                            </a>
+                            <h2 class="testimonial-post__username">
+                                <a href="{{ portfolio.get_absolute_url }}">{{ portfolio.user.get_full_name }}</a>
+                            </h2>
+                        </div>
+                    </div>
+                {% endfor %}
+                <!-- end testimonial-post module -->
+                {% comment %} <div class="item">
+                    <!-- testimonial-post module -->
+                    <div class="testimonial-post">
+                        <div class="testimonial-post__content">
+                            <span class="testimonial-post__quote">"</span>
+                            <p class="testimonial-post__description">
+                                “Ut justo suspendisse potenti. Sed vel lacus mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus.”
+                            </p>
+                        </div>
+                        <img class="testimonial-post__image" src="upload/test2.jpg" alt="testimonial-image">
+                        <h2 class="testimonial-post__title">Lara Joy</h2>
+                    </div>
+                    <!-- end testimonial-post module -->
+                </div>
+                <div class="item">
+                    <!-- testimonial-post module -->
+                    <div class="testimonial-post">
+                        <div class="testimonial-post__content">
+                            <span class="testimonial-post__quote">"</span>
+                            <p class="testimonial-post__description">
+                                “Sed vel lacus mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. ”
+                            </p>
+                        </div>
+                        <img class="testimonial-post__image" src="upload/test3.jpg" alt="testimonial-image">
+                        <h2 class="testimonial-post__title">John Smith</h2>
+                    </div>
+                    <!-- end testimonial-post module -->
+                </div>
+                <div class="item">
+                    <!-- testimonial-post module -->
+                    <div class="testimonial-post">
+                        <div class="testimonial-post__content">
+                            <span class="testimonial-post__quote">"</span>
+                            <p class="testimonial-post__description">
+                                “ Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh, nullam mollis. Ut justo. Suspendisse potenti. ”
+                            </p>
+                        </div>
+                        <img class="testimonial-post__image" src="upload/test1.jpg" alt="testimonial-image">
+                        <h2 class="testimonial-post__title">Michael Osborne</h2>
+                    </div>
+                    <!-- end testimonial-post module -->
+                </div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End testimonial-block -->

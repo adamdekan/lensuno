@@ -1,0 +1,15 @@
+{% if gallery %}
+    <div class="m-p-g">
+        <div class="m-p-g__thumbs" data-google-image-layout data-max-height="350">
+            {% for obj in gallery.images.objects.all %}
+                {% load thumbnail %}
+                {% thumbnail obj.image "x350" crop="center" as im %}
+                <img src="{{ im.url }}"
+                     data-full="{{ obj.image.url }}"
+                     class="m-p-g__thumbs-img"/>
+            {% endthumbnail %}
+        {% endfor %}
+    </div>
+    <div class="m-p-g__fullscreen"></div>
+</div>
+{% endif %}

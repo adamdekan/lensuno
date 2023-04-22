@@ -1,0 +1,15 @@
+<div class="place-post__content">
+    <p class="place-post__info jus">
+        <span class="open">€ {{ gig.packages.first.price }}</span>
+    </p>
+    <h2 class="place-post__title">
+        <a href="{{ gig.get_absolute_url }}">{{ gig.title }}</a>
+    </h2>
+    <p class="place-post__description">
+        {{ gig.get_category_display }}
+    </br>
+    <span class="place-post__description-review"></span>
+</p>
+</div>
+<hr/>
+<!-- end place-post module -->

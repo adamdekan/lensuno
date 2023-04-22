@@ -1,0 +1,28 @@
+<!-- trending-places-block
+================================================== -->
+<section class="trending-places">
+    <div class="container">
+        <!-- section-header module -->
+        <div class="section-header">
+            <h1 class="section-header__title-primary">Trending Services</h1>
+            <p class="section-header__description">
+                Access our diverse pool of talented and experienced lens(wo)men from anywhere, anytime.
+            </p>
+        </div>
+        <!-- end section-header module -->
+        <div class="trending-places__box">
+            <div class="user-detail__favorites-box iso-call" data-item-showen="9">
+                {% for gig in gigs %}
+                    {% include "gigs/gig-card.html" %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="center-button">
+            <a class="text-btn" href="/search/world/">
+                View More Gigs
+                {% comment %} <span>({{ gigs.count }})</span> {% endcomment %}
+            </a>
+        </div>
+    </div>
+</section>
+<!-- End trending-places-block -->

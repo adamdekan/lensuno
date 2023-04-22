@@ -1,0 +1,68 @@
+{% extends "_base.html" %}
+{% block content %}
+    <form hx-get="{% url 'main:search-city' city %}"
+          hx-target="body"
+          hx-trigger="change delay:500ms"
+          style="margin-top: 63px">
+        {% load widget_tweaks %}
+        {% load crispy_forms_tags %}
+        <div class="owl-search">
+            <div class="owl-wrapper-search">
+                <fieldset class="checkbox-group owl-carousel owl-theme"
+                          data-num="11"
+                          id="checkbox-carousel">
+                    {% for field in filter.form.category %}
+                        <div class="checkbox">
+                            <label class="checkbox-wrapper" for="{{ field.id_for_label }}">
+                                {{ field.tag }}
+                                <span class="checkbox-tile">
+                                    <span class="checkbox-icon">
+                                        {% load static %}
+                                        <img src="{% static 'icons/ico' %}_{{ field.id_for_label }}@2x.png"
+                                             alt=""
+                                             width="24"
+                                             height="24">
+                                    </span>
+                                    <span class="checkbox-label" style="font-size: small">{{ field.choice_label }}</span>
+                                </span>
+                            </label>
+                        </div>
+                    {% endfor %}
+                </fieldset>
+            </div>
+        </div>
+        {% comment %} <span>Price range:</span> {% endcomment %}
+        {% comment %} <span class="multi-range-field my-5 pb-5">
+        <span>{% render_field filter.form.price class="multi-range" id="multi1" type="range" %}</span></span> {% endcomment %}
+        <span>{{ filter.form.ordering }}</span>
+        <input type="submit"
+               class="btn-default btn-default-red"
+               style="margin-bottom: 10px;
+                      display: none"
+               value="Filter"
+               id="filter_button"/>
+    </form>
+    <section class="trending-places" style="margin-top: -180px">
+        <div class="container">
+            <div class="trending-places__box owl-wrapper">
+                <div class="user-detail__favorites-box iso-call" id="results">
+                    {% block cards %}
+                        {% for gig in query %}
+                            {% include "gigs/gig-card.html" %}
+                        {% endfor %}
+                    {% endblock cards %}
+                    {% if not query %}
+                        <div class="alert alert-danger" role="alert">
+                            No service available at this location. Try searching nearby, or create one now.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div style="text-align: center;display: flex; justify-content: center;">
+                {% include "main/pagination.html" with page=query %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

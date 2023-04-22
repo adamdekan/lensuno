@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+{% block title %}
+    LENS UNO | Thank you!
+{% endblock title %}
+{% block content %}
+    <section class="add-listing">
+        <div class="add-listing__title-box">
+            <div class="container">
+                <h1 class="add-listing__title">Thank you</h1>
+            </div>
+        </div>
+        <div class="break"></div>
+        <div class="break"></div>
+        <div class="container">
+            <p>
+                Your order has been successfully completed. Your order number is
+                <strong>{{ order.id }}</strong>.
+            </p>
+        </div>
+    </section>
+{% endblock %}

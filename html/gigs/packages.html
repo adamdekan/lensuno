@@ -1,0 +1,71 @@
+{% with standard_package as package %}
+    {% include "gigs/package.html" %}
+    {% if user.pk == gig.portfolio.user.pk %}
+        <a href="{% url 'portfolio:package-update' package.package_type gig.pk %}"
+           class="btn-cancel-small">Update {{ package.package_type|capfirst }} Package</a>
+    {% endif %}
+{% endwith %}
+{% if premium_package %}
+    {% with premium_package as package %}
+        {% include "gigs/package.html" %}
+        {% if user.pk == gig.portfolio.user.pk %}
+            <a href="{% url 'portfolio:package-update' package.package_type gig.pk %}"
+               class="btn-cancel-small">Update {{ package.package_type|capfirst }} Package</a>
+            <div x-data="{ showButton1: true }"
+                 style="margin-left: 10px;
+                        display: inline">
+                <a href="#"
+                   class="btn-cancel-small"
+                   x-show="showButton1"
+                   x-on:click="showButton1 = false"><i class="fa fa-times" aria-hidden="true"></i> Delete {{ package.package_type|capfirst }} </a>
+                <button hx-post="{% url 'portfolio:package-delete' package.package_type gig.pk %}"
+                        hx-target="body"
+                        href="#"
+                        class="btn-cancel-small"
+                        x-show="!showButton1">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Are you sure?
+                </button>
+            </div>
+        {% endif %}
+    {% endwith %}
+{% else %}
+    {% if user.pk == gig.portfolio.user.pk %}
+        <div class="flex w-full justify-center">
+            <a href="{% url 'portfolio:package-create' "premium" gig.pk %}">
+                <div class="btn-cancel-small">Add Premium Package</div>
+            </a>
+        </div>
+    {% endif %}
+{% endif %}
+{% if master_package %}
+    {% with master_package as package %}
+        {% include "gigs/package.html" %}
+        {% if user.pk == gig.portfolio.user.pk %}
+            <a href="{% url 'portfolio:package-update' package.package_type gig.pk %}"
+               class="btn-cancel-small">Update {{ package.package_type|capfirst }} Package</a>
+            <div x-data="{ showButton1: true }"
+                 style="margin-left: 10px;
+                        display: inline">
+                <a href="#"
+                   class="btn-cancel-small"
+                   x-show="showButton1"
+                   x-on:click="showButton1 = false"><i class="fa fa-times" aria-hidden="true"></i> Delete {{ package.package_type|capfirst }} </a>
+                <button hx-post="{% url 'portfolio:package-delete' package.package_type gig.pk %}"
+                        hx-target="body"
+                        href="#"
+                        class="btn-cancel-small"
+                        x-show="!showButton1">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Are you sure?
+                </button>
+            </div>
+        {% endif %}
+    {% endwith %}
+{% else %}
+    {% if user.pk == gig.portfolio.user.pk %}
+        <div class="flex w-full justify-center">
+            <a href="{% url 'portfolio:package-create' "master" gig.pk %}">
+                <div class="btn-cancel-small">Add Master Package</div>
+            </a>
+        </div>
+    {% endif %}
+{% endif %}

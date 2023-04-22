@@ -1,0 +1,39 @@
+{% extends '_base.html' %}
+{% block title %}
+    LENS UNO | My Gigs
+{% endblock title %}
+{% load static %}
+{% load wishlist_tags %}
+{% block content %}
+    <section class="user-detail">
+        <div class="user-detail__profile">
+            <div class="user-detail__profile-box">
+                <a class="user-detail__profile-image" href="#"></a>
+                <h3 class="user-detail__profile-title">
+                    My Gigs
+                    <span class="user-detail__profile-location">All of your gigs in one place</span>
+                </h3>
+            </div>
+        </div>
+    </section>
+    <!-- my lists box -->
+    <div class="user-detail__favorites element-waypoint" id="favorites-box">
+        <div class="container">
+            <h2 class="user-detail__subtitle"></h2>
+            {% comment %} <div class="user-detail__favorites-box iso-call" data-item-showen="3"> {% endcomment %}
+            <div class="user-detail__favorites-box iso-call">
+                {% for gig in gig_list %}
+                    {% include "gigs/gig-card.html" %}
+                {% endfor %}
+            </div>
+            {% comment %} {% if gig_list|length > 3 %}
+                <div class="center-button">
+                    <a href="#" class="text-btn load-others" data-less-text="Show Less Favorites" data-more-text="Show More Favorites" data-parent-class="user-detail__favorites-box">
+                        <i class="la la-angle-down"></i>
+                        <span>Show More</span>
+                    </a>
+                </div>
+            {% endif %} {% endcomment %}
+        </div>
+    </div>
+{% endblock content %}

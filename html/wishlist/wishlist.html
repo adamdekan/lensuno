@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load wishlist_tags %}
+{% block title %}
+    LENS UNO | Wishlist
+{% endblock title %}
+{% block content %}
+    <section class="user-detail">
+        <div class="user-detail__profile">
+            <div class="user-detail__profile-box">
+                <a class="user-detail__profile-image" href="#"></a>
+                <h3 class="user-detail__profile-title">
+                    My Wishlist
+                    <span class="user-detail__profile-location">You have {{ gig_list|length }} favorite items</span>
+                </h3>
+            </div>
+        </div>
+    </section>
+    <!-- my lists box -->
+    <div class="user-detail__favorites element-waypoint" id="favorites-box">
+        <div class="container">
+            <div class="break"></div>
+            <div class="user-detail__favorites-box iso-call">
+                {% for gig in gig_list %}
+                    {% include "gigs/gig-card.html" %}
+                {% endfor %}
+            </div>
+            {% comment %} <div class="center-button">
+                <a href="#" class="text-btn load-others" data-less-text="Show Less Favorites" data-more-text="Show More Favorites" data-parent-class="user-detail__favorites-box">
+                    <i class="la la-angle-down"></i>
+                    <span>Show More Favorites</span>
+                </a>
+            </div> {% endcomment %}
+            {% include "main/pagination.html" with page=gig_list %}
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,60 @@
+{% for comment in comments %}
+    {% if forloop.last %}
+        <div hx-get="{{ request.path }}?page={{ comments.number|add:1 }}&q={{ query|urlencode }}"
+             hx-trigger="revealed"
+             hx-swap="afterend"
+             hx-target="this">
+        {% else %}
+            <div>
+            {% endif %}
+            <li class="reviews-list__item">
+                <div class="reviews-list__item-box">
+                    <img class="reviews-list__item-image"
+                         src="{{ comment.author.avatar.url }}"
+                         alt="">
+                    <div class="reviews-list__item-content">
+                        <h3 class="reviews-list__item-title">
+                            <a href="{% url 'users:profile' comment.author.pk %}">
+                            {{ comment.author.first_name }} {{ comment.author.last_name }} </a>
+                        </h3>
+                        <span class="reviews-list__item-location">{{ comment.author.location.place }}
+                        </span>
+                        <p class="reviews-list__item-date">
+                            <span class="reviews-list__item-rating">
+                                {% if comment.rating %}
+                                    {% for i in comment.rating|times %}
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             width="12"
+                                             height="12"
+                                             fill="currentColor"
+                                             class="bi bi-star-fill"
+                                             viewBox="0 0 16 16">
+                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                        </svg>
+                                    {% endfor %}
+                                {% endif %}
+                            </span>
+                            <br/>
+                            Posted {{ comment.date|date }}
+                        </p>
+                        {% comment %} <h3 class="reviews-list__item-title">Good Service but..</h3> {% endcomment %}
+                        <p class="reviews-list__item-description">{{ comment.comment }}</p>
+                        {% if comment.photo %}<img src="{{ comment.photo.url }}" class="reviews-list__item-photo" alt="">{% endif %}
+                        {% comment %} <a class="reviews-list__item-helpful" href="#">
+                    <i class="la la-thumbs-o-up"></i>
+                    Helpfull review
+                    <span>8</span>
+                        </a> {% endcomment %}
+                        {% if user.pk != gig.profile.user.pk and comment.is_flagged == False %}
+                            <button hx-post="{% if profile %} {% url 'comments:report-profile-comment-htmx' comment.id %} {% else %} {% url 'comments:report-gig-comment-htmx' comment.id %} {% endif %}"
+                                    hx-trigger="click"
+                                    hx-swap="delete"
+                                    class="reviews-list__item-report">
+                                Report
+                            </button>
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+        </div>
+    {% endfor %}

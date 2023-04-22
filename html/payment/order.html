@@ -1,0 +1,77 @@
+{% extends '_base.html' %}
+{% block title %}
+    LENS UNO | Order Gig
+{% endblock title %}
+{% block content %}
+    <section class="explore">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="explore__box">
+                        <h2 class="explore__filter-title">
+                            <span>.</span>
+                        </h2>
+                        <h1 class="text-2xl font-semibold mb-6">
+                            Order "{{ gig }}" - {{ package|capfirst }}
+                            <hr />
+                        </h1>
+                        <div class="grid grid-cols-3">
+                            <div class="col-span-1 w-60 ml-12">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {% load crispy_forms_tags %}
+                                    {{ form|crispy }}
+                                    <button type="submit" class="btn-default btn-default-red">Proceed</button>
+                                    <a href="{% url 'main:gig-detail' gig.portfolio.slug gig.id %}">
+                                        <button type="button" class="btn-cancel">Cancel</button>
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="break">
+                        <div class="explore__right">
+                            <div class="author-wrapper">
+                                <div class="author-wrapper__profile">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <div class="author-wrapper__content">
+                                                <a class="author-wrapper__image"
+                                                   href="{{ gig.portfolio.get_absolute_url }}">
+                                                    <img src="{{ gig.portfolio.user.avatar.url }}" alt="">
+                                                </a>
+                                                <h3 class="author-wrapper__title">
+                                                    <a href="{{ gig.portfolio.get_absolute_url }}">{% full_name gig.portfolio.user %}</a>
+                                                    <span class="author-wrapper__location">{{ gig.portfolio.user.city }}</span>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        {% comment %} <div class="col-5">
+                                        <a class="author-wrapper__btn follow-btn" href="#">
+                                            <i class="la la-eye"></i>
+                                            Follow
+                                        </a>
+                                        </div> {% endcomment %}
+                                    </div>
+                                </div>
+                                <div class="author-wrapper">{{ gig.portfolio.user.bio }}</div>
+                                <ul class="author-wrapper__list">
+                                    <li>
+                                        <span>{{ gig.portfolio.gigs.count }}</span>
+                                        Gigs
+                                    </li>
+                                    <li>
+                                        <span>{{ gig.gig_comment.count }}</span>
+                                        Reviews
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

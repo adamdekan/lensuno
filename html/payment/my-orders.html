@@ -1,0 +1,240 @@
+{% extends '_base.html' %}
+{% block title %}
+    {% if is_booking %}LENS UNO | My Bookings{% endif %}
+    {% if is_order %}LENS UNO | My Orders{% endif %}
+{% endblock title %}
+{% load static %}
+{% load wishlist_tags %}
+{% block content %}
+    <section class="user-detail">
+        <div class="user-detail__profile">
+            <div class="user-detail__profile-box">
+                <a class="user-detail__profile-image" href="#"></a>
+                <h3 class="user-detail__profile-title">
+                    {% if is_booking %}My Bookings{% endif %}
+                    {% if is_order %}My Orders{% endif %}
+                    <span class="user-detail__profile-location">
+                        {% if is_booking %}All of your booked freelancers in one place.{% endif %}
+                        {% if is_order %}All of your orders in one place.{% endif %}
+                    </span>
+                </h3>
+            </div>
+        </div>
+    </section>
+    <!-- my lists box -->
+    <!-- explore-module
+================================================== -->
+    <section class="explore">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="explore__box">
+                        <div class="explore__wrap iso-call list-version">
+                            {% for order, status in orders %}
+                                <div class="item">
+                                    <!-- place-post module -->
+                                    <div class="place-post list-style">
+                                        <div class="place-post__gal-box">
+                                            {% comment %} <img class="place-post__image" src="{{ order.gig.photo.url }}" alt="place-image">
+                                            <a href="{% if is_booking %}{% url 'chat:chatroom' order.seller.pk %}{% endif %} {% if is_order %}{% url 'chat:chatroom' order.buyer.pk %}{% endif %}"
+                                               class="place-post__rating"><i class="fa fa-comments" aria-hidden="true"></i> Chat</a> {% endcomment %}
+                                            <div class="owl-wrapper">
+                                                <div class="owl-carousel" data-num="1">
+                                                    {% if order.gig.gallery %}
+                                                        {% with order.gig.gallery.images.objects.all|slice:":5" as photos %}
+                                                            {% for photo in photos %}
+                                                                {% load thumbnail %}
+                                                                {% thumbnail photo.image "x300" crop="center" as im %}
+                                                                <img class="place-post__image" src="{{ im.url }}" alt="place-image">
+                                                            {% endthumbnail %}
+                                                        {% endfor %}
+                                                    {% endwith %}
+                                                </div>
+                                            </div>
+                                            <a href="{% if is_booking %}{% url 'chat:chatroom' order.seller.pk %}{% endif %} {% if is_order %}{% url 'chat:chatroom' order.buyer.pk %}{% endif %}"
+                                               class="place-post__rating"><i class="fa fa-comments" aria-hidden="true"></i> Chat</a>
+                                        {% else %}
+                                            <div class="place-post input-file-missing">
+                                                <i class="la la-cloud-upload"></i>
+                                                <p>Missing gallery.</p>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    {% comment %} <div class="place-post__gal-box">
+												<div class="owl-wrapper">
+													<div class="owl-carousel" data-num="1">
+														{% if gig.gallery %}
+                                                {% else %}
+                                                    <div class="place-post input-file-missing">
+                                                        <i class="la la-cloud-upload"></i>
+                                                        <p>Missing gallery.</p>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                    </div> {% endcomment %}
+                                    <div class="place-post__content">
+                                        <p class="place-post__info">
+                                            <h2>{{ status }}</h2>
+                                            {% comment %} {{ order.date_time }} {% endcomment %}
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                            <span class="open">{{ order.date_time|timeuntil }} | {{ order.price }} EUR</span>
+                                        </p>
+                                        <h2 class="place-post__title">
+                                            <a href="{{ order.gig.get_absolute_url }}">{{ order.package }}</a>
+                                        </h2>
+                                        <p class="place-post__description">
+                                            {% if is_booking %}
+                                                Freelancer: <a href="{% url 'chat:chatroom' order.seller.pk %}">{{ order.seller.get_full_name }}</a>
+                                            {% endif %}
+                                            {% if is_order %}
+                                                Client: <a href="{% url 'chat:chatroom' order.buyer.pk %}">{{ order.buyer.get_full_name }}</a>
+                                            {% endif %}
+                                        </p>
+                                        <p class="place-post__text">{{ order.message }}</p>
+                                        {% if status == "Pending" and is_order %}
+                                            <button hx-post="{% url 'payment:order-confirm' order.pk %}"
+                                                    hx-target="body"
+                                                    href="#"
+                                                    class="btn-cancel-small">
+                                                <i class="fa fa-thumbs-up" aria-hidden="true"></i> Confirm
+                                            </button>
+                                        {% endif %}
+                                        <p class="place-post__cancel">
+                                            <div x-data="{ showButton1: true }">
+                                                <a href="#"
+                                                   class="btn-cancel-small"
+                                                   x-show="showButton1"
+                                                   x-on:click="showButton1 = false"><i class="fa fa-times" aria-hidden="true"></i> Cancel this shooting</a>
+                                                <button hx-post="{% url 'payment:order-cancel' order.pk %}"
+                                                        hx-target="body"
+                                                        href="#"
+                                                        class="btn-cancel-small"
+                                                        x-show="!showButton1">
+                                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Are you sure?
+                                                </button>
+                                            </div>
+                                        </p>
+                                        <p class="place-post__address">
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                            {{ order.gig.location.place }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- end place-post module -->
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="col-lg-4">
+                {% comment %} <div class="explore__filter">
+							<form class="explore__form">
+								<h2 class="explore__form-title">Filter Listings</h2>
+								<input class="explore__form-input" type="text" name="search-ar" id="search-ar" placeholder="Looking for?" />
+								<select class="explore__form-input js-example-basic-multiple">
+									<option>Location? </option>
+									<option>New York</option>
+									<option>California</option>
+									<option>Washington</option>
+									<option>New Jersey</option>
+									<option>Miami</option>
+									<option>San Francisco</option>
+									<option>Boston</option>
+									<option>Pensilvania</option>
+									<option>Other</option>
+								</select>
+								<select class="explore__form-input js-example-basic-multiple">
+									<option>Categories: </option>
+									<option>Art's</option>
+									<option>Health</option>
+									<option>Hotels</option>
+									<option>Real Estate</option>
+									<option>Rentals</option>
+									<option>Restaurant</option>
+									<option>Shopping</option>
+									<option>Travel</option>
+									<option>Vacation</option>
+								</select>
+								<h2 class="explore__form-desc">
+									Advanced Search
+									<a href="#" class="advanced-toggle">
+										more 
+										<i class="fa fa-angle-down" aria-hidden="true"></i>
+									</a>
+								</h2>
+								<div class="explore__form-advanced">
+									<span>Price Range:</span>
+									<ul class="explore__form-price-list">
+										<li><a href="#">$</a></li>
+										<li><a href="#">$$</a></li>
+										<li><a href="#" class="active">$$$</a></li>
+										<li><a href="#">$$$$</a></li>
+									</ul>
+									<ul class="explore__form-checkbox-list">
+										<li>
+											<input class="explore__input-checkbox" type="checkbox" name="open-check" id="open-check"/>
+											<span class="explore__checkbox-style"></span>
+											<span class="explore__checkbox-text">Open now</span>
+										</li>
+										<li>
+											<input class="explore__input-checkbox" type="checkbox" name="child-check" id="child-check"/>
+											<span class="explore__checkbox-style"></span>
+											<span class="explore__checkbox-text">Child friendly</span>
+										</li>
+										<li>
+											<input class="explore__input-checkbox" type="checkbox" name="near-me-check" id="near-me-check"/>
+											<span class="explore__checkbox-style"></span>
+											<span class="explore__checkbox-text">Near me</span>
+										</li>
+										<li>
+											<input class="explore__input-checkbox" type="checkbox" name="24-check" id="24-check"/>
+											<span class="explore__checkbox-style"></span>
+											<span class="explore__checkbox-text">24hours</span>
+										</li>
+										<li>
+											<input class="explore__input-checkbox" type="checkbox" name="free-parking-check" id="free-parking-check"/>
+											<span class="explore__checkbox-style"></span>
+											<span class="explore__checkbox-text">Free Parking</span>
+										</li>
+										<li>
+											<input class="explore__input-checkbox" type="checkbox" name="pet-check" id="pet-check"/>
+											<span class="explore__checkbox-style"></span>
+											<span class="explore__checkbox-text">Pet Friendly</span>
+										</li>
+										<li>
+											<input class="explore__input-checkbox" type="checkbox" name="smooking-check" id="smooking-check"/>
+											<span class="explore__checkbox-style"></span>
+											<span class="explore__checkbox-text">Smoking allowed</span>
+										</li>
+										<li>
+											<input class="explore__input-checkbox" type="checkbox" name="wifi-check" id="wifi-check"/>
+											<span class="explore__checkbox-style"></span>
+											<span class="explore__checkbox-text">Wifi</span>
+										</li>
+										<li>
+											<input class="explore__input-checkbox" type="checkbox" name="credit-card-check" id="credit-card-check"/>
+											<span class="explore__checkbox-style"></span>
+											<span class="explore__checkbox-text">Accepts credit card</span>
+										</li>
+									</ul>
+								</div>
+								<div class="explore__advertise">
+									<span class="explore__advertise-title">
+										advertising box
+									</span>
+									<img src="upload/add2.jpg" alt="">
+								</div>
+								<div class="explore__advertise">
+									<span class="explore__advertise-title">
+										advertising box
+									</span>
+									<img src="upload/add.jpg" alt="">
+								</div> 
+							</form>
+                </div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

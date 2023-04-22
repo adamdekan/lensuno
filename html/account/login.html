@@ -1,0 +1,57 @@
+{% comment %} {% extends "account/base.html" %} {% endcomment %}
+{% load i18n %}
+{% load account socialaccount %}
+{% comment %} {% get_providers as socialaccount_providers %}
+  {% if socialaccount_providers %}
+    <p class="font-light text-xs text-center">
+      {% blocktrans with site.name as site_name %}Please sign in with one
+of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+for a {{ site_name }} account and sign in below:{% endblocktrans %}
+    </p>
+    <div class="socialaccount_ballot text-center mt-6">
+      <ul class="socialaccount_providers">
+        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+      </ul>
+      <div class="inline-flex items-center justify-center w-full">
+        <hr class="w-64 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+        <span class="absolute px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900">or</span>
+      </div>
+    </div>
+    {% include "socialaccount/snippets/login_extra.html" %}
+  {% else %}
+    <p>
+      {% blocktrans %}If you have not created an account yet, then please
+<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+    </p>
+{% endif %} {% endcomment %}
+<form class="login" method="post" action="{% url 'account_login' %}">
+  {% csrf_token %}
+  <label class="sign-form__label" for="username">Email address:</label>
+  {{ form_signin.login }}
+  <label class="sign-form__label" for="password">Password:</label>
+  {{ form_signin.password }}
+  <div class="sign-form__checkbox">
+    {{ form_signin.remember }}
+    <span class="sign-form__checkbox-text">Remember me</span>
+  </div>
+  {% if redirect_field_value %}
+    <input type="hidden"
+           name="{{ redirect_field_name }}"
+           value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <a class="sign-form__forget-link"
+     href="{% url 'account_reset_password' %}">Forget password?</a>
+  <button class="sign-form__submit" id="submit-loggin" type="submit">
+    <i class="fa fa-sign-in" aria-hidden="true"></i>
+    Login
+  </button>
+  {% comment %} <p class="sign-form__text">or Login With</p>
+  <ul class="sign-form__social">
+    <li>
+      <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    </li>
+    <li>
+      <a href="#" class="google"><i class="fa fa-google" aria-hidden="true"></i></a>
+    </li>
+  </ul> {% endcomment %}
+</form>

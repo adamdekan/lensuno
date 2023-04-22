@@ -1,0 +1,92 @@
+{% extends "_base.html" %}
+{% block title %}
+    LENS UNO | Become A Lens(wo)man
+{% endblock title %}
+{% block content %}
+    {% load static %}
+    <!-- how-it-work-block
+================================================== -->
+    <section class="how-it-work-dark"
+             style="background-image: url({% static 'img/camerablur.jpg' %})">
+        <div class="container">
+            <!-- section-header-onboarding module -->
+            <div class="section-header-onboarding">
+                <h1 class="section-header-onboarding__title">Become a visual storyteller</h1>
+                <p class="section-header-onboarding__description">
+                    Start freelancing on LENS UNO and build a career of passion today.
+                </p>
+            </div>
+            <!-- end section-header-onboarding module -->
+            <div class="how-it-work__box">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <!-- how-work-post module -->
+                        <div class="how-work-post">
+                            <span class="how-work-post__icon">
+                                <i class="la la-compass" aria-hidden="true"></i>
+                            </span>
+                            <h2 class="how-work-post__title" style="color: #fff">Complete your profile</h2>
+                            <p class="how-work-post__description">
+                                Sign up for a user account on LENS UNO for free and fill out your profile with a brief introduction of yourself, a profile photo, the place where you are based and other relevant information. This will help other users get to know you.
+                            </p>
+                        </div>
+                        <!-- end how-work-post module -->
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <!-- how-work-post module -->
+                        <div class="how-work-post">
+                            <span class="how-work-post__icon">
+                                <i class="la la-binoculars" aria-hidden="true"></i>
+                            </span>
+                            <h2 class="how-work-post__title" style="color: #fff">Create a portfolio</h2>
+                            <p class="how-work-post__description">
+                                Showcase your best work by creating a portfolio on LENS UNO for free. Make sure to include examples of your photography or videography projects that best represent your skills and experience. This will give clients a clear idea of what you offer and what to expect from your service. Share your portfolio with your network to benefit from our quick booking function.
+                            </p>
+                        </div>
+                        <!-- end how-work-post module -->
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <!-- how-work-post module -->
+                        <div class="how-work-post">
+                            <span class="how-work-post__icon">
+                                <i class="la la-plus-circle" aria-hidden="true"></i>
+                            </span>
+                            <h2 class="how-work-post__title" style="color: #fff">Create your first gig</h2>
+                            <p class="how-work-post__description">
+                                Offer your services with descriptions and samples from your past work, define the common locations where you are available and set your own prices. Be sure to provide clear information about your service, the timeline for delivery and the deliverables. With a well-crafted gig, you will be on your way to finding new clients and growing your business on LENS UNO.
+                            </p>
+                        </div>
+                        <!-- end how-work-post module -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End how-it-work-block -->
+    <!-- banner-block
+================================================== -->
+    <section class="banner" style="background-color: #461111">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- section-header-onboarding module -->
+                    <div class="section-header-onboarding">
+                        <h1 class="section-header-onboarding__title white-style">Join Our Amazing Community</h1>
+                        <p class="section-header-onboarding__description white-style">
+                            Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit, sed diam nonu mmy nibh euimdod tincidunt ut laoreet dolore magna aliquam erat.
+                        </p>
+                    </div>
+                    <!-- end section-header-onboarding module -->
+                </div>
+                <div class="col-md-4">
+                    <a class="btn-default"  href="{% url 'portfolio:step-one' %}">
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        Start freelancing
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End banner-block -->
+    <!-- End sign-block -->
+{% endblock content %}

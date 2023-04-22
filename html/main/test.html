@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+{% block content %}
+    <div class="break"></div>
+    <form hx-get="{% url 'main:search' %}"
+          hx-target="#results"
+          hx-trigger="click">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+    <div id="results">
+        {% for obj in filter.qs %}
+            {{ obj.title }} - ${{ obj.price }}
+            <br />
+        {% endfor %}
+    </div>
+{% endblock %}

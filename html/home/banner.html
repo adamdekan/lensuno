@@ -1,0 +1,29 @@
+<!-- banner-block
+================================================== -->
+<section class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- section-header module -->
+                <div class="section-header">
+                    <h1 class="section-header__title white-style">Join the Community Today</h1>
+                    <p class="section-header__description white-style">
+                        Ready to connect with customers and freelancers worldwide? Sign up now at the all-in-one marketplace of photography and videography to unleash the power of imagery.
+                    </p>
+                </div>
+                <!-- end section-header module -->
+            </div>
+            <div class="col-md-4">
+                <a class="btn-default"
+                   href="#ModalCenter"
+                   hx-get="{% url 'users:signup-hx' %}"
+                   hx-target="#dialog"
+                   data-toggle="modal">
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    Register Now
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner-block -->

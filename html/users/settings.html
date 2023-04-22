@@ -1,0 +1,109 @@
+{% extends "_base.html" %}
+{% block title %}
+    LENS UNO | Settings
+{% endblock title %}
+{% block content %}
+    <section class="add-listing">
+        <div class="add-listing__title-box">
+            <div class="container">
+                <h1 class="add-listing__title">Settings</h1>
+            </div>
+        </div>
+        {% comment %} <div class="user-detail__scroll-menu-box scroller-menu">
+            <div class="container">
+                <ul class="user-detail__scroll-menu navigate-section">
+                    <li>
+                        <a class="active" href="#general-info" data-offset="30">User Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </div> {% endcomment %}
+        <div class="break"></div>
+        <form class="add-listing__form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="container">
+                <!-- form box -->
+                <div class="add-listing__form-box element-waypoint" id="general-info">
+                    <h2 class="add-listing__form-title">General Information:</h2>
+                    <div class="add-listing__form-content">
+                        <!-- 2 FIELDS -->
+                        {% comment %} <div class="row">
+                            <div class="col-md-6">
+                                <label class="add-listing__label" for="list-title">First name:</label>
+                                {{ form.first_name }}
+                                {{ form.errors.first_name }}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="add-listing__label" for="category">Last name:</label>
+                                {{ form.last_name }}
+                                {{ form.errors.last_name }}
+                            </div>
+                        </div> {% endcomment %}
+                        <!-- 3 FIELDS -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="add-listing__label" for="list-title">First name:</label>
+                                {{ form.first_name }}
+                                {{ form.errors.first_name }}
+                            </div>
+                            <div class="col-md-4">
+                                <label class="add-listing__label" for="category">Last name:</label>
+                                {{ form.last_name }}
+                                {{ form.errors.last_name }}
+                            </div>
+                            <div class="col-md-4">
+                                <label class="add-listing__label" for="website">Your phone number:</label>
+                                {{ form.phone }}
+                                {{ form.errors.phone }}
+                            </div>
+                        </div>
+                        <!-- TEXT FIELD -->
+                        <!-- LOCATION FIELD -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="add-listing__label" for="location">Location:</label>
+                                {{ form.location }}
+                                {{ form.media }}
+                            </div>
+                        </div>
+                        <br/>
+                        <!-- TEXT FIELD -->
+                        <label class="add-listing__label" for="description">Bio:</label>
+                        {{ form.bio }}
+                        {{ form.errors.bio }}
+                        {{ form.media }}
+                        <!-- Photo FIELD -->
+                        <div class="add-listing__form-content">
+                            <div class="add-listing__input-file-box">
+                                <label class="add-listing__label" for="location">Upload your profile picture:</label>
+                                {{ form.avatar }}
+                                {{ form.errors.avatar }}
+                                {% comment %} <div class="add-listing__input-file-wrap">
+                                    <i class="la la-cloud-upload"></i>
+                                    <p>Click here to upload your avatar</p>
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
+                        <!-- Save Button -->
+                        <button class="add-listing__submit" type="submit">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                            Save Settings
+                        </button>
+                        <!-- Cancel Button -->
+                        <a href="{% url 'users:profile' user.pk %}">
+                            <button class="btn-cancel">Cancel</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- End Form -->
+        <div class="container">
+            <div class="add-listing__title-box">
+                <a href="{% url 'users:password-change' %}">Password change</a>
+                <br/>
+                <a href="{% url 'account_email' %}">Email change</a>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

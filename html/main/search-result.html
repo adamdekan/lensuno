@@ -1,0 +1,5 @@
+{% for gig in filter.qs %}
+    {% include "gigs/gig-card.html" %}
+{% empty %}
+    <div class="alert alert-danger" role="alert">No gigs available at this location. Try searching for nearby cities.</div>
+{% endfor %}

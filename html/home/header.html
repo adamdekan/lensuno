@@ -1,0 +1,122 @@
+<!-- Header
+================================================== -->
+{% load static %}
+<header class="clearfix {% if is_home or is_portfolio %}{% else %}white-header-style fullwidth-with-search{% endif %}">
+    <nav class="navbar navbar-expand-lg {% if is_home or is_portfolio %}navbar-dark bg-dark{% else %}navbar-light bg-light{% endif %}">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'main:index' %}">
+                <img src="{% if is_home or is_portfolio %}{% static 'upload/logo@2x.png' %}{% else %}{% static 'upload/logo-black@2x.png' %}{% endif %}"
+                     alt="Logo"
+                     class="navbar-brand"
+                     style="height: 50px;
+                            margin-left: 10px;
+                            padding-bottom: 10px">
+                LENS UNO
+            </a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {% if is_home or is_portfolio %}
+                {% else %}
+                    <form class="search-form" type="get" action="{% url 'main:search' %}">
+                        <div class="search-form__input-holders">{{ form_search.search }}</div>
+                        <button class="search-form__submit" type="submit">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                {% endif %}
+                <ul class="navbar-nav ml-auto right-list">
+                    {% if not user.is_authenticated %}
+                        {% include "main/sign-hx.html" %}
+                    {% endif %}
+                    <ul class="navbar-nav mr-auto">
+                        {% if user.is_authenticated %}
+                            <li>
+                                <a href="#" onclick="return false;" class="account">Account<i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                <ul class="dropdown">
+                                    <li>
+                                        <span>
+                                            {% if user.first_name %}
+                                                Hi {{ user.first_name }}!
+                                            {% else %}
+                                                Hi!
+                                            {% endif %}
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'users:profile' user.pk %}">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'wishlist:index' %}">Wishlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'users:settings' %}">Settings</a>
+                                    </li>
+                                    <hr style="margin-top: 5px; margin-bottom: 5px;"/>
+                                    <li>
+                                        <a href="{% url 'payment:my-bookings' %}">Bookings</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'chat:home' %}">Messages</a>
+                                    </li>
+                                    {% if not user.is_freelancer %}
+                                        <hr style="margin-top: 5px; margin-bottom: 5px;"/>
+                                        <li>
+                                            <a href="{% url 'portfolio:start' %}">Become a Lensman</a>
+                                        </li>
+                                    {% endif %}
+                                    {% if user.is_freelancer %}
+                                        {% comment %} <li>
+                                                <a href="#" onclick="return false;">Portfolio<i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                        <ul class="dropdown"> {% endcomment %}
+                                            <hr style="margin-top: 5px; margin-bottom: 5px;"/>
+                                            <li>
+                                                <a href="{% url 'portfolio:gig-create' %}">Add Gig</a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'portfolio:my-gigs' %}">All My Gigs</a>
+                                            </li>
+                                            <hr style="margin-top: 5px; margin-bottom: 5px;"/>
+                                            <li>
+                                                <a href="{% get_portfolio user.pk %}">Portfolio</a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'portfolio:update' %}">Update Portfolio</a>
+                                            </li>
+                                            <hr style="margin-top: 5px; margin-bottom: 5px;"/>
+                                            <li>
+                                                <a href="{% url 'payment:my-orders' %}">Orders</a>
+                                            </li>
+                                            {% comment %} </ul>
+                                            </li> {% endcomment %}
+                                        {% endif %}
+                                        <hr style="margin-top: 5px; margin-bottom: 5px;"/>
+                                        <li>
+                                            <a href="{% url 'users:signout' %}">Logout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+                            {% comment %} <li>
+                                <a href="contact.html">Contact</a>
+                            </li> {% endcomment %}
+                        </ul>
+                    </ul>
+                    {% if user.is_freelancer %}
+                        <a href="{% url 'portfolio:gig-create' %}"
+                           class="add-list-btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Add Gig</a>
+                    {% elif user.is_authenticated %}
+                        <a href="{% url 'wishlist:index' %}" class="add-list-btn btn-default"><i class="fa fa-heart" aria-hidden="true"></i> My Wishlist</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End Header -->

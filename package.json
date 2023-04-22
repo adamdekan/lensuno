@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
+  },
+  "dependencies": {
+    "flowbite": "^1.6.4",
+    "htmx.org": "^1.8.6",
+    "material-photo-gallery": "^0.1.1"
+  }
+}

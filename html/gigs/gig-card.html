@@ -1,0 +1,73 @@
+<div class="item">
+    <!-- GALLERY START -->
+    {% load thumbnail %}
+    <div class="place-post">
+        <div class="place-post__gal-box">
+            <div class="owl-wrapper">
+                <div class="owl-carousel" data-num="1">
+                    {% if gig.gallery %}
+                        {% with gig.gallery.images.objects.all|slice:":5" as photos %}
+                            {% for photo in photos %}
+                                {% thumbnail photo.image "x300" crop="center" as im %}
+                                <img class="place-post__image" src="{{ im.url }}" alt="place-image">
+                            {% endthumbnail %}
+                        {% endfor %}
+                    {% endwith %}
+                {% else %}
+                    <div class="place-post input-file-missing">
+                        <i class="la la-cloud-upload"></i>
+                        <p>Missing gallery.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% comment %} <span class="place-post__rating">9.3</span> {% endcomment %}
+        {% if user.is_authenticated %}
+            {% load static %}
+            {% load wishlist_tags %}
+            {% wishlist_button gig "card" %}
+        {% endif %}
+    </div>
+    <!-- GALLERY END -->
+    <div class="place-post__content">
+        <p class="place-post__info jus">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <span class="open">{{ gig.packages.first.time }} h</span> |
+            <span class="open">{{ gig.packages.first.price }}</span>
+            <i class="fa fa-eur red-col" aria-hidden="true"></i>
+        </p>
+        <h2 class="place-post__title">
+            <a href="{{ gig.get_absolute_url }}">{{ gig.title }}</a>
+        </h2>
+        <p class="place-post__description">
+            {{ gig.get_category_display }}
+        </br>
+        <span class="place-post__description-review"></span>
+    </p>
+    <p class="place-post__address">
+        <div class="author-wrapper">
+            <div class="author-wrapper__profile">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="author-wrapper__content">
+                            <a class="author-wrapper__image"
+                               href="{{ gig.portfolio.get_absolute_url }}">
+                                <img src="{{ gig.portfolio.user.avatar.url }}" alt="">
+                            </a>
+                            <h3 class="author-wrapper__title">
+                                <a href="{{ gig.portfolio.get_absolute_url }}">{% full_name gig.portfolio.user %}</a>
+                                <span class="author-wrapper__location">
+                                    {% comment %} <i class="fa fa-map-marker" aria-hidden="true"></i> {% endcomment %}
+                                    <a href="{% url 'main:search' %}{{ gig.location.place|slugify }}"
+                                       class="hover:underline">{{ gig.location.place|truncatechars:33 }}</a></span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </p>
+        </div>
+    </div>
+    <!-- end place-post module -->
+</div>
+</div>
+</div>

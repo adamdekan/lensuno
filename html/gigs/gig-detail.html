@@ -1,0 +1,371 @@
+{% extends '_base.html' %}
+{% block content %}
+    <!-- listing-detail
+================================================== -->
+    <section class="listing-detail">
+        <div class="listing-detail__gal">
+            <div class="listing-detail__title-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h1 class="listing-detail__title listing-detail__title-black">
+                                <span>{{ gig.title }}</span>
+                                {% comment %} <span class="listing-detail__rate">9.3 <span>/ 10</span></span> {% endcomment %}
+                            </h1>
+                            <p class="listing-detail__address">
+                                <i class="fa fa-map-marker"></i>
+                                <a href="{% url 'main:search' %}{{ gig.location.place|slugify }}"
+                                   class="hover:underline">{{ gig.location.place }}</a>
+                                <span class="listing-detail__dollar-rate"></span>
+                                <span class="listing-detail__description-review-numb">
+                                    {% if gig.gig_comment %}
+                                        {% with total=gig.gig_comment.count %}{{ total }} Review{{ total|pluralize }}{% endwith %}
+                                    {% endif %}
+                                </span>
+                            </p>
+                            <div class="mb-6 button-accent"></div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="listing-detail__buttons listing-detail__buttons-icons">
+                                {% if user.is_authenticated %}
+                                    {% load wishlist_tags %}
+                                    {% wishlist_button gig "header" %}
+                                    <div class="legend">Save</div>
+                                {% endif %}
+                                <a class="btn-default" href="#" id="copy-url-btn" onclick="copyUrl()">
+                                    <i class="la la-share-alt" aria-hidden="true"></i>
+                                </a>
+                                <div class="legend" id="copy-url-share">Share</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: 2px" id="gallery">
+                        {% if gallery %}
+                            {% if is_owner %}
+                                <a href="{% url 'gallery:update' gig.pk %}">
+                                    <div class="btn-cancel-small">Edit the gallery</div>
+                                </a>
+                            {% endif %}
+                        {% else %}
+                            {% if is_owner %}
+                                <div class="flex w-full justify-center">
+                                    <a href="{% url 'gallery:create' gig.pk %}">
+                                        <div class="btn-cancel-small">Create gallery</div>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        {% if is_owner %}
+                            <a href="{% url 'portfolio:gig-update' gig.portfolio gig.id %}"
+                               style="margin-left: 10px"
+                               class="btn-cancel-small">Update your gig</a>
+                            <div x-data="{ showButton1: true }" style="margin-left: 10px">
+                                <a href="#"
+                                   class="btn-cancel-small"
+                                   x-show="showButton1"
+                                   x-on:click="showButton1 = false"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
+                                <button hx-post="{% url 'portfolio:gig-delete' gig.portfolio gig.id %}"
+                                        hx-target="body"
+                                        href="#"
+                                        class="btn-cancel-small"
+                                        x-show="!showButton1">
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Are you sure?
+                                </button>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <!-- overview box -->
+                    {% if not gallery and is_owner %}
+                        <div class="add-listing__form-content">
+                            <div class="add-listing__input-file-box">
+                                <a href="{% url 'gallery:create' gig.pk %}"
+                                   class="add-listing__input-file">
+                                    <div style="width: 100%"></div>
+                                </a>
+                                <div class="add-listing__input-file-wrap">
+                                    <i class="la la-cloud-upload"></i>
+                                    <p>Click here to create a gallery of photos representing this service to activate it in search of the website.</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row" style="margin-top: 30px">{% include "gigs/gallery.html" %}</div>
+            </div>
+        </div>
+        <div class="listing-detail__content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="listing-detail__content-box listing-detail__content-box-nopadding">
+                            <div class="listing-detail__scroll-menu-box scroller-menu">
+                                <ul class="listing-detail__scroll-menu listing-detail__menu-top-border navigate-section">
+                                    <li>
+                                        <a class="book-now" href="#book-now">Book Now</a>
+                                    </li>
+                                    <li>
+                                        <a href="#gallery">Gallery</a>
+                                    </li>
+                                    <li>
+                                        <a href="#description">Description</a>
+                                    </li>
+                                    <li>
+                                        <a href="#reviews">Reviews</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="book-now">
+                                {% comment %} {% if user.pk != gig.portfolio.user.pk %}
+                                    <a class="author-wrapper__btn book-btn" href="{% url 'payment:order' gig.id %}">
+                                        <i class="la la-money"></i>
+                                        Book this gig
+                                    </a>
+                                {% endif %} {% endcomment %}
+                            </div>
+                            <!-- PACKAGES -->
+                            <!-- PACKAGES -->
+                            <!-- PACKAGES -->
+                            {% include "gigs/packages.html" %}
+                            <br/>
+                            <!-- overview box -->
+                            <div class="listing-detail__overview element-waypoint" id="description">
+                                <h2 class="listing-detail__content-title">Description</h2>
+                                <p class="listing-detail__content-description">{{ gig.description }}</p>
+                            </div>
+                            {% if gig.deliverables %}
+                                <div class="listing-detail__overview element-waypoint">
+                                    <h2 class="listing-detail__content-title">Deliverables</h2>
+                                    <p class="listing-detail__content-description">{{ gig.deliverables }}</p>
+                                </div>
+                            {% endif %}
+                            {% if gig.service %}
+                                <div class="listing-detail__overview element-waypoint">
+                                    <h2 class="listing-detail__content-title">Service</h2>
+                                    <p class="listing-detail__content-description">{{ gig.service }}</p>
+                                </div>
+                            {% endif %}
+                            {% if gig.equipment %}
+                                <div class="listing-detail__overview element-waypoint">
+                                    <h2 class="listing-detail__content-title">Equipment</h2>
+                                    <p class="listing-detail__content-description">{{ gig.equipment }}</p>
+                                </div>
+                            {% endif %}
+                            <!-- Contact form module -->
+                            {% if user.is_authenticated %}
+                                {% if not is_owner %}
+                                    <form class="contact-form inner-review"
+                                          method="post"
+                                          enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="inner-review__form">
+                                            <img src="{{ user.avatar.url }}" alt="">
+                                            <div class="inner-review__form-box">
+                                                {{ form.comment }}
+                                                <div class="row">
+                                                    <div class="col-md-6">{{ form.rating }}</div>
+                                                    <div class="col-md-6">
+                                                        <div class="contact-form__upload-btn">
+                                                            {% comment %} <input class="contact-form__input-file"
+        type="file"
+        name="photo-upload"
+        id="photo-upload"/> {% endcomment %}
+                                                            {% comment %} {{ form.photo }}
+                                                        <span>
+                                                            <i class="la la-cloud-upload"></i>
+                                                            Upload Photo
+                                                            </span> {% endcomment %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button type="submit"
+                                                        class="contact-form__submit"
+                                                        _="on click wait 50ms then add [@disabled]">
+                                                    Sumbit Review
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                {% endif %}
+                            {% endif %}
+                            <!-- End Contact form module -->
+                            <!-- tips & reviews-box -->
+                            <div class="listing-detail__reviews element-waypoint" id="reviews">
+                                {% if comments %}
+                                    <h2 class="listing-detail__content-title">
+                                        Reviews
+                                    </h2>
+                                {% endif %}
+                                <div class="listing-detail__reviews-box">
+                                    <!-- reviews list -->
+                                    <ul class="reviews-list">
+                                        {% if comments %}
+                                            {% include "comments/comment.html" %}
+                                        {% endif %}
+                                        {% if not comments %}
+                                            {% if not is_owner %}
+                                                <div>
+                                                    This gig has no reviews. Share your experience!
+                                                </div>
+                                            {% endif %}
+                                        {% endif %}
+                                    </ul>
+                                    {% comment %} {% include "main/pagination.html" with page=comments %} {% endcomment %}
+                                    <!-- reviews-list -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sidebar -->
+                    <div class="col-lg-4">
+                        <div class="sidebar">
+                            {% comment %} <div class="sidebar__map-widget">
+                                <h2 class="sidebar__widget-title">Location</h2>
+                                <div id="mapSingle" data-latitude="51.5344894" data-longitude="-0.1370057" data-map-icon="la la-cutlery"></div>
+                            </div> {% endcomment %}
+                            <div class="sidebar__widget sidebar__widget-listing-details">
+                                {% comment %} {% if is_owner %}
+                                <a class="author-wrapper__btn book-btn" href="{% url 'payment:order' gig.id %}">
+                                    <i class="la la-money"></i>
+                                    Book this gig
+                                </a>
+                                {% endif %} {% endcomment %}
+                                {% comment %} <h2 class="sidebar__widget-title">
+                                Details about the gig
+                                </h2> {% endcomment %}
+                                <ul class="sidebar__listing-list">
+                                    {% comment %} <li>
+                                        <i class="la la-clock-o" aria-hidden="true"></i>
+                                        <span class="color-close">{{ gig.time }}h</span> |
+                                        <span class="color-close">{{ gig.price }}</span>
+                                        <i class="la la-eur" aria-hidden="true"></i>
+                                    </li> {% endcomment %}
+                                    <li>
+                                        <i class="la la-archive"></i>
+                                        {{ gig.get_category_display }}
+                                    </li>
+                                    <li>
+                                        <i class="la la-map-marker"></i>
+                                        <a href="{% url 'main:search' %}{{ gig.location.place|slugify }}"
+                                           class="hover:underline">{{ gig.location.place }}</a>
+                                    </li>
+                                    <li>
+                                        <i class="la la-plus"></i>
+                                        Published {{ gig.created_at|date }}
+                                    </li>
+                                    <li>
+                                        <i class="la la-link"></i>
+                                        <a href="{{ gig.portfolio.get_absolute_url }}">
+                                        https://lensuno.com{{ gig.portfolio.get_absolute_url }}</a>
+                                    </li>
+                                    {% comment %} <li>
+                                        <i class="la la-clock-o"></i>
+                                        <span class="color-close">Closed until Noon</span>
+                                        <div>
+                                            <p>
+                                                Mon–Thu, Sun <span class="right-align">Noon–Midnight</span>
+                                            </p>
+                                            <p>
+                                                Fri–Sat <span class="right-align">Noon–1:00 AM</span>
+                                            </p>
+                                        </div>
+                                    </li> {% endcomment %}
+                                </ul>
+                            </div>
+                            <div class="sidebar__widget sidebar__widget-author">
+                                <h2 class="sidebar__widget-title">
+                                </h2>
+                                <!-- Author-wrapper module -->
+                                <div class="author-wrapper">
+                                    <div class="author-wrapper__profile">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <div class="author-wrapper__content">
+                                                    <a class="author-wrapper__image"
+                                                       href="{{ gig.portfolio.get_absolute_url }}">
+                                                        <img src="{{ gig.portfolio.user.avatar.url }}" alt="">
+                                                    </a>
+                                                    <h3 class="author-wrapper__title">
+                                                        <a href="{{ gig.portfolio.get_absolute_url }}">{% full_name gig.portfolio.user %}</a>
+                                                        <span class="author-wrapper__location">
+                                                            {{ gig.portfolio.user.city }}
+                                                        </span>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            {% comment %} <div class="col-5">
+                                            <a class="author-wrapper__btn follow-btn" href="#">
+                                                <i class="la la-eye"></i>
+                                                Follow
+                                            </a>
+                                            </div> {% endcomment %}
+                                        </div>
+                                    </div>
+                                    <div class="author-wrapper">
+                                        {{ gig.portfolio.user.bio }}
+                                    </div>
+                                    <ul class="author-wrapper__list">
+                                        <li>
+                                            <span>{{ gig.portfolio.gigs.count }}</span>
+                                            Gigs
+                                        </li>
+                                        {% comment %} <li>
+                                            <span>12</span>
+                                            Followers
+                                        </li>
+                                        <li>
+                                            <span>34</span>
+                                            Following
+                                        </li> 
+                                        <li>
+                                            <span>56</span>
+                                            Reviews
+                                        </li>{% endcomment %}
+                                    </ul>
+                                </div>
+                                <!-- End Author-wrapper module-->
+                            </div>
+                            {% comment %} <div class="sidebar__widget sidebar__widget-tags">
+                                <h2 class="sidebar__widget-title">
+                                    Listing Tags
+                                </h2>
+                                <ul class="sidebar__tags-list">
+                                    <li>
+                                        <a href="#">Cafe</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Restaurant</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">food</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Romantic</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Cozy</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Sea Food</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Healthy Food</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Pasta</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="sidebar__widget sidebar__advertise">
+                                <span class="sidebar__advertise-title">
+                                    advertising box
+                                </span>
+                                <img src="upload/add.jpg" alt="">
+                            </div> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End listing-detail -->
+{% endblock content %}

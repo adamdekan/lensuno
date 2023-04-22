@@ -1,0 +1,40 @@
+<!-- discover-module section
+================================================== -->
+<section class="discover">
+    <div class="container">
+        <p class="discover__description">Welcome to the ultimate destination for visual storytelling:</p>
+        <h1 class="discover__title places-tab">Find the perfect lens[wo]man wherever you are.</h1>
+        <!-- by default discover__title events tab is hidden -->
+        {% comment %} <h1 class="discover__title events-tab">Find the perfect lensman wherever you are.</h1> {% endcomment %}
+        <ul class="discover__list">
+            <li class="discover__list-item">
+                {% comment %} <a class="place active-list" href="#"><i class="la la-compass" aria-hidden="true"></i>Get started</a> {% endcomment %}
+            </li>
+            {% comment %} <li class="discover__list-item">
+                <a class="events" href="#"><i class="la la-calendar" aria-hidden="true"></i>Events</a>
+            </li> {% endcomment %}
+        </ul>
+        <form class="discover__form"  type="get" action="{% url 'main:search' %}">
+            <input class="discover__form-input"
+                   type="text"
+                   name="search"
+                   id="search"
+                   placeholder="Where do you want to shoot?"/>
+            {{ index_search.category }}
+            <button class="btn-default" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i> Search
+            </button>
+        </form>
+        <p class="discover__hashtags">
+            <span>Popular categories:</span>
+            <a href="search/world/?category=EW">#wedding,</a>
+            <a href="search/world/?category=SH">#studio,</a>
+            <a href="search/world/?category=JD">#documentary,</a>
+            <a href="search/world/?category=TV">#travel,</a>
+            <a href="search/world/?category=CE">#event,</a>
+            <a href="search/world/?category=DS">#drones,</a>
+            <a href="search/world/">...</a>
+        </p>
+    </div>
+</section>
+<!-- End discover-module section -->
