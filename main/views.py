@@ -57,7 +57,7 @@ def test_page2(response, slug):
 
 # not working yet
 def my_404_view(request, exception):
-    return render(request, "main/404.html", {"exception": exception})
+    return render(request, "main/404.html", {"exception": exception}, status=404)
 
 
 def check_country(search):

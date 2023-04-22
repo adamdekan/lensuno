@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import socket
 from pathlib import Path
 import os
 import datetime
@@ -29,20 +30,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ["SECRET_KEY"]
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
-ALLOWED_HOSTS = [
-    "www.lensuno.com",
-    "lensuno.com",
-    "localhost",
-    "127.0.0.1",
-    "142.4.9.202",
-]
+if socket.gethostname() == "lensuno.com":
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = False
+    ALLOWED_HOSTS = [
+        "www.lensuno.com",
+        "lensuno.com",
+        "142.4.9.202",
+    ]
+else:
+    DEBUG = True
+    ALLOWED_HOSTS = [
+        "localhost",
+        "127.0.0.1",
+    ]
 
 
 # Application definition
-
 INSTALLED_APPS = [
     "django_admin_tailwind",
     "django.contrib.admin",
@@ -177,7 +182,7 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesSto
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -198,6 +203,7 @@ COMPRESS_ROOT = BASE_DIR / "static"
 STATIC_ROOT = BASE_DIR / "static"
 COMPRESS_ENABLED = True
 
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",

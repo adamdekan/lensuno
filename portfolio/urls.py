@@ -10,21 +10,21 @@ urlpatterns = [
     # GIGS
     path("my-gigs/", views.gig_list_view, name="my-gigs"),
     path("gig/create/", views.GigCreateView.as_view(), name="gig-create"),
-    path("gig/update/<slug:slug>/<int:pk>", views.gig_update_view, name="gig-update"),
-    path("gig/delete/<slug:slug>/<int:pk>", views.gig_delete, name="gig-delete"),
+    path("gig/update/<slug:slug>/<int:pk>/", views.gig_update_view, name="gig-update"),
+    path("gig/delete/<slug:slug>/<int:pk>/", views.gig_delete, name="gig-delete"),
     # PACKAGES
     path(
-        "package/c/<str:package>/<int:gig_pk>",
+        "package/c/<str:package>/<int:gig_pk>/",
         views.create_package,
         name="package-create",
     ),
     path(
-        "package/u/<str:package>/<int:gig_pk>",
+        "package/u/<str:package>/<int:gig_pk>/",
         views.update_package,
         name="package-update",
     ),
     path(
-        "package/d/<str:package>/<int:gig_pk>",
+        "package/d/<str:package>/<int:gig_pk>/",
         views.delete_package,
         name="package-delete",
     ),
