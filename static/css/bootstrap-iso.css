@@ -3788,6 +3788,7 @@
 @media (min-width: 992px) {
   .bs .navbar-expand-lg {
     flex-wrap: nowrap;
+    height: 70p;
     justify-content: flex-start;
   }
   .bs .navbar-expand-lg .navbar-nav {
@@ -10180,4 +10181,3 @@
 .bs .card .h5,
 .bs .card .h6 {
   color: inherit;
-}

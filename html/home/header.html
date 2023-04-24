@@ -2,7 +2,8 @@
 ================================================== -->
 {% load static %}
 <header class="clearfix {% if is_home or is_portfolio %}{% else %}white-header-style fullwidth-with-search{% endif %}">
-    <nav class="navbar navbar-expand-lg {% if is_home or is_portfolio %}navbar-dark bg-dark{% else %}navbar-light bg-light{% endif %}">
+    <nav class="navbar navbar-expand-lg {% if is_home or is_portfolio %}navbar-dark bg-dark{% else %}navbar-light bg-light{% endif %}"
+         style="height: 70px">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'main:index' %}">
                 <img src="{% if is_home or is_portfolio %}{% static 'upload/logo@2x.png' %}{% else %}{% static 'upload/logo-black@2x.png' %}{% endif %}"

@@ -177,9 +177,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-# COMPRESS_OFFLINE = True
-# LIBSASS_OUTPUT_STYLE = "compressed"
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -211,17 +208,17 @@ MEDIA_URL = "/media/"
 #     STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATIC_ROOT = os.path.join(BASE_DIR, "static_collected")
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
-
-
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    # "compressor.finders.CompressorFinder",
+    "compressor.finders.CompressorFinder",
 )
-# COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
+COMPRESS_OFFLINE = True
+LIBSASS_OUTPUT_STYLE = "compressed"
+COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
