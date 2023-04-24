@@ -1,0 +1,22 @@
+*** Starting uWSGI 2.0.21 (64bit) on [Mon Apr 24 09:44:51 2023] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-44) on 21 April 2023 20:56:03
+os: Linux-3.10.0-1160.88.1.el7.x86_64 #1 SMP Tue Mar 7 15:41:52 UTC 2023
+nodename: 142-4-9-202.webhostbox.net
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /home/lensuno/git_repositories/lensuno
+writing pidfile to /tmp/project-master.pid
+open("/tmp/project-master.pid"): Permission denied [core/utils.c line 3624]
+*** Starting uWSGI 2.0.21 (64bit) on [Mon Apr 24 09:47:37 2023] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-44) on 21 April 2023 20:56:03
+os: Linux-3.10.0-1160.88.1.el7.x86_64 #1 SMP Tue Mar 7 15:41:52 UTC 2023
+nodename: 142-4-9-202.webhostbox.net
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 4
+current working directory: /home/lensuno/git_repositories/lensuno
+writing pidfile to /tmp/project-master.pid
+open("/tmp/project-master.pid"): Permission denied [core/utils.c line 3624]

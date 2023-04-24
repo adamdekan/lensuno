@@ -37,6 +37,8 @@ ALLOWED_HOSTS = [
     "www.lensuno.com",
     "lensuno.com",
     "142.4.9.202",
+    "localhost",
+    # "ergp.policyschool.ca",
 ]
 # else:
 #     DEBUG = True
@@ -99,6 +101,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
 ]
 
@@ -174,14 +177,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-COMPRESS_OFFLINE = True
-LIBSASS_OUTPUT_STYLE = "compressed"
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+# COMPRESS_OFFLINE = True
+# LIBSASS_OUTPUT_STYLE = "compressed"
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -198,21 +200,29 @@ AUTHENTICATION_BACKENDS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
-COMPRESS_ROOT = BASE_DIR / "static"
-COMPRESS_ENABLED = True
+# COMPRESS_ROOT = BASE_DIR / "static"
+# COMPRESS_ENABLED = True
 
-if DEBUG:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# if DEBUG:
+# STATIC_ROOT = BASE_DIR / "static"
+
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+# if DEBUG:
+#     STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    "compressor.finders.CompressorFinder",
+    # "compressor.finders.CompressorFinder",
 )
+# COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 
-COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
@@ -298,3 +308,22 @@ DJANGO_GALLERY_FIELD_CONFIG = {
 
 STARFIELD_STARS = 10
 STARFIELD_COLOUR = "#A13333"
+
+
+import logging
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": os.getenv("DJANGO_LOG_LEVEL", "DEBUG"),
+        },
+    },
+}
