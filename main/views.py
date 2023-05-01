@@ -29,13 +29,13 @@ class Home(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["gigs"] = Gig.objects.filter(gallery__isnull=False, is_active=True)
+        context["gigs"] = Gig.objects.filter(gallery__isnull=False, is_active=True, is_featured=True)
         context["post_production"] = Gig.objects.filter(
             category__in=["PT", "VE"],
             gallery__isnull=False,
             is_active=True,
         )
-        context["portfolios"] = Portfolio.objects.all()
+        context["portfolios"] = Portfolio.objects.filter(is_featured=True)
         context["profiles"] = User.objects.all()
         context["is_home"] = True
         context["index_search"] = IndexSearchForm()
@@ -127,6 +127,8 @@ def copy_url(request):
     url = request.build_absolute_uri()
     return HttpResponse(url, content_type="text/plain")
 
+def about_us(response):
+    return render(response, "main/about-us.html", {})
 
 # @require_GET
 # def results(request, search):

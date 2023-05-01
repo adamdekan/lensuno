@@ -46,6 +46,7 @@ def first_step(request):
         return HttpResponseRedirect(reverse("portfolio:create"))
 
     context["form"] = form
+    context["is_portfolio"] = True
 
     return TemplateResponse(request, template, context)
 
@@ -70,6 +71,11 @@ class PortfolioCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy("portfolio:gig-create")
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context["form"] = PortfolioUpdateForm()
+    #     context["is_portfolio"] = True
 
 
 class PortfolioDetailView(DetailView):
@@ -193,6 +199,13 @@ class GigCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["create"] = True
+
+        return context
+
+class FirstGig(GigCreateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["is_portfolio"] = True
         return context
 
 

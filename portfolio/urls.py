@@ -6,6 +6,7 @@ urlpatterns = [
     path("start-portfolio/", views.start_portfolio, name="start"),
     path("step-one/", views.first_step, name="step-one"),
     path("step-two/", views.PortfolioCreateView.as_view(), name="create"),
+    path("step-three/", views.FirstGig.as_view(), name="first-gig"),
     path("update/", views.portfolio_update_view, name="update"),
     # GIGS
     path("my-gigs/", views.gig_list_view, name="my-gigs"),

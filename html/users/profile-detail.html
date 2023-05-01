@@ -7,6 +7,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5">
+                    {% if is_owner %}
+                        <a href="{% url 'users:settings' %}"
+                            style="margin-left: 10px"
+                            class="btn-cancel-small">Edit profile</a>
+                    {% endif %}
                         <div class="user-detail__profile-box">
                             <a class="user-detail__profile-image" href="#">
                                 <img src="{{ profile.avatar.url }}" alt="">
@@ -23,7 +28,7 @@
                     <div class="col-lg-7">
                         {% if profile.is_freelancer %}
                             <a class="portfolio btn-default btn-default-red"
-                               href="{{ gigs.0.portfolio.get_absolute_url }}">
+                               href="{{ profile.portfolio.get_absolute_url }}">
                                 <i class=" la la-camera-retro"></i>
                                 Portfolio
                             </a>
@@ -133,10 +138,10 @@
                                                         <img src="{{ user.avatar.url }}" alt="">
                                                         <div class="inner-review__form-box">
                                                             {{ form.comment }}
-                                                            <div class="row">
+                                                            {% comment %} <div class="row">
                                                                 <div class="col-md-6">{{ form.rating }}</div>
                                                                 <div class="col-md-6"></div>
-                                                            </div>
+                                                            </div> {% endcomment %}
                                                             <button type="submit"
                                                                     class="contact-form__submit"
                                                                     _="on click wait 50ms then add [@disabled]">Sumbit Comment</button>

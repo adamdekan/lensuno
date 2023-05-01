@@ -1,0 +1,139 @@
+{% extends "_base.html" %}
+{% block title %}
+    LENS UNO | About
+{% endblock title %}
+{% load static %}
+{% block content %}
+    <section class="add-listing">
+        <div class="add-listing__title-box">
+            <div class="container">
+                <h1 class="add-listing__title">About Us</h1>
+            </div>
+        </div>
+        <div class="break"></div>
+        {% block scripts %}
+            <style>
+            .h1 {
+                color: #A13333;
+                padding: 2rem;
+                font-weight: 900;
+                font-size: 1.9rem;
+                text-align: center;
+            }
+            .content {
+                max-width: 850px;
+
+            }
+            p {
+                font-size: 1.1rem;
+            }
+            h2 {
+                padding-top: 15px;
+                color: #A13333;
+
+            }
+            .president-wrap {
+                display: flex;
+                align-items: center;
+                margin-top: 50px;
+                margin-bottom: 50px;
+              }
+            .big {
+                
+                margin-bottom: 50px;
+              }
+              
+              .president-image {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+              }
+              
+              .president-column {
+                flex: 1;
+                margin-left: 20px;
+              }
+              
+              .upwork-rza {
+                font-size: 1.1rem;
+                color: #000;
+              }
+              .center{
+                width: 100%;
+                justify-items: center;
+                display: flex;
+                justify-content: center;
+              }
+            </style>
+        {% endblock scripts %}
+        <div class="container content">
+            <h2 class="h1">
+                Democratize the world of visual media and make it accessible and affordable to everyone, everywhere.
+                
+            </h2>
+            <p>
+LENS UNO is an innovative online marketplace that aims to revolutionize the way customers access professional photography and videography services.              </p>
+            <p>
+We believe that everyone should have easy access to affordable professional services for their photography and videography needs. Whether they are looking for a photographer to capture the special moments, or a videographer to create stunning visuals for the business; whether it is a local or a destination shoot, we have the solution that makes it easy to find and hire the perfect match for everyone’s vision, style and budget.            </p>
+            <p>That is why we built this platform that stands out from traditional intermediate agencies in the photography and videography industry. Unlike common practices, we do not contract photographers and videographers ourselves and only send our contractors who pay a subscription fee to clients. Instead, we connect customers with a global network of talented and experienced professionals; our platform is open and free for everyone to join, as a customer and as a professional photographer or videographer.</p>
+            <p>We believe in the value of transparency, as it is the key to building trust and strong relationships between clients and freelance professionals. With transparency, it is possible to create space for democratizing the world of visual media, where photographers and videographers are empowered to build their careers based on quality and credibility through customers’ reviews, rather than heavily relying on interpersonal outreach and networking. </p>
+            <p>The philosophy that led us through the designing of LENS UNO includes these values:
+</p>
+            <h2>Convenience.</h2>
+            <p>
+At LENS UNO, we envision quality photography, videography and related production services to be as simple as booking a taxi, as straightforward as ordering a meal, and as efficient as purchasing any delivery service.             </p>
+            <p>
+Our primary goal is to provide customers with a hassle-free way to book high-quality photography and videography services from anywhere. Our platform aims to connect professional photographers and videographers directly with customers worldwide by allowing customers to browse and select from various talents and expertise based on their choice of location, style preference and personal budget. </p>
+            <h2>Empowerment.</h2>
+            <p>
+                At LENS UNO, we aim to make professional photography and videography accessible and affordable for every need while empowering photographers and videographers to showcase their talent and build their careers. With most creative photographers working as freelancers, we understand how demanding their job can be. 
+            </p>
+            <p>
+That is why LENS UNO seeks to create a reliable source of income for freelance photographers and videographers by providing them with a steady stream of clients. Connecting them with a large and diverse customer base, LENS UNO aims to enable our freelance professionals to turn their passion for photography and videography into a profitable business.            </p>
+
+            <h2>Transparency.</h2>
+            <p>Transparency is at the heart of LENS UNO, and we believe it is essential to all parties involved. </p>
+            <p>
+We value the importance of transparent pricing. We ask our freelancers to set their own prices based on their skills and experience, and to provide detailed information about each service offered on our platform, including the scope of work, deliverables, and any additional costs. This way, our customers can make an informed decision and have complete transparency into the pricing and services they are receiving and know exactly what services they are paying for.             </p>
+            <p>
+We also encourage direct communication between our customers and freelancers, offering them the channel to build a relationship based on trust and collaboration to ensure that their needs and expectations are met. By facilitating open communication, we aim to help both sides achieve the best results. And, we also provide a rating and review system for feedback and credibility, which allows fair competition and helps build a community of quality service providers.            </p>
+            <p>
+With transparency, we aim to provide an exceptional user experience that ensures everyone is informed, involved, and satisfied with the end result. Both our customers and professionals benefit from transparent services with the added convenience of managing everything online in one place.             </p>
+            <h2>Reliability.</h2>
+            <p>
+We understand the importance of reliability in the creative industry. That is why we offer a payment protection system that ensures safe transactions between customers and freelancers. This means that customers can rest assured that they will only pay for the services they receive, and freelancers can trust that they will receive timely and secure payments for their work as customers give us their payment for safekeeping which will be transferred once the job is done. To reduce the risks to a minimum, free cancellation is also offered within a required timeframe to avoid loss of time and opportunities for both parties.            </p>
+            <h2>Community.</h2>
+            <p>
+We strive to make LENS UNO the most reliable and comprehensive all-in-one global marketplace for professional photography and videography services, providing customers with access and ease to find and hire the perfect photographers and videographers for their needs while empowering and elevating talents worldwide by offering them the opportunities to share their creativity with the world.             </p>
+            <p>But we are more than just a marketplace.</p>
+            <p>
+We are building a community of passionate and dedicated photographers and videographers, and clients who wish to take on the power of visual storytelling.            </p>
+            <p>
+We are here to unite creativity, passion, inspiration, professionalism and people.<br/>
+We are here to democratize the world of visual media and make it accessible and affordable to everyone, everywhere.
+                <br/><br/>
+            </p>
+            <div class="president-wrap">
+                <img src="{% static 'img/joanna.jpg' %}"
+                     loading="lazy"
+                     alt="Lensuno CEO"
+                     class="president-image">
+                <div class="president-column">
+                    <div class="upwork-rza">Joanna&nbsp;Li</div>
+                    <div class="black-text">Founder</div>
+                </div>
+            </div>
+            <div class="center">
+                <a class="btn-default btn-default-red big"
+                   href="#ModalCenter"
+                   hx-get="{% url 'users:signup-hx' %}"
+                   hx-target="#dialog"
+                   data-toggle="modal">
+                    {% comment %} <i class="fa fa-check-circle-o" aria-hidden="true"></i> {% endcomment %}
+                    Join the community.
+                </a>
+            </div>
+            <div class="break"></div>
+        </div>
+    </section>
+{% endblock content %}

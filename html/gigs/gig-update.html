@@ -7,15 +7,30 @@
     {% endif %}
 {% endblock title %}
 {% block content %}
+{% load static %}
     <section class="add-listing">
         <div class="add-listing__title-box">
             <div class="container">
-                <h1 class="add-listing__title">
-                    {% if create %}
-                        Create new gig
+                    {% if is_portfolio %}
+                        <div style="display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            position: relative;
+                            top: -40px">
+                    <div style="flex: 1; text-align: right; margin-right: 30px">
+                        <h1 style="text-align: right;">Step 3. Create your first gig</h1>
+                    </div>
+                    <div style="flex: 1; text-align: left; margin-left: 30px">
+                        <img src="{% static 'img/ui5.png' %}"
+                             height="300px"
+                             alt="">
+                    </div>
+                     </div>
                     {% else %}
-                        Update "{{ gig.title }}"{% endif %}
+                <h1 class="add-listing__title">
+                    Your gig settings.
                     </h1>
+                    {% endif %}
                 </div>
             </div>
             <div class="break"></div>

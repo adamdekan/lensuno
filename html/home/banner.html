@@ -1,26 +1,33 @@
 <!-- banner-block
 ================================================== -->
-<section class="banner">
+{% load static %}
+<section class="banner" style="background: #A13333;">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <!-- section-header module -->
-                <div class="section-header">
-                    <h1 class="section-header__title white-style">Join the Community Today</h1>
-                    <p class="section-header__description white-style">
-                        Ready to connect with customers and freelancers worldwide? Sign up now at the all-in-one marketplace of photography and videography to unleash the power of imagery.
-                    </p>
-                </div>
+                <img src="{% static 'img/i30.png' %}" class="addons" alt="Image">
                 <!-- end section-header module -->
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
+                <div class="section-header" style="margin-left: 30px">
+                    <h1 class="section-header__title white-style">The power of community.</h1>
+                    <p class="section-header__description white-style">
+                        We are more than just a marketplace. We can be more when we are a community.
+                    </p>
+                    <br/>
+                    <p class="section-header__description white-style">
+                        At LENS UNO, we unite our passion for creativity and commitment to excellence by connecting talents with markets.
+                    </p>
+                    <br/>
+                    <p class="section-header__description white-style">Start building your career of passion today with us.</p>
+                </div>
                 <a class="btn-default"
                    href="#ModalCenter"
                    hx-get="{% url 'users:signup-hx' %}"
                    hx-target="#dialog"
                    data-toggle="modal">
-                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                    Register Now
+                    Join Now
                 </a>
             </div>
         </div>

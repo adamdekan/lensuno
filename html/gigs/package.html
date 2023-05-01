@@ -1,12 +1,9 @@
 <div class="packages">
-    <a class="packages__content"
-       href="{% if not is_owner %}{% url 'payment:order' gig.id package.package_type %}{% endif %}">
+<a class="packages__content" href="{% if not is_owner %}{% url 'payment:order' gig.id package.package_type %}{% endif %}">
         <div class="packages__content-box">
             <span class="packages__desc">{{ package.description }}</span>
         </div>
-    </a>
-    <a class="packages__next"
-       url="{% if not is_owner %}{% url 'payment:order' gig.id package.package_type %}{% endif %}">
+</a>
         <i class="la la-angle-right"></i>
         <div class="packages__next-box">
             <div class="packages__book">
@@ -18,9 +15,10 @@
             <hr/>
             <div class="packages__book">
                 <h2 class="packages__title {% if package.package_type == "premium" %}dark-red{% endif %} {% if package.package_type == "master" %}golden{% endif %} ">
+                    <a href="{% if not is_owner %}{% url 'payment:order' gig.id package.package_type %}{% endif %}">
                     Book now
+                    </a>
                 </h2>
             </div>
         </div>
-    </a>
 </div>

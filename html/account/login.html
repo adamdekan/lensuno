@@ -27,9 +27,9 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}
 <form class="login" method="post" action="{% url 'account_login' %}">
   {% csrf_token %}
   <label class="sign-form__label" for="username">Email address:</label>
-  {{ form_signin.login }}
+  {{ form_signin.login }}<br/>
   <label class="sign-form__label" for="password">Password:</label>
-  {{ form_signin.password }}
+  {{ form_signin.password }}<br/>
   <div class="sign-form__checkbox">
     {{ form_signin.remember }}
     <span class="sign-form__checkbox-text">Remember me</span>

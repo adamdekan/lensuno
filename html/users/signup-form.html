@@ -25,7 +25,7 @@
 </form> {% endcomment %}
 <form class="sign-form" hx-post="{{ request.path }}">
     {% csrf_token %}
-    {{ form_signup }}
+    {{ form_signup.as_p }}
     <div class="sign-form__checkbox">
         <input class="sign-form__input-checkbox"
                type="checkbox"

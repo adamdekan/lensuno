@@ -161,22 +161,22 @@
                                             <img src="{{ user.avatar.url }}" alt="">
                                             <div class="inner-review__form-box">
                                                 {{ form.comment }}
-                                                <div class="row">
+                                                {% comment %} <div class="row">
                                                     <div class="col-md-6">{{ form.rating }}</div>
                                                     <div class="col-md-6">
                                                         <div class="contact-form__upload-btn">
-                                                            {% comment %} <input class="contact-form__input-file"
-        type="file"
-        name="photo-upload"
-        id="photo-upload"/> {% endcomment %}
-                                                            {% comment %} {{ form.photo }}
+                                                            <input class="contact-form__input-file"
+                                                                    type="file"
+                                                                    name="photo-upload"
+                                                                    id="photo-upload"/> 
+                                                            {{ form.photo }}
                                                         <span>
                                                             <i class="la la-cloud-upload"></i>
                                                             Upload Photo
-                                                            </span> {% endcomment %}
+                                                            </span> 
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> {% endcomment %}
                                                 <button type="submit"
                                                         class="contact-form__submit"
                                                         _="on click wait 50ms then add [@disabled]">
@@ -287,7 +287,7 @@
                                                     <h3 class="author-wrapper__title">
                                                         <a href="{{ gig.portfolio.get_absolute_url }}">{% full_name gig.portfolio.user %}</a>
                                                         <span class="author-wrapper__location">
-                                                            {{ gig.portfolio.user.city }}
+                                                            {{ gig.portfolio.user.location.place }}
                                                         </span>
                                                     </h3>
                                                 </div>

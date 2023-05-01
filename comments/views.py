@@ -8,7 +8,7 @@ from users.models import ProfileComment
 from django.http import JsonResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.template.response import TemplateResponse
-from portfolio.models import Gig
+from portfolio.models import Gig, Portfolio
 from comments.models import Comment
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger

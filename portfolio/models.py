@@ -62,6 +62,9 @@ class Portfolio(models.Model):
     def get_id(self):
         return self.id
 
+    class Meta:
+        ordering = ["-created_at"]
+
 
 # upload location for GIG images
 def upload_location_gig(self, filename):
@@ -86,11 +89,10 @@ class Gig(models.Model):
         ("AL", "Anniversary & Life Moments"),
         ("CP", "Commercial & Product"),
         ("EW", "Engagement & Wedding"),
-        ("SH", "Studio & Headshots"),
+        ("SP", "Studio & Portrait"),
         ("TV", "Travel & Vacation"),
         ("JD", "Journalism & Documentary"),
-        ("MO", "Modern Outdoor"),
-        ("CE", "Conference & Event"),
+        ("EC", "Event & Conference"),
         ("DR", "Drone Shots"),
         ("PT", "Photo Retouch"),
         ("VE", "Video Editing"),
@@ -134,6 +136,9 @@ class Gig(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Gig, self).save(*args, **kwargs)
+
+    class Meta:
+        ordering = ["-updated_at"]
 
 
 @receiver(post_save, sender=Gig)

@@ -20,16 +20,26 @@ country_choices = [(name, name) for code, name in countries_for_language("en")]
 # for SignInView(LoginView)
 # https://django-allauth.readthedocs.io/en/latest/forms.html#login-allauth-account-forms-loginform
 class UserSignInForm(LoginForm):
-    password = forms.CharField(
+    login = forms.CharField(
         widget=forms.TextInput(
             attrs={
                 "class": "sign-form__input-text",
-                "type": "password",
-                "placeholder": "Password",
-                "autocomplete": "current-password",
+                "type": "email",
+                "placeholder": "Your email",
+                "autocomplete": "email",
             }
         )
     )
+    # password = forms.CharField(
+    #     widget=forms.TextInput(
+    #         attrs={
+    #             "class": "sign-form__input-text",
+    #             "type": "password",
+    #             "placeholder": "Password",
+    #             "autocomplete": "current-password",
+    #         }
+    #     )
+    # )
     remember = forms.CheckboxInput(attrs={"class": "sign-form__checkbox-style"})
 
     def login(self, *args, **kwargs):
@@ -41,24 +51,24 @@ class UserSignInForm(LoginForm):
 # for SignUpView(SignupView):
 # https://django-allauth.readthedocs.io/en/latest/forms.html#signup-allauth-account-forms-signupform
 class UserSignupForm(SignupForm):
-    first_name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "class": "sign-form__input-text",
-                "type": "first_name",
-                "placeholder": "First name",
-            }
-        )
-    )
-    last_name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "class": "sign-form__input-text",
-                "type": "first_name",
-                "placeholder": "First name",
-            }
-        )
-    )
+    # first_name = forms.CharField(
+    #     widget=forms.TextInput(
+    #         attrs={
+    #             "class": "sign-form__input-text",
+    #             "type": "first_name",
+    #             "placeholder": "First name",
+    #         }
+    #     )
+    # )
+    # last_name = forms.CharField(
+    #     widget=forms.TextInput(
+    #         attrs={
+    #             "class": "sign-form__input-text",
+    #             "type": "first_name",
+    #             "placeholder": "First name",
+    #         }
+    #     )
+    # )
     password1 = forms.CharField(
         widget=forms.TextInput(
             attrs={

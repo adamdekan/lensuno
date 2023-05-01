@@ -2,8 +2,7 @@
 ================================================== -->
 {% load static %}
 <header class="clearfix {% if is_home or is_portfolio %}{% else %}white-header-style fullwidth-with-search{% endif %}">
-    <nav class="navbar navbar-expand-lg {% if is_home or is_portfolio %}navbar-dark bg-dark{% else %}navbar-light bg-light{% endif %}"
-         style="height: 70px">
+    <nav class="navbar navbar-expand-lg {% if is_home or is_portfolio %}navbar-dark bg-dark{% else %}navbar-light bg-light{% endif %}">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'main:index' %}">
                 <img src="{% if is_home or is_portfolio %}{% static 'upload/logo@2x.png' %}{% else %}{% static 'upload/logo-black@2x.png' %}{% endif %}"
@@ -55,22 +54,22 @@
                                         <a href="{% url 'users:profile' user.pk %}">Profile</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'wishlist:index' %}">Wishlist</a>
-                                    </li>
-                                    <li>
-                                        <a href="{% url 'users:settings' %}">Settings</a>
+                                        <a href="{% url 'users:settings' %}">Edit profile</a>
                                     </li>
                                     <hr style="margin-top: 5px; margin-bottom: 5px;"/>
                                     <li>
-                                        <a href="{% url 'payment:my-bookings' %}">Bookings</a>
+                                        <a href="{% url 'wishlist:index' %}">Wishlist</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'chat:home' %}">Messages</a>
+                                        <a href="{% url 'payment:my-bookings' %}">Bookings</a>
                                     </li>
+                                    {% comment %} <li>
+                                        <a href="{% url 'chat:home' %}">Messages</a>
+                                    </li> {% endcomment %}
                                     {% if not user.is_freelancer %}
                                         <hr style="margin-top: 5px; margin-bottom: 5px;"/>
                                         <li>
-                                            <a href="{% url 'portfolio:start' %}">Become a Lensman</a>
+                                            <a href="{% url 'portfolio:step-one' %}">I am a photographer</a>
                                         </li>
                                     {% endif %}
                                     {% if user.is_freelancer %}

@@ -3,10 +3,24 @@
     LENS UNO | Step One
 {% endblock title %}
 {% block content %}
+{% load static %}
     <section class="add-listing">
         <div class="add-listing__title-box">
             <div class="container">
-                <h1 class="add-listing__title">Step One - Fill in all your user profile info.</h1>
+                <div style="display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            position: relative;
+                            top: -40px">
+                    <div style="flex: 1; text-align: right; margin-right: 30px">
+                        <h1 style="text-align: right;">Step 1. Complete your profile.</h1>
+                    </div>
+                    <div style="flex: 1; text-align: left; margin-left: 30px">
+                        <img src="{% static 'img/ui1.png' %}"
+                             height="300px"
+                             alt="">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="break"></div>
@@ -66,12 +80,13 @@
                         <!-- Photo FIELD -->
                         <div class="add-listing__form-content">
                             <div class="add-listing__input-file-box">
+                                <label class="add-listing__label" for="location">Upload your profile picture:</label>
                                 {{ form.avatar }}
                                 {{ form.errors.avatar }}
-                                <div class="add-listing__input-file-wrap">
+                                {% comment %} <div class="add-listing__input-file-wrap">
                                     <i class="la la-cloud-upload"></i>
                                     <p>Click here to upload your avatar</p>
-                                </div>
+                                </div> {% endcomment %}
                             </div>
                         </div>
                         <!-- Save Button -->

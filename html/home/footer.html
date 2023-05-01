@@ -7,8 +7,8 @@
                 <div class="col-md-4">
                     <div class="footer__widget text-widget">
                         {% comment %} <img src="" alt="triptip-logo"> {% endcomment %}
-                        <h2 class="footer__widget-title footer__widget-title-white">About Us</h2>
-                        <p class="footer__widget-description">
+                        <h2 class="footer__widget-title footer__widget-title-white"><a href="{% url 'main:about-us' %}">About Us</a></h2>
+                        <p class="footer__widget-description white">
                             LENS UNO is an innovative, all-in-one marketplace that aims to revolutionize the way customers access professional photography and videography services worldwide.
                         </p>
                     </div>
@@ -16,7 +16,7 @@
                 <div class="col-md-4">
                     <div class="footer__widget subscribe-widget">
                         <h2 class="footer__widget-title footer__widget-title-white">Subscribe</h2>
-                        <p class="footer__widget-description">Get notified of exclusive offers to elevate your visual game.</p>
+                        <p class="footer__widget-description white">Get notified of exclusive offers to elevate your visual game.</p>
                         <form class="footer__subscribe-form">
                             <input class="footer__subscribe-input"
                                    type="text"
