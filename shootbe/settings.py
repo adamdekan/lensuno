@@ -31,21 +31,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 
-# if socket.gethostname() == "lensuno":
-DEBUG = False
-ALLOWED_HOSTS = [
-    "www.lensuno.com",
-    "lensuno.com",
-    "142.4.9.202",
-    "localhost",
-    # "ergp.policyschool.ca",
-]
-# else:
-#     DEBUG = True
-#     ALLOWED_HOSTS = [
-#         "localhost",
-#         "127.0.0.1",
-#     ]
+if socket.gethostname() == "lensuno":
+    DEBUG = False
+    ALLOWED_HOSTS = [
+        "www.lensuno.com",
+        "lensuno.com",
+        "142.4.9.202",
+        "localhost",
+    ]
+else:
+    DEBUG = True
+    ALLOWED_HOSTS = [
+        "localhost",
+        "127.0.0.1",
+    ]
 
 
 # Application definition
@@ -309,18 +308,19 @@ STARFIELD_COLOUR = "#A13333"
 
 import logging
 
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
+if not DEBUG:
+    LOGGING = {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler",
+            },
         },
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["console"],
-            "level": os.getenv("DJANGO_LOG_LEVEL", "DEBUG"),
+        "loggers": {
+            "django": {
+                "handlers": ["console"],
+                "level": os.getenv("DJANGO_LOG_LEVEL", "DEBUG"),
+            },
         },
-    },
-}
+    }
