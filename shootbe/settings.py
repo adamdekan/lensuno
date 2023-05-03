@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 
-if socket.gethostname() == "142-4-9-202.webhostbox.net":
+if socket.gethostname() == "server.lensuno.com":
     DEBUG = False
     ALLOWED_HOSTS = [
         "www.lensuno.com",
