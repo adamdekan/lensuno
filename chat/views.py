@@ -58,7 +58,7 @@ def ajax_load_messages(request, pk):
     print("messages")
     message_list = [
         {
-            "sender": message.sender.username,
+            "sender": message.sender.email,
             "message": message.message,
             "sent": message.sender == request.user,
             "picture": other_user.avatar.url,
@@ -76,8 +76,8 @@ def ajax_load_messages(request, pk):
         )
         message_list.append(
             {
-                "sender": request.user.username,
-                "username": request.user.username,
+                "sender": request.user.email,
+                "username": request.user.email,
                 "message": m.message,
                 "date_created": naturaltime(m.date_created),
                 "picture": request.user.avatar.url,
