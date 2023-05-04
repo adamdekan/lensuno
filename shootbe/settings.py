@@ -193,7 +193,11 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+if DEBUG:
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+else:
+    MEDIA_ROOT = "/home/lensuno/media"
+
 MEDIA_URL = "/media/"
 
 # COMPRESS_ROOT = BASE_DIR / "static"
@@ -289,8 +293,12 @@ STRIPE_API_VERSION = "2022-08-01"
 
 
 # galler_field
-SENDFILE_URL = "/media/protected"
-SENDFILE_ROOT = BASE_DIR / "media"
+if DEBUG:
+    SENDFILE_URL = "/media/protected"
+    SENDFILE_ROOT = BASE_DIR / "media"
+else:
+    SENDFILE_URL = "/protected"
+    SENDFILE_ROOT = "/home/lensuno/media"
 SENDFILE_BACKEND = "django_sendfile.backends.development"
 DJANGO_GALLERY_FIELD_CONFIG = {
     "bootstrap_version": 4,
