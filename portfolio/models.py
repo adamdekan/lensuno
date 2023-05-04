@@ -10,6 +10,8 @@ from shortuuid.django_fields import ShortUUIDField
 from places.fields import PlacesField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from PIL import Image
+import os
 
 # Create your models here.
 User = settings.AUTH_USER_MODEL
@@ -22,7 +24,7 @@ class PortfolioManager(models.Manager):
 # upload location for GIG images
 def upload_location_portfolio(self, filename):
     file_base, extension = filename.split(".")
-    image_name = f"portfolios/{self.id}-portfolio-header.{extension}"
+    image_name = f"portfolios/{file_base}.{extension}"
     return image_name
 
 
@@ -52,6 +54,17 @@ class Portfolio(models.Model):
             short = short.replace(".", "-")
             self.slug = f"{short}-{get_random_string(length=6)}"
         super().save(*args, **kwargs)
+        img = Image.open(self.photo.path)
+        if img.height > 1920 or img.width > 3072:
+            aspect_ratio = img.width / img.height
+            new_height = min(1920, img.height)
+            new_width = min(3072, round(new_height * aspect_ratio))
+            img = img.resize((new_width, new_height), Image.ANTIALIAS)
+            # delete the previous image file
+            if os.path.isfile(self.photo.path):
+                os.remove(self.photo.path)
+        # save the resized image
+        img.save(self.photo.path, quality=80, optimize=True, format="JPEG")
 
     def __str__(self):
         return self.slug
@@ -69,7 +82,7 @@ class Portfolio(models.Model):
 # upload location for GIG images
 def upload_location_gig(self, filename):
     file_base, extension = filename.split(".")
-    image_name = f"gigs/{self.id}-gig-header.{extension}"
+    image_name = f"gigs/{file_base}-gig.{extension}"
     return image_name
 
 

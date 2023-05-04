@@ -64,11 +64,6 @@ class User(AbstractUser):
     def __str__(self):
         return self.email
 
-    def resize_image(self, image):
-        img = Image.open(image)
-        img.thumbnail((100, 100))
-        return img
-
     # resize saved image from ImageField
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

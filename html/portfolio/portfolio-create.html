@@ -3,7 +3,7 @@
     LENS UNO | Create Portfolio
 {% endblock title %}
 {% block content %}
-{% load static %}
+    {% load static %}
     <section class="add-listing">
         <div class="add-listing__title-box">
             <div class="container">
@@ -16,9 +16,7 @@
                         <h1 style="text-align: right;">Step 2. Set up your portfolio.</h1>
                     </div>
                     <div style="flex: 1; text-align: left; margin-left: 30px">
-                        <img src="{% static 'img/ui4.png' %}"
-                             height="300px"
-                             alt="">
+                        <img src="{% static 'img/ui4.png' %}" height="300px" alt="">
                     </div>
                 </div>
             </div>
@@ -78,7 +76,7 @@
                         <div class="add-listing__form-content">
                             <div class="add-listing__input-file-box">
                                 <label class="add-listing__label" for="location">
-                                    Upload your banner photo with maximum resolution 1920x1080px. This should represent your work. Don't worry, you can change it anytime.
+                                    Upload your horizontal banner photo with maximum resolution 3072x1920px and size 20Mb. This should represent your work. Don't worry, you can change it anytime.
                                 </label>
                                 {{ form.photo }}
                                 {{ form.errors.photo }}
