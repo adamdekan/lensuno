@@ -304,9 +304,7 @@
                 <button id="reply-message-cancel"
                         class="m-0 bg-white p-2 text-danger"
                         style="border: none;
-                               outline: none">
-                    &times;
-                </button>
+                               outline: none">&times;</button>
             </div>
             <div id="chat-panel" class="chat-panel">
                 {% for user_message in user_messages %}
@@ -510,7 +508,7 @@
         user_message.appendChild(user_message_content)
         user_message_content.appendChild(user_message_date)
 
-        user_message_container.appendChild(chat_user_img);
+        // user_message_container.appendChild(chat_user_img);
         user_message_container.appendChild(user_message);
 
         let chat_panel = document.getElementById("chat-panel");
