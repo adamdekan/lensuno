@@ -8,8 +8,10 @@
                     {% if gig.gallery %}
                         {% with gig.gallery.images.objects.all|slice:":5" as photos %}
                             {% for photo in photos %}
-                                {% thumbnail photo.image "x300" crop="center" as im %}
-                                <img class="place-post__image" src="{{ im.url }}" alt="place-image">
+                                <a href="{{ gig.get_absolute_url }}" class="clear-pointer">
+                                    {% thumbnail photo.image "x300" crop="center" as im %}
+                                    <img class="place-post__image" src="{{ im.url }}" alt="place-image">
+                                </a>
                             {% endthumbnail %}
                         {% endfor %}
                     {% endwith %}
@@ -52,7 +54,7 @@
         </h2>
         <p class="place-post__description">
             {{ gig.get_category_display }}
-            <br/>
+            <br />
             <i class="fa fa-map-marker" aria-hidden="true"></i> {{ gig.location.place|truncatechars:50 }}
         </p>
         <p class="place-post__info jus">

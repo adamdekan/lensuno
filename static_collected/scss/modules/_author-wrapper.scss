@@ -13,7 +13,7 @@
 		margin-bottom: 8px;
 	}
 	&__image {
-		margin-right: 1.25rem;
+		margin-right: 0.75rem;
 		img {
 			width: 30px;
 			height: 30px;
@@ -25,7 +25,9 @@
 		font-size: 0.9375rem;
 		font-weight: 600;
 		line-height: 1.25rem;
-		padding-top: 0.375rem;
+		align-items: center;
+		display: inherit;
+		// padding-top: 0.375rem;
 		margin: 0;
 		a {
 			color: $title-color;
