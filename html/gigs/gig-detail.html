@@ -83,7 +83,7 @@
                                     <div style="width: 100%"></div>
                                 </a>
                                 <div class="add-listing__input-file-wrap">
-                                    <i class="la la-cloud-upload"></i>
+                                    {% comment %} <i class="la la-cloud-upload"></i> {% endcomment %}
                                     <p>Click here to create a gallery of photos representing this service to activate it in search of the website.</p>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                             <!-- PACKAGES -->
                             <!-- PACKAGES -->
                             {% include "gigs/packages.html" %}
-                            <br/>
+                            <br />
                             <!-- overview box -->
                             <div class="listing-detail__overview element-waypoint" id="description">
                                 <h2 class="listing-detail__content-title">Description</h2>
@@ -165,10 +165,7 @@
                                                     <div class="col-md-6">{{ form.rating }}</div>
                                                     <div class="col-md-6">
                                                         <div class="contact-form__upload-btn">
-                                                            <input class="contact-form__input-file"
-                                                                    type="file"
-                                                                    name="photo-upload"
-                                                                    id="photo-upload"/> 
+                                                            <input class="contact-form__input-file" type="file" name="photo-upload" id="photo-upload" /> 
                                                             {{ form.photo }}
                                                         <span>
                                                             <i class="la la-cloud-upload"></i>
@@ -190,11 +187,7 @@
                             <!-- End Contact form module -->
                             <!-- tips & reviews-box -->
                             <div class="listing-detail__reviews element-waypoint" id="reviews">
-                                {% if comments %}
-                                    <h2 class="listing-detail__content-title">
-                                        Reviews
-                                    </h2>
-                                {% endif %}
+                                {% if comments %}<h2 class="listing-detail__content-title">Reviews</h2>{% endif %}
                                 <div class="listing-detail__reviews-box">
                                     <!-- reviews list -->
                                     <ul class="reviews-list">
@@ -202,11 +195,7 @@
                                             {% include "comments/comment.html" %}
                                         {% endif %}
                                         {% if not comments %}
-                                            {% if not is_owner %}
-                                                <div>
-                                                    This gig has no reviews. Share your experience!
-                                                </div>
-                                            {% endif %}
+                                            {% if not is_owner %}<div>This gig has no reviews. Share your experience!</div>{% endif %}
                                         {% endif %}
                                     </ul>
                                     {% comment %} {% include "main/pagination.html" with page=comments %} {% endcomment %}
@@ -229,9 +218,7 @@
                                     Book this gig
                                 </a>
                                 {% endif %} {% endcomment %}
-                                {% comment %} <h2 class="sidebar__widget-title">
-                                Details about the gig
-                                </h2> {% endcomment %}
+                                {% comment %} <h2 class="sidebar__widget-title">Details about the gig</h2> {% endcomment %}
                                 <ul class="sidebar__listing-list">
                                     {% comment %} <li>
                                         <i class="la la-clock-o" aria-hidden="true"></i>
@@ -254,8 +241,7 @@
                                     </li>
                                     <li>
                                         <i class="la la-link"></i>
-                                        <a href="{{ gig.portfolio.get_absolute_url }}">
-                                        https://lensuno.com{{ gig.portfolio.get_absolute_url }}</a>
+                                        <a href="{{ gig.portfolio.get_absolute_url }}">https://lensuno.com{{ gig.portfolio.get_absolute_url }}</a>
                                     </li>
                                     {% comment %} <li>
                                         <i class="la la-clock-o"></i>
@@ -272,8 +258,7 @@
                                 </ul>
                             </div>
                             <div class="sidebar__widget sidebar__widget-author">
-                                <h2 class="sidebar__widget-title">
-                                </h2>
+                                <h2 class="sidebar__widget-title"></h2>
                                 <!-- Author-wrapper module -->
                                 <div class="author-wrapper">
                                     <div class="author-wrapper__profile">
@@ -286,9 +271,7 @@
                                                     </a>
                                                     <h3 class="author-wrapper__title">
                                                         <a href="{{ gig.portfolio.get_absolute_url }}">{% full_name gig.portfolio.user %}</a>
-                                                        <span class="author-wrapper__location">
-                                                            {{ gig.portfolio.user.location.place }}
-                                                        </span>
+                                                        <span class="author-wrapper__location">{{ gig.portfolio.user.location.place }}</span>
                                                     </h3>
                                                 </div>
                                             </div>
@@ -300,9 +283,7 @@
                                             </div> {% endcomment %}
                                         </div>
                                     </div>
-                                    <div class="author-wrapper">
-                                        {{ gig.portfolio.user.bio }}
-                                    </div>
+                                    <div class="author-wrapper">{{ gig.portfolio.user.bio }}</div>
                                     <ul class="author-wrapper__list">
                                         <li>
                                             <span>{{ gig.portfolio.gigs.count }}</span>
@@ -325,9 +306,7 @@
                                 <!-- End Author-wrapper module-->
                             </div>
                             {% comment %} <div class="sidebar__widget sidebar__widget-tags">
-                                <h2 class="sidebar__widget-title">
-                                    Listing Tags
-                                </h2>
+                                <h2 class="sidebar__widget-title">Listing Tags</h2>
                                 <ul class="sidebar__tags-list">
                                     <li>
                                         <a href="#">Cafe</a>
@@ -356,9 +335,7 @@
                                 </ul>
                             </div>
                             <div class="sidebar__widget sidebar__advertise">
-                                <span class="sidebar__advertise-title">
-                                    advertising box
-                                </span>
+                                <span class="sidebar__advertise-title">advertising box</span>
                                 <img src="upload/add.jpg" alt="">
                             </div> {% endcomment %}
                         </div>

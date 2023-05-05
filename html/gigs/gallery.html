@@ -1,15 +1,59 @@
 {% if gallery %}
-    <div class="m-p-g">
+    <div class="gallery-container">
+        {% for obj in gallery.images.objects.all|slice:":5" %}
+            <div class="gallery-item">
+                <a data-fslightbox="gallery" href="{{ obj.image.url }}">
+                    <img src="{{ obj.image.url }}" alt="gallery-item">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    {% comment %} {% with gallery.images.objects.all|slice:":5" as photos %}
+        <div class="image-gallery">
+            <div class="left-image">
+                <a data-fslightbox="gallery" href="{{ photos.0.image.url }}">
+                    <img src="{{ photos.0.image.url }}" alt="Image 1" />
+                </a>
+            </div>
+            <div class="right-images">
+                <div class="top-row">
+                    <a data-fslightbox="gallery" href="{{ photos.1.image.url }}">
+                        <img src="{{ photos.1.image.url }}" alt="Image 1" />
+                    </a>
+                    <a data-fslightbox="gallery" href="{{ photos.2.image.url }}">
+                        <img src="{{ photos.2.image.url }}" alt="Image 1" />
+                    </a>
+                </div>
+                <div class="bottom-row">
+                    <a data-fslightbox="gallery" href="{{ photos.3.image.url }}">
+                        <img src="{{ photos.3.image.url }}" alt="Image 1" />
+                    </a>
+                    <a data-fslightbox="gallery" href="{{ photos.4.image.url }}">
+                        <img src="{{ photos.4.image.url }}" alt="Image 1" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endwith %} {% endcomment %}
+    {% comment %} <div class="m-p-g">
         <div class="m-p-g__thumbs" data-google-image-layout data-max-height="350">
-            {% for obj in gallery.images.objects.all %}
+            {% for obj in gallery.images.objects.all|slice:":5" %}
                 {% load thumbnail %}
-                {% thumbnail obj.image "x350" crop="center" as im %}
-                <img src="{{ im.url }}"
-                     data-full="{{ obj.image.url }}"
-                     class="m-p-g__thumbs-img"/>
+                {% thumbnail obj.image "x500" crop="center" as im %}
+                <img src="{{ im.url }}" data-full="{{ obj.image.url }}" class="m-p-g__thumbs-img" />
             {% endthumbnail %}
         {% endfor %}
     </div>
     <div class="m-p-g__fullscreen"></div>
-</div>
+    </div> {% endcomment %}
 {% endif %}
+{% comment %} <div class="m-p-g">
+    <div class="m-p-g__thumbs" data-google-image-layout data-max-height="350">
+        {% for obj in gallery.images.objects.all|slice:":5" %}
+            {% load thumbnail %}
+            {% thumbnail obj.image "x500" crop="center" as im %}
+            <img src="{{ im.url }}" data-full="{{ obj.image.url }}" class="m-p-g__thumbs-img" />
+        {% endthumbnail %}
+    {% endfor %}
+</div>
+<div class="m-p-g__fullscreen"></div> {% endcomment %}
