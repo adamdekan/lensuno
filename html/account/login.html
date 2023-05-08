@@ -26,18 +26,21 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}
 {% endif %} {% endcomment %}
 <form class="login" method="post" action="{% url 'account_login' %}">
   {% csrf_token %}
+  {% load widget_tweaks %}
   <label class="sign-form__label" for="username">Email address:</label>
-  {{ form_signin.login }}<br/>
+  {{ form_signin.login|add_class:"sign-form__input-text" }}
   <label class="sign-form__label" for="password">Password:</label>
-  {{ form_signin.password }}<br/>
+  {{ form_signin.password|add_class:"sign-form__input-text" }}
+  <br />
   <div class="sign-form__checkbox">
-    {{ form_signin.remember }}
+    {{ form_signin.remember|add_class:"sign-form__input-checkbox" }}
+    <span class="sign-form__checkbox-style"></span>
     <span class="sign-form__checkbox-text">Remember me</span>
   </div>
   {% if redirect_field_value %}
     <input type="hidden"
            name="{{ redirect_field_name }}"
-           value="{{ redirect_field_value }}"/>
+           value="{{ redirect_field_value }}" />
   {% endif %}
   <a class="sign-form__forget-link"
      href="{% url 'account_reset_password' %}">Forget password?</a>
@@ -45,7 +48,14 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}
     <i class="fa fa-sign-in" aria-hidden="true"></i>
     Login
   </button>
-  {% comment %} <p class="sign-form__text">or Login With</p>
+  <p class="sign-form__text">
+    Not a member? <a href="#ModalCenter"
+    hx-get="{% url 'users:signup-hx' %}"
+    hx-target="#dialog"
+    data-toggle="modal"
+    data-dismiss="modal">Signup here.</a>
+  </p>
+  {% comment %}
   <ul class="sign-form__social">
     <li>
       <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>

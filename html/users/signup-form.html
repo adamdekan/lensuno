@@ -25,12 +25,18 @@
 </form> {% endcomment %}
 <form class="sign-form" hx-post="{{ request.path }}">
     {% csrf_token %}
-    {{ form_signup.as_p }}
+    {% load widget_tweaks %}
+    <label class="sign-form__label" for="username">Email address:</label>
+    {{ form_signup.email|add_class:"sign-form__input-text" }}
+    <label class="sign-form__label" for="username">Password:</label>
+    {{ form_signup.password1|add_class:"sign-form__input-text" }}
+    <label class="sign-form__label" for="username">Password:</label>
+    {{ form_signup.password2|add_class:"sign-form__input-text" }}
     <div class="sign-form__checkbox">
         <input class="sign-form__input-checkbox"
                type="checkbox"
                name="rememb-check2"
-               id="rememb-check2"/>
+               id="rememb-check2" />
         <span class="sign-form__checkbox-style"></span>
         <span class="sign-form__checkbox-text">I've read and accept terms & conditions</span>
     </div>
@@ -38,6 +44,13 @@
         <i class="fa fa-sign-in" aria-hidden="true"></i>
         Sign Up
     </button>
+    <p class="sign-form__text">
+        Already a member? <a href="#ModalCenter2"
+    hx-get="{% url 'users:signin-hx' %}"
+    hx-target="#dialog2"
+    data-toggle="modal"
+    data-dismiss="modal">Login here.</a>
+    </p>
     {% comment %} <p class="sign-form__text">or Sign Up With</p>
     <ul class="sign-form__social">
         <li>

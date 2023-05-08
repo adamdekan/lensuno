@@ -35,9 +35,17 @@
                 <ul class="navbar-nav ml-auto right-list">
                     {% if not user.is_authenticated %}
                         {% include "main/sign-hx.html" %}
+                        {% comment %} <li>
+                            <a href="{% url 'users:sign' %}">
+                                <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Login</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'users:sign' %}">
+                                <i class="fa fa-user-o" aria-hidden="true"></i> Signup</a>
+                        </li> {% endcomment %}
                     {% endif %}
-                    <ul class="navbar-nav mr-auto">
-                        {% if user.is_authenticated %}
+                    {% if user.is_authenticated %}
+                        <ul class="navbar-nav mr-auto">
                             <li>
                                 <a href="#" onclick="return false;" class="account">Account<i class="fa fa-caret-down" aria-hidden="true"></i></a>
                                 <ul class="dropdown">
@@ -56,7 +64,7 @@
                                     <li>
                                         <a href="{% url 'users:settings' %}">Edit profile</a>
                                     </li>
-                                    <hr style="margin-top: 5px; margin-bottom: 5px;"/>
+                                    <hr style="margin-top: 5px; margin-bottom: 5px;" />
                                     <li>
                                         <a href="{% url 'wishlist:index' %}">Wishlist</a>
                                     </li>
@@ -67,7 +75,7 @@
                                         <a href="{% url 'chat:home' %}">Messages</a>
                                     </li> {% endcomment %}
                                     {% if not user.is_freelancer %}
-                                        <hr style="margin-top: 5px; margin-bottom: 5px;"/>
+                                        <hr style="margin-top: 5px; margin-bottom: 5px;" />
                                         <li>
                                             <a href="{% url 'portfolio:step-one' %}">I am a photographer</a>
                                         </li>
@@ -76,44 +84,46 @@
                                         {% comment %} <li>
                                                 <a href="#" onclick="return false;">Portfolio<i class="fa fa-caret-down" aria-hidden="true"></i></a>
                                         <ul class="dropdown"> {% endcomment %}
-                                            <hr style="margin-top: 5px; margin-bottom: 5px;"/>
+                                            <hr style="margin-top: 5px; margin-bottom: 5px;" />
                                             <li>
                                                 <a href="{% url 'portfolio:gig-create' %}">Add Gig</a>
                                             </li>
                                             <li>
                                                 <a href="{% url 'portfolio:my-gigs' %}">All My Gigs</a>
                                             </li>
-                                            <hr style="margin-top: 5px; margin-bottom: 5px;"/>
+                                            <hr style="margin-top: 5px; margin-bottom: 5px;" />
                                             <li>
                                                 <a href="{% get_portfolio user.pk %}">Portfolio</a>
                                             </li>
                                             <li>
                                                 <a href="{% url 'portfolio:update' %}">Update Portfolio</a>
                                             </li>
-                                            <hr style="margin-top: 5px; margin-bottom: 5px;"/>
+                                            <hr style="margin-top: 5px; margin-bottom: 5px;" />
                                             <li>
                                                 <a href="{% url 'payment:my-orders' %}">Orders</a>
                                             </li>
                                             {% comment %} </ul>
                                             </li> {% endcomment %}
                                         {% endif %}
-                                        <hr style="margin-top: 5px; margin-bottom: 5px;"/>
+                                        <hr style="margin-top: 5px; margin-bottom: 5px;" />
                                         <li>
                                             <a href="{% url 'users:signout' %}">Logout</a>
                                         </li>
                                     </ul>
                                 </li>
-                            {% endif %}
-                            {% comment %} <li>
-                                <a href="contact.html">Contact</a>
-                            </li> {% endcomment %}
-                        </ul>
+                                {% comment %} <li>
+                                    <a href="contact.html">Contact</a>
+                                </li> {% endcomment %}
+                            </ul>
+                        {% endif %}
                     </ul>
-                    {% if user.is_freelancer %}
-                        <a href="{% url 'portfolio:gig-create' %}"
-                           class="add-list-btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Add Gig</a>
-                    {% elif user.is_authenticated %}
-                        <a href="{% url 'wishlist:index' %}" class="add-list-btn btn-default"><i class="fa fa-heart" aria-hidden="true"></i> My Wishlist</a>
+                    {% if user.is_authenticated %}
+                        {% if user.is_freelancer %}
+                            <a href="{% url 'portfolio:gig-create' %}"
+                               class="add-list-btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i> Add Gig</a>
+                        {% else %}
+                            <a href="{% url 'wishlist:index' %}" class="add-list-btn btn-default"><i class="fa fa-heart" aria-hidden="true"></i> My Wishlist</a>
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>

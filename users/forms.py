@@ -30,22 +30,24 @@ class UserSignInForm(LoginForm):
             }
         )
     )
-    # password = forms.CharField(
-    #     widget=forms.TextInput(
-    #         attrs={
-    #             "class": "sign-form__input-text",
-    #             "type": "password",
-    #             "placeholder": "Password",
-    #             "autocomplete": "current-password",
-    #         }
-    #     )
-    # )
-    remember = forms.CheckboxInput(attrs={"class": "sign-form__checkbox-style"})
-
-    def login(self, *args, **kwargs):
-        # Add your own processing here.
-        # You must return the original result.
-        return super(UserSignInForm, self).login(*args, **kwargs)
+    password = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "sign-form__input-text",
+                "type": "password",
+                "placeholder": "Password",
+                "autocomplete": "current-password",
+            }
+        )
+    )
+    remember = forms.CheckboxInput(
+        attrs={
+            "class": "sign-form__input-checkbox",
+            "type": "checkbox",
+            "name": "rememb-check",
+            "id": "rememb-check",
+        }
+    )
 
 
 # for SignUpView(SignupView):

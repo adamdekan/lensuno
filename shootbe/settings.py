@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "babel",  # for phonenumberfield
     "compressor",
+    "django_browser_reload",
     "social_django",
     "crispy_forms",
     "bootstrap_modal_forms",
@@ -100,7 +101,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
 ]
 
@@ -271,8 +272,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_FORMS = {
-    "login": "users.forms.UserSignInForm",
-    "signup": "users.forms.UserSignupForm",
+    # "login": "users.forms.UserSignInForm",
+    # "signup": "users.forms.UserSignupForm",
     "reset_password": "users.forms.MyCustomResetPasswordForm",
     "change_password": "users.forms.MyCustomChangePasswordForm",
 }

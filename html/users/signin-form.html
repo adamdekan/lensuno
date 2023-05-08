@@ -1,12 +1,13 @@
 <!-- sign-form-module -->
 <form class="login" method="post" action="{% url 'account_login' %}">
     {% csrf_token %}
+    {% load widget_tweaks %}
     <label class="sign-form__label" for="username">Email address:</label>
-    {{ form_signin.email }}
+    {{ form_signin.login|add_class:"sign-form__input-text" }}
     <label class="sign-form__label" for="password">Password:</label>
-    {{ form_signin.password }}
+    {{ form_signin.password|add_class:"sign-form__input-text" }}
     <div class="sign-form__checkbox">
-        {{ form_signin.remember }}
+        {{ form_signin.remember|add_class:"sign-form__input-checkbox" }}
         <span class="sign-form__checkbox-text">Remember me</span>
     </div>
     <a class="sign-form__forget-link" href="#">Forget password?</a>
