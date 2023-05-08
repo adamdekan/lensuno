@@ -1,24 +1,32 @@
 <div class="packages">
-<a class="packages__content" href="{% if not is_owner %}{% url 'payment:order' gig.id package.package_type %}{% endif %}">
+    <a class="packages__content"
+       href="{% if not is_owner %}{% url 'payment:order' gig.id package.package_type %}{% endif %}">
         <div class="packages__content-box">
             <span class="packages__desc">{{ package.description }}</span>
         </div>
-</a>
-        <i class="la la-angle-right"></i>
-        <div class="packages__next-box">
-            <div class="packages__book">
-                <h2 class="packages__title">€{{ package.price }}</h2>
-                <span class="packages__desc">{{ package.time }} hours</span>
-                <br/>
-                <span class="packages__desc">{{ package.package_type|capfirst }} package</span>
-            </div>
-            <hr/>
-            <div class="packages__book">
-                <h2 class="packages__title {% if package.package_type == "premium" %}dark-red{% endif %} {% if package.package_type == "master" %}golden{% endif %} ">
-                    <a href="{% if not is_owner %}{% url 'payment:order' gig.id package.package_type %}{% endif %}">
-                    Book now
-                    </a>
-                </h2>
+    </a>
+    <div class="packages__next-box">
+        <div class="packages__price">
+            <h2 class="packages__title">€{{ package.price }}</h2>
+            <div class="packages__avail">
+                {{ package.time }} hours
+                <br />
+                {{ package.package_type|capfirst }} package
             </div>
         </div>
+        <div class="packages__book">
+            <h2 class="packages__title {% if package.package_type == "premium" %}dark-red{% endif %} {% if package.package_type == "master" %}golden{% endif %} ">
+                {% if user.is_authenticated %}
+                    {% if not is_owner %}
+                        <a href="{% url 'payment:order' gig.id package.package_type %}">Book Now</a>
+                    {% endif %}
+                {% else %}
+                    <a href="#ModalCenter"
+                       hx-get="{% url 'users:signup-hx' %}"
+                       hx-target="#dialog"
+                       data-toggle="modal">Book Now</a>
+                {% endif %}
+            </h2>
+        </div>
+    </div>
 </div>

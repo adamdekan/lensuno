@@ -60,29 +60,6 @@ def signin_modal(request):
     return TemplateResponse(request, template, context)
 
 
-def sign(request):
-    template = "users/sign-page.html"
-    context = {}
-
-    context["form_signin"] = form_login = LoginForm()
-    context["form_signup"] = form_signup = SignupForm()
-
-    if "submit-loggin" in request.POST:
-        if form_login.is_valid():
-            user = form_login.get_user()
-            user_logged_in(request, user)
-            form_login.save(request)
-            return HttpResponseClientRefresh()
-        else:
-            return HttpResponseRedirect("/")
-    elif "submit_signup" in request.POST:
-        if form_signup.is_valid():
-            form_signup.save(request)
-            return HttpResponseClientRefresh()
-
-    return TemplateResponse(request, template, context)
-
-
 @login_required
 def settings_view(request):
     user = request.user

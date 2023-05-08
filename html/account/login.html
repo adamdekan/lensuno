@@ -37,11 +37,9 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}
     <span class="sign-form__checkbox-style"></span>
     <span class="sign-form__checkbox-text">Remember me</span>
   </div>
-  {% if redirect_field_value %}
-    <input type="hidden"
-           name="{{ redirect_field_name }}"
-           value="{{ redirect_field_value }}" />
-  {% endif %}
+  {% comment %} {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %} {% endcomment %}
   <a class="sign-form__forget-link"
      href="{% url 'account_reset_password' %}">Forget password?</a>
   <button class="sign-form__submit" id="submit-loggin" type="submit">

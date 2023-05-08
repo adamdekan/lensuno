@@ -15,15 +15,10 @@
 	@include border-radius(0.5rem);
 	&__content {
 		display: flex;
-		width: 73%;
+		width: 80%;
 		align-items: center;
 		padding: 1rem;
 		padding-left: 2rem;
-		i {
-			font-size: 20px;
-			color: #999999;
-			@include transition(0.2s);
-		}
 	}
 	&__next {
 		display: flex;
@@ -31,12 +26,6 @@
 		align-items: center;
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
-		i {
-			font-size: 20px;
-			color: #999999;
-			margin-right: 16px;
-			@include transition(0.2s);
-		}
 		text-align: right;
 		flex-direction: row-reverse;
 	}
@@ -53,6 +42,8 @@
 		i {
 			margin-left: 1rem;
 		}
+		padding-right: 0.5rem;
+		width: 100%;
 	}
 	&__desc {
 		@extend .paragraph;
@@ -61,9 +52,9 @@
 	}
 	&__title {
 		margin-bottom: 0;
+		text-align: right;
+		font-size: 16px;
 		font-weight: 600;
-		text-transform: uppercase;
-		text-decoration-line: underline;
 		&.dark-red {
 			color: $primary-color;
 		}
@@ -74,11 +65,28 @@
 	&__price {
 		margin-top: 0.5rem;
 		color: black;
-		font-weight: 700;
+		font-weight: 600;
+		font-size: 13px;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+	&__avail {
+		text-align: right;
+		color: black;
+		font-weight: 200;
 		font-size: 13px;
 	}
 	&__book {
-		padding: 1rem 0 1rem;
+		padding: 0.2rem 1.375rem;
+		border: 1px solid $primary-color;
+		background: transparent;
+		font-weight: 600;
+		@include border-radius(0.25rem);
+		@include transition(0.2s);
+		margin: 0.3rem 0 0.3rem;
+	}
+	&__price {
+		padding: 0.5rem 0 0.2rem;
 	}
 	hr {
 		margin: 0;
@@ -90,15 +98,6 @@
 	@include transition(0.2s);
 }
 
-.packages:after {
-	content: '';
-	position: absolute;
-	top: 1.5rem;
-	bottom: 1.5rem;
-	left: 73%;
-	width: 1px;
-	background: #eeeeee;
-}
 
 @media (max-width: 1199px) {		
 	.packages:after {
