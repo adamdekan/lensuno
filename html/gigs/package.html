@@ -1,10 +1,9 @@
 <div class="packages">
-    <a class="packages__content"
-       href="{% if not is_owner %}{% url 'payment:order' gig.id package.package_type %}{% endif %}">
+    <div class="packages__content">
         <div class="packages__content-box">
             <span class="packages__desc">{{ package.description }}</span>
         </div>
-    </a>
+    </div>
     <div class="packages__next-box">
         <div class="packages__price">
             <h2 class="packages__title">€{{ package.price }}</h2>

@@ -6,6 +6,8 @@ node_modules
 __pycache__
 media
 
+static_collected
+
 # Backup files # 
 *.bak 
 

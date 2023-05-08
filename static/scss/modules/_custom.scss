@@ -11,7 +11,6 @@
 	border: 1px solid #eeeeee;
 	display: flex;
 	position: relative;
-	cursor: pointer;
 	@include border-radius(0.5rem);
 	&__content {
 		display: flex;
@@ -84,6 +83,7 @@
 		@include border-radius(0.25rem);
 		@include transition(0.2s);
 		margin: 0.3rem 0 0.3rem;
+		cursor: pointer;
 	}
 	&__price {
 		padding: 0.5rem 0 0.2rem;
