@@ -91,9 +91,6 @@
   .gallery-item {
     flex: 1 0 calc((100% - 60px) / 4);
     max-width: 100%;
-    a {
-      height: 100%;
-    }
   }
   
   .gallery-item:nth-child(-n+2) {
@@ -103,12 +100,7 @@
   .gallery-item img {
     width: 100%;
     height: auto;
-    object-fit: contain;
-  }
-
-  .gallery-item a {
-    height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
   
   @media (max-width: 767px) {

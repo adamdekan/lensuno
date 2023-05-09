@@ -87,10 +87,10 @@ INSTALLED_APPS = [
     "widget_tweaks",  # https://pypi.org/project/django-widget-tweaks/
     "allauth",
     "allauth.account",
-    "allauth.socialaccount",
-    "allauth.socialaccount.providers.apple",
-    "allauth.socialaccount.providers.facebook",
-    "allauth.socialaccount.providers.google",
+    # "allauth.socialaccount",
+    # "allauth.socialaccount.providers.apple",
+    # "allauth.socialaccount.providers.facebook",
+    # "allauth.socialaccount.providers.google",
 ]
 
 MIDDLEWARE = [

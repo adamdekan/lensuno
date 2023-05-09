@@ -10,20 +10,12 @@
         </title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        {% comment %} <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" /> {% endcomment %}
         <meta name="viewport"
               content="width=device-width, initial-scale=1, maximum-scale=1" />
         <link rel="stylesheet"
               type="text/css"
               href="{% static 'css/triptip-assets.min.css' %}" />
-        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/masonry.css' %}" /> {% endcomment %}
-        {% comment %} <link rel="stylesheet" href="{% static 'css/material-photo-gallery.css' %}"> {% endcomment %}
         <link rel="stylesheet" href="{% static 'css/addons.css' %}">
-        {% comment %} <link rel="stylesheet" href="{% static 'css/material-photo-gallery.css.map' %}" /> {% endcomment %}
-        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'scss/styles.css' %}" />
-        <link rel="stylesheet"
-              type="text/css"
-              href="{% static 'scss/styles.css.map' %}" /> {% endcomment %}
         <link rel="stylesheet"
               href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
               integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
@@ -55,13 +47,6 @@
                 {% include "home/footer.html" %}
             {% endblock footer %}
         </div>
-        {% comment %} <script>
-            var elem = document.querySelector('.m-p-g');
-        
-            document.addEventListener('DOMContentLoaded', function() {
-                var gallery = new MaterialPhotoGallery(elem);
-            });
-        </script> {% endcomment %}
         <!-- End Container -->
         <script type="text/javascript" src=" {% static 'js/base.js' %} "></script>
         <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=places&callback=onLoaded"
@@ -89,7 +74,6 @@
         <script src="{% static 'js/script.js' %}"></script>
         <script src="{% static 'js/htmx.min.js' %}"></script>
         <script src="{% static 'js/fslightbox.js' %}"></script>
-        {% comment %} <script src="{% static 'js/material-photo-gallery.min.js' %}"></script> {% endcomment %}
         <script type="text/javascript" src=" {% static 'js/dialog.js' %} "></script>
     </body>
 </html>
