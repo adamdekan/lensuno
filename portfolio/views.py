@@ -1,25 +1,22 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import get_user_model
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy, reverse
 from .models import Portfolio, Gig, Package
 from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import Group
-from users.views import SettingsView
 from django.http import HttpResponseRedirect
 from django.template.response import TemplateResponse
 from .forms import GigUpdateForm, PortfolioUpdateForm, PackageForm
-from shootbe.decorators import *
+from shootbe.decorators import is_freelancer
 from django.contrib import messages
 from comments.forms import CommentGigForm
 from gallery.models import DemoGallery
-from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from users.forms import SettingsForm
 from django.views.decorators.csrf import csrf_exempt
-from urllib.parse import urlparse
 
 # users.user
 User = get_user_model()
@@ -71,7 +68,7 @@ class PortfolioCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy("portfolio:gig-create")
-    
+
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
     #     context["form"] = PortfolioUpdateForm()
@@ -145,10 +142,12 @@ def gig_detail_view(request, slug, pk):
     gig = get_object_or_404(Gig, id=pk)
     if gig.portfolio.user.id == request.user.id:
         context["is_owner"] = True
+    else:
+        context["is_owner"] = False
 
     try:
         context["gallery"] = get_object_or_404(DemoGallery, gig_id=gig.id)
-    except:
+    except DemoGallery.DoesNotExist:
         context["gallery"] = None
 
     if request.method == "POST":
@@ -163,7 +162,7 @@ def gig_detail_view(request, slug, pk):
     form = CommentGigForm()
 
     comments = gig.gig_comment.all() if gig.gig_comment.all().count() > 0 else None
-    if comments == None:
+    if comments is None:
         comments_page = False
     else:
         paginator = Paginator(comments, 4)
@@ -201,6 +200,7 @@ class GigCreateView(LoginRequiredMixin, CreateView):
         context["create"] = True
 
         return context
+
 
 class FirstGig(GigCreateView):
     def get_context_data(self, **kwargs):

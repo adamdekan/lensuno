@@ -1,0 +1,35 @@
+<div class="item">
+    <!-- GALLERY START -->
+    {% load thumbnail %}
+    <div class="place-post">
+        <div class="place-post__gal-box">
+            <div class="owl-wrapper">
+                <div class="owl-carousel" data-num="1">
+                    {% if gig.gallery %}
+                        {% with gig.gallery.images.objects.all|slice:":5" as photos %}
+                            {% for photo in photos %}
+                                <a href="{{ gig.get_absolute_url }}" class="clear-pointer">
+                                    {% thumbnail photo.image "x300" crop="center" as im %}
+                                    <img class="place-post__image" src="{{ im.url }}" alt="place-image">
+                                </a>
+                            {% endthumbnail %}
+                        {% endfor %}
+                    {% endwith %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- GALLERY END -->
+    <div class="place-post__content">
+        <h2 class="place-post__title">
+            <a href="{{ gig.get_absolute_url }}" style="color: white">{{ gig.title }}</a>
+        </h2>
+        <p class="place-post__description" style="color: #c5c5c5">
+            {{ gig.get_category_display }}
+            <br />
+            <i class="fa fa-map-marker" aria-hidden="true" style="color: #c5c5c5"></i> {{ gig.location.place|truncatechars:50 }}
+        </p>
+        <!-- end place-post module -->
+    </div>
+</div>
+</div>

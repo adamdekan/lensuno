@@ -69,31 +69,32 @@
                 <div class="row">
                     {% for gig in gigs %}
                         <div class="col-lg-4 col-md-6">
-                            <!-- team-post module -->
-                            <div class="team-post">
-                                <div class="team-post__gal">
-                                    <a href="{{ gig.get_absolute_url }}">
-                                        {% if gig.gallery.images.objects.all.0 %}<img src="{{ gig.gallery.images.objects.all.0.image.url }}" alt="">{% endif %}
-                                    </a>
-                                </div>
-                                <div class="team-post__content">
-                                    <h2 class="team-post__name">
-                                        <a href="{{ gig.get_absolute_url }}">{{ gig.title }}</a>
-                                    </h2>
-                                    <span class="team-post__role">{{ gig.location.place }}</span>
-                                    <br/>
-                                    <span class="team-post__role">{{ gig.get_category_display }}</span>
+                            {% include 'gigs/gig-card-portfolio.html' %}
+                            {% comment %} <!-- team-post module -->
+                                                        <div class="team-post">
+                                                            <div class="team-post__gal">
+                                                                <a href="{{ gig.get_absolute_url }}">
+                                                                    {% if gig.gallery.images.objects.all.0 %}<img src="{{ gig.gallery.images.objects.all.0.image.url }}" alt="">{% endif %}
+                                                            </a>
+                                                    </div>
+                                                    <div class="team-post__content">
+                                                        <h2 class="team-post__name">
+                                                        <a href="{{ gig.get_absolute_url }}">{{ gig.title }}</a>
+                                                </h2>
+                                            <span class="team-post__role">{{ gig.location.place }}</span>
+                                            <br />
+                                        <span class="team-post__role">{{ gig.get_category_display }}</span>
                                     <p class="team-post__description">{{ gig.description|truncatechars:190 }}</p>
                                 </div>
                             </div>
-                            <!-- end team-post module -->
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End team-block -->
+<!-- end team-post module --> {% endcomment %}
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+</section>
+<!-- End team-block -->
 {% endblock content %}
 {% block footer %}
     <!-- footer block module

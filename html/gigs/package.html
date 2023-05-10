@@ -3,29 +3,31 @@
         <div class="packages__content-box">
             <span class="packages__desc">{{ package.description }}</span>
         </div>
-    </div>
-    <div class="packages__next-box">
-        <div class="packages__price">
-            <h2 class="packages__title">€{{ package.price }}</h2>
-            <div class="packages__avail">
-                {{ package.time }} hours
-                <br />
-                {{ package.package_type|capfirst }} package
-            </div>
-        </div>
-        <div class="packages__book">
-            <h2 class="packages__title {% if package.package_type == "premium" %}dark-red{% endif %} {% if package.package_type == "master" %}golden{% endif %} ">
-                {% if user.is_authenticated %}
-                    {% if not is_owner %}
-                        <a href="{% url 'payment:order' gig.id package.package_type %}">Book Now</a>
+        <div class="packages__booknow">
+            <div class="row" style="align-items: center">
+                <div class="col-9">
+                    {% if  is_owner %}
+                        <div class="packages__book">
+                            <h2 class="packages__title {% if package.package_type == "premium" %}dark-red{% endif %} {% if package.package_type == "master" %}golden{% endif %} ">
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'payment:order' gig.id package.package_type %}">Proceed</a>
+                                {% else %}
+                                    <a href="#ModalCenter"
+                                       hx-get="{% url 'users:signup-hx' %}"
+                                       hx-target="#dialog"
+                                       data-toggle="modal">Proceed</a>
+                                {% endif %}
+                            </h2>
+                        </div>
                     {% endif %}
-                {% else %}
-                    <a href="#ModalCenter"
-                       hx-get="{% url 'users:signup-hx' %}"
-                       hx-target="#dialog"
-                       data-toggle="modal">Book Now</a>
-                {% endif %}
-            </h2>
+                </div>
+                <div class="col-3">
+                    <div class="packages__price">
+                        <h2 class="packages__price">€{{ package.price }}</h2>
+                        <div class="packages__avail">{{ package.time }} hours</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

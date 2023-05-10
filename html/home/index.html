@@ -2,14 +2,13 @@
 {% block content %}
     {% include "home/discover.html" %}
     {% include "home/categories.html" %}
-    {% comment %} {% include "home/trending-gigs.html" %} {% endcomment %}
+    {% include "home/trending-gigs.html" %}
     {% include "home/how-it-works.html" %}
+    {% include "home/destinations.html" %}
     {% comment %} {% include "home/services.html" %} {% endcomment %}
     {% include "home/become-visual-story.html" %}
-    {% if not user.is_freelancer %}
-        {% include "home/banner.html" %}
-    {% endif %}
-    {% comment %} {% include "home/trending-lensmen.html" %} {% endcomment %}
+    {% include "home/banner.html" %}
+    {% include "home/trending-lensmen.html" %}
     {% comment %} {% include "home/trending-events.html" %} {% endcomment %}
     {% comment %} {% include "home/post-production.html" %} {% endcomment %}
     {% comment %} {% include "home/how-it-work.html" %} {% endcomment %}

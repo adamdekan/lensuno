@@ -14,6 +14,8 @@
 	}
 	&__image {
 		margin-right: 0.75rem;
+		align-items: center;
+		display: flex;
 		img {
 			width: 30px;
 			height: 30px;
@@ -22,7 +24,7 @@
 	}
 	&__title {
 		color: $title-color;
-		font-size: 0.9375rem;
+		font-size: 0.8375rem;
 		font-weight: 600;
 		line-height: 1.25rem;
 		align-items: center;
@@ -98,5 +100,60 @@
 		padding-top: 0.5rem;
 		margin-top: -0.5rem;
 		border-top: 1px solid #ebebeb;
+	}
+}
+
+
+/*------------------------------------------------- */
+/* =  Author wrapper module
+/*------------------------------------------------- */
+
+.author-wrapper-big {
+	&__profile {
+		margin-bottom: 1.25rem;
+	}
+	&__content {
+		display: flex;
+		margin-bottom: 8px;
+		align-items: center;
+	}
+	&__image {
+		margin-right: 1.25rem;
+		align-items: center;
+		display: flex;
+		img {
+			width: 60px;
+			height: 60px;
+			@include border-radius(50%);
+		}
+	}
+	&__title {
+		font-size: 1rem;
+		font-weight: 600;
+		line-height: 1.25rem;
+		margin: 0;
+		a {
+			color: $title-color;
+		}
+		a:hover {
+			color: $primary-color;
+		}
+
+	}
+	&__handle {
+		color: #666666;
+		font-size: 1rem;
+		font-weight: 200;
+		line-height: 1.25rem;
+		margin: 0;
+		a {
+			color: $title-color;
+		}
+		a:hover {
+			color: $primary-color;
+		}
+	}
+	&__right{
+		display: grid;
 	}
 }
