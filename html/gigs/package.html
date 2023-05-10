@@ -6,7 +6,7 @@
         <div class="packages__booknow">
             <div class="row" style="align-items: center">
                 <div class="col-9">
-                    {% if  is_owner %}
+                    {% if not is_owner %}
                         <div class="packages__book">
                             <h2 class="packages__title {% if package.package_type == "premium" %}dark-red{% endif %} {% if package.package_type == "master" %}golden{% endif %} ">
                                 {% if user.is_authenticated %}
