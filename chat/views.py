@@ -7,11 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse, HttpResponseRedirect
 
 # from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages
 from .models import User, Message
-from payment.models import Order
 from django.db.models import Q
-from django.shortcuts import redirect
 import json
 
 

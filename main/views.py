@@ -1,21 +1,15 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required, user_passes_test
-from django.http import (
-    HttpResponseRedirect,
-)
+from django.contrib.auth.decorators import user_passes_test
 from country_list import countries_for_language
 from portfolio.models import Portfolio, Gig
 from users.models import User
-from shootbe.decorators import *
+from shootbe.decorators import is_freelancer
 from django.views.generic.base import TemplateView
 from .filters import GigFilter
-from django.views.decorators.http import require_GET
 from main.forms import IndexSearchForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from render_block import render_block_to_string
 from django.http import HttpResponse
 from django.template.response import TemplateResponse
-from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -29,7 +23,9 @@ class Home(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["gigs"] = Gig.objects.filter(gallery__isnull=False, is_active=True, is_featured=True)
+        context["gigs"] = Gig.objects.filter(
+            gallery__isnull=False, is_active=True, is_featured=True
+        )
         context["post_production"] = Gig.objects.filter(
             category__in=["PT", "VE"],
             gallery__isnull=False,
@@ -47,7 +43,7 @@ class Home(TemplateView):
 # https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-is-in-a-certain-group
 @user_passes_test(is_freelancer)
 def test_page(response):
-    return render(response, "main/test-page.html", {})
+    return render(response, "main/sign-thanks.html", {})
 
 
 def test_page2(response, slug):
@@ -113,7 +109,7 @@ def search(request):
         string = request.GET["search"]
         try:
             category = request.GET["category"]
-        except:
+        except KeyError:
             category = ""
         if string is None or string.strip() == "":
             search_query = "world"
@@ -127,8 +123,10 @@ def copy_url(request):
     url = request.build_absolute_uri()
     return HttpResponse(url, content_type="text/plain")
 
+
 def about_us(response):
     return render(response, "main/about-us.html", {})
+
 
 # @require_GET
 # def results(request, search):

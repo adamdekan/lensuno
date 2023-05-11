@@ -1,14 +1,22 @@
-from django.shortcuts import get_object_or_404, render, redirect
-from django.contrib.auth.decorators import login_required
-from django.template.response import TemplateResponse
-from django.http import HttpResponseRedirect, JsonResponse
-from .forms import OrderForm
-from .models import Order
-from portfolio.models import Gig, Package
+from datetime import datetime, timezone
+
+from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMultiAlternatives
+from django.shortcuts import get_object_or_404, redirect
+from django.template.loader import render_to_string
+from django.template.response import TemplateResponse
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
-from datetime import datetime, timedelta, timezone
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+from portfolio.models import Gig, Package
+
+from .forms import OrderForm
+from .models import Order
 
 
 def get_order_status(order):
@@ -130,15 +138,6 @@ def my_bookings(request):
     context["is_booking"] = True
 
     return TemplateResponse(request, template, context)
-
-
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
-import datetime
-from django.conf import settings
 
 
 def send_calendar_email(request, recipient_email, event_date_time):

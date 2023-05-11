@@ -40,7 +40,10 @@
         <span class="sign-form__checkbox-style"></span>
         <span class="sign-form__checkbox-text">I've read and accept terms & conditions</span>
     </div>
-    <button class="sign-form__submit" type="submit" id="submit_signup">
+    <button class="sign-form__submit"
+            type="submit"
+            id="submit_signup"
+            _="on click go to url {% url 'users:signup-success' %}">
         <i class="fa fa-sign-in" aria-hidden="true"></i>
         Sign Up
     </button>

@@ -1,5 +1,4 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
-from django.contrib import admin
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from PIL import Image

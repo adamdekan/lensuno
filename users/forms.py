@@ -1,4 +1,4 @@
-from django.forms import TextInput, FileInput, ChoiceField, NumberInput, DecimalField
+from django.forms import TextInput, FileInput, ChoiceField, NumberInput
 from django.forms.widgets import Textarea
 from shootbe.widgets import CountableWidget
 from django import forms

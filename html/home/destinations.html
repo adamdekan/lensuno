@@ -5,8 +5,8 @@
     <div class="container">
         <!-- section-header module -->
         <div class="section-header">
-            <h1 class="section-header__title" style="color: black">Popular destinations</h1>
-            <p class="section-header__description">Browse local photographers in hottest travel destinations.</p>
+            <h1 class="section-header__title" style="color: black">Popular Destinations</h1>
+            <p class="section-header__description">Find local photographers in the trending travel destinations.</p>
         </div>
         <!-- end section-header module -->
         <div class="top-experience__box top-experience-white__box owl-wrapper">
@@ -41,11 +41,11 @@
                     <!-- place-gal module -->
                     <div class="place-gal">
                         <img class="place-gal__image"
-                             src="{% static 'img/dest/Paris.jpg' %}"
+                             src="{% static 'img/dest/Athens.jpg' %}"
                              alt="place-image">
                         <div class="place-gal__content">
                             <h2 class="place-gal__title">
-                                <a href="{% url 'main:search' %}paris/">Paris</a>
+                                <a href="{% url 'main:search' %}Athens/">Athens</a>
                             </h2>
                             {% comment %} <ul class="place-gal__list">
                                 <li class="place-gal__list-item">
@@ -55,7 +55,7 @@
                                     <a href="#">749 Listing</a>
                                 </li>
                             </ul> {% endcomment %}
-                            <a class="btn-default" href="{% url 'main:search' %}paris/">
+                            <a class="btn-default" href="{% url 'main:search' %}Athens/">
                                 <i class="fa fa-caret-right" aria-hidden="true"></i>
                                 Explore
                             </a>
@@ -67,21 +67,47 @@
                     <!-- place-gal module -->
                     <div class="place-gal">
                         <img class="place-gal__image"
-                             src="{% static 'img/dest/Venice.jpg' %}"
+                             src="{% static 'img/dest/Barcelona.jpg' %}"
                              alt="place-image">
                         <div class="place-gal__content">
                             <h2 class="place-gal__title">
-                                <a href="{% url 'main:search' %}venice/">Venice</a>
+                                <a href="{% url 'main:search' %}Barcelona/">Barcelona</a>
                             </h2>
                             {% comment %} <ul class="place-gal__list">
                                 <li class="place-gal__list-item">
-                                    <a href="#">12 Cities</a>
+                                    <a href="#">8 Cities</a>
                                 </li>
                                 <li class="place-gal__list-item">
-                                    <a href="#">1003 Listing</a>
+                                    <a href="#">749 Listing</a>
                                 </li>
                             </ul> {% endcomment %}
-                            <a class="btn-default" href="{% url 'main:search' %}venice/">
+                            <a class="btn-default" href="{% url 'main:search' %}Barcelona/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
+                             src="{% static 'img/dest/Berlin.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}berlin/">Berlin</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">8 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">749 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}berlin/">
                                 <i class="fa fa-caret-right" aria-hidden="true"></i>
                                 Explore
                             </a>
@@ -145,11 +171,11 @@
                     <!-- place-gal module -->
                     <div class="place-gal">
                         <img class="place-gal__image"
-                             src="{% static 'img/dest/London.jpg' %}"
+                             src="{% static 'img/dest/Dubrovnik.jpg' %}"
                              alt="place-image">
                         <div class="place-gal__content">
                             <h2 class="place-gal__title">
-                                <a href="{% url 'main:search' %}london/">London</a>
+                                <a href="{% url 'main:search' %}Dubrovnik/">Dubrovnik</a>
                             </h2>
                             {% comment %} <ul class="place-gal__list">
                                 <li class="place-gal__list-item">
@@ -159,111 +185,7 @@
                                     <a href="#">749 Listing</a>
                                 </li>
                             </ul> {% endcomment %}
-                            <a class="btn-default" href="{% url 'main:search' %}london/">
-                                <i class="fa fa-caret-right" aria-hidden="true"></i>
-                                Explore
-                            </a>
-                        </div>
-                    </div>
-                    <!-- end place-gal module -->
-                </div>
-                <div class="item">
-                    <!-- place-gal module -->
-                    <div class="place-gal">
-                        <img class="place-gal__image"
-                             src="{% static 'img/dest/Lisbon.jpg' %}"
-                             alt="place-image">
-                        <div class="place-gal__content">
-                            <h2 class="place-gal__title">
-                                <a href="{% url 'main:search' %}lisbon/">Lisbon</a>
-                            </h2>
-                            {% comment %} <ul class="place-gal__list">
-                                <li class="place-gal__list-item">
-                                    <a href="#">8 Cities</a>
-                                </li>
-                                <li class="place-gal__list-item">
-                                    <a href="#">749 Listing</a>
-                                </li>
-                            </ul> {% endcomment %}
-                            <a class="btn-default" href="{% url 'main:search' %}lisbon/">
-                                <i class="fa fa-caret-right" aria-hidden="true"></i>
-                                Explore
-                            </a>
-                        </div>
-                    </div>
-                    <!-- end place-gal module -->
-                </div>
-                <div class="item">
-                    <!-- place-gal module -->
-                    <div class="place-gal">
-                        <img class="place-gal__image"
-                             src="{% static 'img/dest/Berlin.jpg' %}"
-                             alt="place-image">
-                        <div class="place-gal__content">
-                            <h2 class="place-gal__title">
-                                <a href="{% url 'main:search' %}berlin/">Berlin</a>
-                            </h2>
-                            {% comment %} <ul class="place-gal__list">
-                                <li class="place-gal__list-item">
-                                    <a href="#">8 Cities</a>
-                                </li>
-                                <li class="place-gal__list-item">
-                                    <a href="#">749 Listing</a>
-                                </li>
-                            </ul> {% endcomment %}
-                            <a class="btn-default" href="{% url 'main:search' %}berlin/">
-                                <i class="fa fa-caret-right" aria-hidden="true"></i>
-                                Explore
-                            </a>
-                        </div>
-                    </div>
-                    <!-- end place-gal module -->
-                </div>
-                <div class="item">
-                    <!-- place-gal module -->
-                    <div class="place-gal">
-                        <img class="place-gal__image"
-                             src="{% static 'img/dest/Vienna.jpg' %}"
-                             alt="place-image">
-                        <div class="place-gal__content">
-                            <h2 class="place-gal__title">
-                                <a href="{% url 'main:search' %}vienna/">Vienna</a>
-                            </h2>
-                            {% comment %} <ul class="place-gal__list">
-                                <li class="place-gal__list-item">
-                                    <a href="#">8 Cities</a>
-                                </li>
-                                <li class="place-gal__list-item">
-                                    <a href="#">749 Listing</a>
-                                </li>
-                            </ul> {% endcomment %}
-                            <a class="btn-default" href="{% url 'main:search' %}vienna/">
-                                <i class="fa fa-caret-right" aria-hidden="true"></i>
-                                Explore
-                            </a>
-                        </div>
-                    </div>
-                    <!-- end place-gal module -->
-                </div>
-                <div class="item">
-                    <!-- place-gal module -->
-                    <div class="place-gal">
-                        <img class="place-gal__image"
-                             src="{% static 'img/dest/Prague.jpg' %}"
-                             alt="place-image">
-                        <div class="place-gal__content">
-                            <h2 class="place-gal__title">
-                                <a href="{% url 'main:search' %}prague/">Prague</a>
-                            </h2>
-                            {% comment %} <ul class="place-gal__list">
-                                <li class="place-gal__list-item">
-                                    <a href="#">8 Cities</a>
-                                </li>
-                                <li class="place-gal__list-item">
-                                    <a href="#">749 Listing</a>
-                                </li>
-                            </ul> {% endcomment %}
-                            <a class="btn-default" href="{% url 'main:search' %}prague/">
+                            <a class="btn-default" href="{% url 'main:search' %}Dubrovnik/">
                                 <i class="fa fa-caret-right" aria-hidden="true"></i>
                                 Explore
                             </a>
@@ -301,6 +223,266 @@
                     <!-- place-gal module -->
                     <div class="place-gal">
                         <img class="place-gal__image"
+                             src="{% static 'img/dest/Hallstadt.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}Hallstadt/">Hallstadt</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">8 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">749 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}Hallstadt/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
+                             src="{% static 'img/dest/Lisbon.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}lisbon/">Lisbon</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">8 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">749 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}lisbon/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
+                             src="{% static 'img/dest/London.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}london/">London</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">8 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">749 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}london/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
+                             src="{% static 'img/dest/Milan.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}Milan/">Milan</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">8 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">749 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}Milan/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
+                             src="{% static 'img/dest/Paris.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}paris/">Paris</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">8 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">749 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}paris/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
+                             src="{% static 'img/dest/Positano.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}Positano/">Positano</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">8 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">749 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}Positano/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
+                             src="{% static 'img/dest/Prague.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}prague/">Prague</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">8 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">749 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}prague/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
+                             src="{% static 'img/dest/Provence.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}Provence/">Provence</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">8 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">749 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}Provence/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
+                             src="{% static 'img/dest/Rome.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}Rome/">Rome</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">8 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">749 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}Rome/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
+                             src="{% static 'img/dest/Salzburg.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}Salzburg/">Salzburg</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">8 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">749 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}Salzburg/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
                              src="{% static 'img/dest/Santorini.jpg' %}"
                              alt="place-image">
                         <div class="place-gal__content">
@@ -316,6 +498,58 @@
                                 </li>
                             </ul> {% endcomment %}
                             <a class="btn-default" href="{% url 'main:search' %}santorini/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
+                             src="{% static 'img/dest/Venice.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}venice/">Venice</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">12 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">1003 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}venice/">
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end place-gal module -->
+                </div>
+                <div class="item">
+                    <!-- place-gal module -->
+                    <div class="place-gal">
+                        <img class="place-gal__image"
+                             src="{% static 'img/dest/Vienna.jpg' %}"
+                             alt="place-image">
+                        <div class="place-gal__content">
+                            <h2 class="place-gal__title">
+                                <a href="{% url 'main:search' %}vienna/">Vienna</a>
+                            </h2>
+                            {% comment %} <ul class="place-gal__list">
+                                <li class="place-gal__list-item">
+                                    <a href="#">8 Cities</a>
+                                </li>
+                                <li class="place-gal__list-item">
+                                    <a href="#">749 Listing</a>
+                                </li>
+                            </ul> {% endcomment %}
+                            <a class="btn-default" href="{% url 'main:search' %}vienna/">
                                 <i class="fa fa-caret-right" aria-hidden="true"></i>
                                 Explore
                             </a>

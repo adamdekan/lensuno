@@ -1,11 +1,9 @@
+from .models import Package
 from django import forms
 from .models import Gig, Portfolio
-from django.utils.text import slugify
-from django.core.files.base import ContentFile
 from shootbe.widgets import CountableWidget
 from django.core.validators import MinLengthValidator
-from users.forms import FormBoxField, FormTextField, FormFileField, FormNumberField
-from django.core.validators import URLValidator
+from users.forms import FormTextField, FormFileField, FormNumberField
 
 
 # https://github.com/RoboAndie/django-countable-field
@@ -144,9 +142,6 @@ class PortfolioUpdateForm(forms.ModelForm):
             "social_yt",
             "social_vm",
         ]
-
-
-from .models import Package
 
 
 class PackageForm(forms.ModelForm):

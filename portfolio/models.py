@@ -2,7 +2,6 @@ from django.db import models
 from django.conf import settings
 from django.utils.crypto import get_random_string
 from django.urls import reverse
-from django.utils import timezone
 from django.contrib.contenttypes.fields import GenericRelation
 from wishlist.models import WishlistItem
 from django.utils.text import slugify
