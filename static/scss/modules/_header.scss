@@ -7,7 +7,7 @@
     @include transition(0.2s);
     border-bottom: 1px solid rgba(255,255,255,0.13);
     width: 100%;
-    z-index: 999999;
+    z-index: 50;
     background: transparent !important;
     position: fixed;
     top: 0;
@@ -17,7 +17,7 @@
     a.navbar-brand {
         padding-top: 0.1rem;
         padding-bottom: 0.1rem;
-        margin-right: 4rem;
+        margin-right: 15rem;
     }
     a.add-list-btn {
         margin-left: 0.9375rem;
@@ -30,7 +30,7 @@
 
 header {
     padding: 0;
-    z-index: 9999999;
+    z-index: 50;
     position: relative;
 }
 
@@ -117,7 +117,7 @@ header.white-header-style {
 @media (max-width: 1400px) {
     .navbar {
         a.navbar-brand {
-            margin-right: 1rem;
+            margin-right: 10rem;
         }
         a.add-list-btn {
             margin-left: 0.5rem;
@@ -138,7 +138,7 @@ header.white-header-style {
 }
 
 .search-form {
-    margin: 0;
+    margin: auto;
     &__input-holders {
         display: inline-block;
         width: 20rem;

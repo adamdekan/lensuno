@@ -23,12 +23,7 @@ class CountableWidget(widgets.Textarea):
             final_attrs.get("data-max-count"), int
         ):
             final_attrs.pop("data-max-count")
-        if not final_attrs.get("data-count") in [
-            "words",
-            "characters",
-            "paragraphs",
-            "sentences",
-        ]:
+        if final_attrs.get("data-count") not in ["words", "characters", "paragraphs", "sentences"]:
             final_attrs["data-count"] = "words"
 
         if VERSION[:2] >= (1, 11):

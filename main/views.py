@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import user_passes_test
+# from django.contrib.auth.decorators import user_passes_test
 from country_list import countries_for_language
 from portfolio.models import Portfolio, Gig
 from users.models import User
-from shootbe.decorators import is_freelancer
+# from shootbe.decorators import is_freelancer
 from django.views.generic.base import TemplateView
 from .filters import GigFilter
 from main.forms import IndexSearchForm
@@ -11,6 +11,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.template.response import TemplateResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 # Create your views here.
@@ -41,7 +42,7 @@ class Home(TemplateView):
 
 # from shootbe/decorators.py
 # https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-is-in-a-certain-group
-@user_passes_test(is_freelancer)
+@staff_member_required
 def test_page(response):
     return render(response, "main/sign-thanks.html", {})
 

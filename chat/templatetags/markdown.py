@@ -5,7 +5,7 @@ import markdown as md
 from bs4 import BeautifulSoup
 import re
 
-from markdown.extensions.codehilite import CodeHilite, CodeHiliteExtension
+from markdown.extensions.codehilite import CodeHiliteExtension
 
 register = template.Library()
 

@@ -1,14 +1,11 @@
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy, reverse
+from django.shortcuts import redirect
 from django.contrib.auth import get_user_model
-from .forms import CommentForm, ReportCommentForm
-from django.views.generic import CreateView, ListView, FormView, DetailView
-from django.views.generic.detail import SingleObjectMixin
+from .forms import CommentForm
 from users.models import ProfileComment
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.template.response import TemplateResponse
-from portfolio.models import Gig, Portfolio
+from portfolio.models import Gig
 from comments.models import Comment
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -40,7 +37,7 @@ def profile_view(request, pk):
     form = CommentForm()
 
     comments = ProfileComment.objects.filter(profile=profile)
-    if comments == None:
+    if comments is None:
         comments_page = None
     else:
         paginator = Paginator(comments, 5)

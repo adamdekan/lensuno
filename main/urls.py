@@ -6,7 +6,7 @@ from portfolio.views import gig_detail_view, PortfolioDetailView
 app_name = "main"
 urlpatterns = [
     # test page
-    # path("test/", views.test_page, name="test"),
+    path("test/", views.test_page, name="test"),
     # path("search/<str:search>/", views.results, name="results"),
     # index page
     path("", views.Home.as_view(), name="index"),

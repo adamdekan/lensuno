@@ -1,9 +1,5 @@
 from django import template
 from portfolio.models import Gig, Portfolio
-from django.contrib.auth import get_user_model
-from comments.models import Comment
-from users.models import ProfileComment
-from itertools import chain
 
 register = template.Library()
 

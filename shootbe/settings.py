@@ -315,7 +315,6 @@ STARFIELD_STARS = 10
 STARFIELD_COLOUR = "#A13333"
 
 
-import logging
 
 if not DEBUG:
     LOGGING = {

@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from .forms import SearchForm
 from django.conf import settings
 

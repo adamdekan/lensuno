@@ -1,7 +1,6 @@
 from django import forms
 from users.models import ProfileComment
 from .models import Comment
-from django.forms import widgets
 from django_starfield import Stars  # https://pypi.org/project/django-starfield/
 
 
