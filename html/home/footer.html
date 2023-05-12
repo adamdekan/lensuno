@@ -7,22 +7,28 @@
                 <div class="col-md-4">
                     <div class="footer__widget text-widget">
                         {% comment %} <img src="" alt="triptip-logo"> {% endcomment %}
-                        <h2 class="footer__widget-title footer__widget-title-white"><a href="{% url 'main:about-us' %}">About Us</a></h2>
-                        <p class="footer__widget-description white">
-                            LENS UNO is an innovative, all-in-one marketplace that aims to revolutionize the way customers access professional photography and videography services worldwide.
+                        <h2 class="footer__widget-title footer__widget-title-white">
+                            <a href="{% url 'main:about-us' %}">About Us</a>
+                        </h2>
+                        <p class="footer__widget-description white-style">
+                            <div class="white-style">
+                                LENS UNO is an innovative, all-in-one marketplace that aims to revolutionize the way customers access professional photography and videography services worldwide.
+                            </div>
                         </p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="footer__widget subscribe-widget">
                         <h2 class="footer__widget-title footer__widget-title-white">Subscribe</h2>
-                        <p class="footer__widget-description white">Get notified of exclusive offers to elevate your visual game.</p>
+                        <p class="footer__widget-description white">
+                            <div class="white-style">Get notified of exclusive offers to elevate your visual game.</div>
+                        </p>
                         <form class="footer__subscribe-form">
                             <input class="footer__subscribe-input"
                                    type="text"
                                    name="email-sub"
                                    id="email-sub"
-                                   placeholder="Enter your Email"/>
+                                   placeholder="Enter your Email" />
                             <button class="footer__subscribe-button footer__subscribe-button-primary"
                                     type="submit">
                                 <i class="la la-arrow-circle-o-right" aria-hidden="true"></i>
@@ -37,11 +43,11 @@
                             {% comment %} <a href="#">About Us</a> {% endcomment %}
                             {% comment %} <a href="">FAQ</a> {% endcomment %}
                             <a href="#">Terms and Conditions</a>
-                            <br/>
+                            <br />
                             <a href="#">Privacy Policy</a>
-                            <br/>
+                            <br />
                             <a href="#">Contact Us</a>
-                            <br/>
+                            <br />
                             {% comment %} <a href="">Connect with us on social media</a> {% endcomment %}
                         </div>
                     </div>
@@ -49,10 +55,10 @@
             </div>
             <div class="footer__down-part footer__down-part-black">
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-6">
                         <p class="footer__copyright">© 2023 LENS UNO</p>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-6">
                         <ul class="footer__social-list">
                             <li>
                                 <a class="facebook"

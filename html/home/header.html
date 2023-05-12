@@ -77,7 +77,9 @@
                                     {% if not user.is_freelancer %}
                                         <hr style="margin-top: 5px; margin-bottom: 5px;" />
                                         <li>
-                                            <a href="{% url 'portfolio:step-one' %}">I am a photographer</a>
+                                            <a href="{% url 'portfolio:step-one' %}"
+                                               style="color: #A13333;
+                                                      font-weight: 600">Offer your service</a>
                                         </li>
                                     {% endif %}
                                     {% if user.is_freelancer %}

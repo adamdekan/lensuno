@@ -15,20 +15,25 @@
                     <p class="section-header__description white-style">
                         We are more than just a marketplace. We can be more when we are a community.
                     </p>
-                    <br/>
+                    <br />
                     <p class="section-header__description white-style">
                         At LENS UNO, we unite our passion for creativity and commitment to excellence by connecting talents with markets.
                     </p>
-                    <br/>
+                    <br />
                     <p class="section-header__description white-style">Start building your career of passion today with us.</p>
                 </div>
-                <a class="btn-default"
-                   href="#ModalCenter"
-                   hx-get="{% url 'users:signup-hx' %}"
-                   hx-target="#dialog"
-                   data-toggle="modal">
-                    Join Now
-                </a>
+                {% if not user.is_authenticated %}
+                    <a class="btn-default"
+                       href="#ModalCenter"
+                       hx-get="{% url 'users:signup-hx' %}"
+                       hx-target="#dialog"
+                       data-toggle="modal">Join Now</a>
+                {% else %}
+                    {% if user.is_freelancer %}
+                    {% else %}
+                        <a class="btn-default" href="{% url 'portfolio:step-one' %}">Become a freelancer</a>
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>
