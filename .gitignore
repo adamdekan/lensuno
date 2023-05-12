@@ -7,7 +7,7 @@ __pycache__
 media
 
 static_collected
-
+static/CACHE
 # Backup files # 
 *.bak 
 
