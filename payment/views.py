@@ -20,7 +20,7 @@ from .models import Order
 
 
 def get_order_status(order):
-    now = datetime.datetime.now(timezone.utc)
+    now = datetime.now(timezone.utc)
     days_since_order = (now - order.date_time).days
     if order.date_time is None:
         return "Error: date_time field is not set"
