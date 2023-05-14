@@ -3,7 +3,7 @@
     LENS UNO | Step One
 {% endblock title %}
 {% block content %}
-{% load static %}
+    {% load static %}
     <section class="add-listing">
         <div class="add-listing__title-box">
             <div class="container">
@@ -13,12 +13,10 @@
                             position: relative;
                             top: -40px">
                     <div style="flex: 1; text-align: right; margin-right: 30px">
-                        <h1 style="text-align: right;">Step 1. Complete your profile.</h1>
+                        <h1 style="text-align: right;">Step 1. Set up your profile.</h1>
                     </div>
                     <div style="flex: 1; text-align: left; margin-left: 30px">
-                        <img src="{% static 'img/ui1.png' %}"
-                             height="300px"
-                             alt="">
+                        <img src="{% static 'img/ui1.png' %}" height="300px" alt="">
                     </div>
                 </div>
             </div>
@@ -71,7 +69,7 @@
                                 {{ form.media }}
                             </div>
                         </div>
-                        <br/>
+                        <br />
                         <!-- TEXT FIELD -->
                         <label class="add-listing__label" for="description">Bio:</label>
                         {{ form.bio }}

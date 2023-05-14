@@ -7,66 +7,62 @@
     {% endif %}
 {% endblock title %}
 {% block content %}
-{% load static %}
+    {% load static %}
     <section class="add-listing">
         <div class="add-listing__title-box">
             <div class="container">
-                    {% if is_portfolio %}
-                        <div style="display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            position: relative;
-                            top: -40px">
-                    <div style="flex: 1; text-align: right; margin-right: 30px">
-                        <h1 style="text-align: right;">Step 3. Create your first gig</h1>
+                {% if is_portfolio %}
+                    <div style="display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                position: relative;
+                                top: -40px">
+                        <div style="flex: 1; text-align: right; margin-right: 30px">
+                            <h1 style="text-align: right;">Step 3. Create your first gig</h1>
+                        </div>
+                        <div style="flex: 1; text-align: left; margin-left: 30px">
+                            <img src="{% static 'img/ui5.png' %}" height="300px" alt="">
+                        </div>
                     </div>
-                    <div style="flex: 1; text-align: left; margin-left: 30px">
-                        <img src="{% static 'img/ui5.png' %}"
-                             height="300px"
-                             alt="">
-                    </div>
-                     </div>
-                    {% else %}
-                <h1 class="add-listing__title">
-                    Your gig settings.
-                    </h1>
-                    {% endif %}
-                </div>
+                {% else %}
+                    <h1 class="add-listing__title">Your gig settings.</h1>
+                {% endif %}
             </div>
-            <div class="break"></div>
-            <form class="add-listing__form" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="container">
-                    <!-- form box -->
-                    <div class="add-listing__form-box element-waypoint" id="general-info">
-                        <h2 class="add-listing__form-title">Don't be afraid to add as much detail about your services as you can</h2>
-                        <div class="add-listing__form-content">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="add-listing__label" for="list-title">Title of your gig</label>
-                                    {{ form.title }}
-                                    {{ form.errors.title }}
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="add-listing__label" for="category">Choose one of the categories</label>
-                                    {{ form.category }}
-                                    {{ form.errors.category }}
-                                </div>
+        </div>
+        <div class="break"></div>
+        <form class="add-listing__form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="container">
+                <!-- form box -->
+                <div class="add-listing__form-box element-waypoint" id="general-info">
+                    <h2 class="add-listing__form-title">Don't be afraid to add as much detail about your services as you can</h2>
+                    <div class="add-listing__form-content">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="add-listing__label" for="list-title">Title of your gig</label>
+                                {{ form.title }}
+                                {{ form.errors.title }}
                             </div>
-                            <!-- LOCATION FIELD -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label class="add-listing__label" for="location">Location:</label>
-                                    {{ form.location }}
-                                    {{ form.media }}
-                                </div>
+                            <div class="col-md-6">
+                                <label class="add-listing__label" for="category">Choose one of the categories</label>
+                                {{ form.category }}
+                                {{ form.errors.category }}
                             </div>
-                            <br/>
-                            <label class="add-listing__label" for="description">*Describe the gig.</label>
-                            {{ form.description }}
-                            {{ form.errors.description }}
-                            {{ form.media }}
-                            <label class="add-listing__label" for="description">What kind of service do you offer? (optional)</label>
+                        </div>
+                        <!-- LOCATION FIELD -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="add-listing__label" for="location">Location:</label>
+                                {{ form.location }}
+                                {{ form.media }}
+                            </div>
+                        </div>
+                        <br />
+                        <label class="add-listing__label" for="description">*Describe the gig.</label>
+                        {{ form.description }}
+                        {{ form.errors.description }}
+                        {{ form.media }}
+                        {% comment %} <label class="add-listing__label" for="description">What kind of service do you offer? (optional)</label>
                             {{ form.service }}
                             {{ form.errors.service }}
                             <label class="add-listing__label" for="description">What are the deliverables? (optional)</label>
@@ -74,8 +70,8 @@
                             {{ form.errors.deliverables }}
                             <label class="add-listing__label" for="description">Which equipment do you use? (optional)</label>
                             {{ form.equipment }}
-                            {{ form.errors.equipment }}
-                            {% comment %} <div class="add-listing__form-content">
+                        {{ form.errors.equipment }} {% endcomment %}
+                        {% comment %} <div class="add-listing__form-content">
                                 <div class="add-listing__input-file-box">
                                     {{ form.photo }}
                                     {{ form.errors.photo }}
@@ -86,10 +82,10 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div> {% endcomment %}
-                            <!-- 3 FIELDS -->
-                            <div class="row">
-                                {% comment %} <div class="col-md-4">
+                        </div> {% endcomment %}
+                        <!-- 3 FIELDS -->
+                        <div class="row">
+                            {% comment %} <div class="col-md-4">
                                     <label class="add-listing__label" for="keyword">{{ form.price.label }}</label>
                                     {{ form.price }}
                                     {{ form.errors.price }}
@@ -98,57 +94,59 @@
                                     <label class="add-listing__label" for="website">{{ form.time.label }}</label>
                                     {{ form.time }}
                                     {{ form.errors.time }}
-                                </div> {% endcomment %}
-                                {% if create %}
-                                {% else %}
-                                    <div class="col-md-12">
-                                        <label class="add-listing__label" for="website">{{ form.is_active.label }}</label>
-                                        {{ form.is_active }}
-                                        {{ form.errors.is_active }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </br>
-                        <button class="add-listing__submit" type="submit">
-                            <i class="fa fa-cog" aria-hidden="true"></i>
-                            {% if create %}
-                                Create
-                            {% else %}
-                                Update{% endif %} Gig
-                            </button>
+                            </div> {% endcomment %}
                             {% if create %}
                             {% else %}
-                                <a href="{% url 'main:gig-detail' gig.portfolio gig.id %}"
-                                   class="btn-cancel">Cancel</a>
-                                <a href="#"
-                                   class="btn-cancel"
-                                   data-target="#deleteModal"
-                                   data-toggle="modal"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
-                                <!-- Modal -->
-                                <div class="modal fade" id="deleteModal">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Are you sure you want to delete?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" id="close-modal">No</button>
-                                                <a href="{% url 'portfolio:gig-delete' gig.portfolio gig.id %}">
-                                                    <button type="button" class="btn btn-danger">Yes</button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-md-12">
+                                    <label class="add-listing__label" for="website">{{ form.is_active.label }}</label>
+                                    {{ form.is_active }}
+                                    {{ form.errors.is_active }}
                                 </div>
                             {% endif %}
                         </div>
-                    </div>
+                    </br>
+                    <button class="add-listing__submit" type="submit">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                        {% if create %}
+                            Create
+                        {% else %}
+                            Update
+                        {% endif %}
+                        Gig
+                    </button>
+                    {% if create %}
+                    {% else %}
+                        <a href="{% url 'main:gig-detail' gig.portfolio gig.id %}"
+                           class="btn-cancel">Cancel</a>
+                        <a href="#"
+                           class="btn-cancel"
+                           data-target="#deleteModal"
+                           data-toggle="modal"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteModal">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" id="close-modal">No</button>
+                                        <a href="{% url 'portfolio:gig-delete' gig.portfolio gig.id %}">
+                                            <button type="button" class="btn btn-danger">Yes</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
-            </form>
-        </section>
-    {% endblock %}
+            </div>
+        </div>
+    </form>
+</section>
+{% endblock %}

@@ -5,6 +5,8 @@ node_modules
 *.pyc
 __pycache__
 media
+.ruff_cache
+.trunk
 
 static_collected
 static/CACHE

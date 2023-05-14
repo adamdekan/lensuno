@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import authenticate
 from django.http import HttpResponseRedirect
 from django_htmx.http import HttpResponseClientRefresh
 from django.urls import reverse_lazy
@@ -8,7 +9,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import SettingsForm
+from .forms import SettingsForm, FreelancerSignupForm
 from django.contrib import messages
 from django.template.response import TemplateResponse
 from django.contrib.auth.decorators import login_required
@@ -53,6 +54,25 @@ def signin_modal(request):
             return HttpResponseRedirect("/")
     else:
         context["form_signin"] = LoginForm()
+    return TemplateResponse(request, template, context)
+
+
+def signup_freelancer(request):
+    context = {}
+    template = "users/signup-freelancer.html"
+    if request.method == "POST":
+        context["form_signup"] = form = FreelancerSignupForm(request.POST)
+        if form.is_valid():
+            form.save(request)
+            email = form.cleaned_data.get("email")
+            password = form.cleaned_data.get("password1")
+            user = authenticate(request, email=email, password=password)
+            auth_login(request, user)
+            return HttpResponseRedirect(reverse_lazy("portfolio:step-one"))
+        else:
+            return TemplateResponse(request, template, context)
+    else:
+        context["form_signup"] = FreelancerSignupForm()
     return TemplateResponse(request, template, context)
 
 

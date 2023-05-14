@@ -27,33 +27,33 @@ class GigUpdateForm(forms.ModelForm):
                 "data-count-direction": "down",
             }
         )
-        self.fields["deliverables"].widget = CountableWidget(
-            attrs={
-                "data-count": "characters",
-                "data-min-count": 30,
-                "data-max-count": 1000,
-                "class": "add-listing__textarea",
-                "data-count-direction": "down",
-            }
-        )
-        self.fields["service"].widget = CountableWidget(
-            attrs={
-                "data-count": "characters",
-                "data-min-count": 30,
-                "data-max-count": 1000,
-                "data-count-direction": "down",
-                "class": "add-listing__textarea",
-            }
-        )
-        self.fields["equipment"].widget = CountableWidget(
-            attrs={
-                "data-count": "characters",
-                "data-min-count": 30,
-                "data-max-count": 500,
-                "data-count-direction": "down",
-                "class": "add-listing__textarea",
-            }
-        )
+        # self.fields["deliverables"].widget = CountableWidget(
+        #     attrs={
+        #         "data-count": "characters",
+        #         "data-min-count": 30,
+        #         "data-max-count": 1000,
+        #         "class": "add-listing__textarea",
+        #         "data-count-direction": "down",
+        #     }
+        # )
+        # self.fields["service"].widget = CountableWidget(
+        #     attrs={
+        #         "data-count": "characters",
+        #         "data-min-count": 30,
+        #         "data-max-count": 1000,
+        #         "data-count-direction": "down",
+        #         "class": "add-listing__textarea",
+        #     }
+        # )
+        # self.fields["equipment"].widget = CountableWidget(
+        #     attrs={
+        #         "data-count": "characters",
+        #         "data-min-count": 30,
+        #         "data-max-count": 500,
+        #         "data-count-direction": "down",
+        #         "class": "add-listing__textarea",
+        #     }
+        # )
         # self.fields["price"].label = "How much do you ask for this gig?"
         self.fields[
             "is_active"
@@ -66,9 +66,9 @@ class GigUpdateForm(forms.ModelForm):
             "title",
             "category",
             "description",
-            "deliverables",
-            "service",
-            "equipment",
+            # "deliverables",
+            # "service",
+            # "equipment",
             "is_active",
             "location",
         ]
@@ -86,9 +86,9 @@ class PortfolioUpdateForm(forms.ModelForm):
     social_fb = forms.CharField(required=False, widget=FormTextField())
     social_yt = forms.CharField(required=False, widget=FormTextField())
     social_vm = forms.CharField(required=False, widget=FormTextField())
-    photo = forms.ImageField(required=True, widget=FormFileField())
-    about = forms.CharField(required=True)
-    service = forms.CharField(required=True)
+    photo = forms.ImageField(required=False, widget=FormFileField())
+    about = forms.CharField(required=False)
+    service = forms.CharField(required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -133,9 +133,9 @@ class PortfolioUpdateForm(forms.ModelForm):
         model = Portfolio
         fields = [
             "slug",
-            "photo",
-            "about",
-            "service",
+            # "photo",
+            # "about",
+            # "service",
             "website",
             "social_ig",
             "social_fb",

@@ -1,9 +1,10 @@
-.modal-backdrop {
-	z-index: 40;
-}
+
 /*------------------------------------------------- */
 /* =  packages module
 /*------------------------------------------------- */
+.modal-backdrop {
+	z-index: 40;
+}
 
 .packages {
 	margin-top: 1rem;
@@ -167,55 +168,84 @@
 .portfolio {
 	margin-top: 0;
 	background-color: #000;
-	&__statistic-line {
+	&__line {
 		padding-top: 3.75rem;
 		border-top: 1px solid #757170;
 	}
-	&__box {
-		margin-top: 14rem;
+	&__top {
+		padding-top: 8rem;
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		align-content: center;
+		justify-content: center;
+	}
+	&__avatar {
+		height: 100%;
+		padding-right: 8rem;
+		a {
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			height: 100%;
+			flex-wrap: wrap;
+	}
 	}
 	&__box-line {
 		margin-bottom: 3rem;
-	}
-	.testimonial-wrapp {
-		padding-top: 13.75rem;
-		> h2 {
-			color: #000;
-			text-align: center;
-			margin-bottom: 0;
-		}
 	}
 }
 
 @media (max-width: 991px) {
 	.portfolio {
 		padding-top: 4rem;
-		.testimonial-wrapp {
-			margin-bottom: 3rem;
+		&__top {
+			padding-top: 2rem;
+		}
+		&__avatar{
+			padding-bottom: 2rem;
+			padding-right: 0;
 		}
 	}
 }
 
-/*------------------------------------------------- */
-/* =  portfolio-header post module
-/*------------------------------------------------- */
 
-.portfolio-header-post {
-	margin-top: 4rem;
-	text-align: center;
-	transform: translateY(10px);
+.portfolio-header {
+	text-align: left;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
 	&__content {
-		padding-top: 4rem;
 		display: flex;
 		flex-direction: column;
-		height: 15rem;
-		align-items: center;
+		align-items: start;
 		justify-content: center;
-		border: 1px solid #262626;
-		@include border-radius(0.5rem);
-		@include box-shadow(0 0.5rem 1rem rgba(0,0,0,0.03));
-		background: #181818;
 		padding: 0 1rem;
+	}
+	&__title {
+		font-size: 1.5rem;
+		font-weight: 200;
+		margin-bottom: 1rem;
+		letter-spacing: -0.0625rem;
+		color: #cbd9df;
+	}
+	&__social {
+		@extend .reset-elem;
+		li {
+			display: inline-block;
+			margin: 0rem 0.225rem 1rem;g
+			a {
+				display: inline-block;
+				color: #fff;
+				width: 2rem;
+				height: 2rem;
+				font-size: 0.75rem;
+				line-height: 1.75rem;
+				background: transparent;
+				@include border-radius(50%);
+			}
+		}
 	}
 	&__content-bottom {
 		margin-bottom: 0;
@@ -228,12 +258,6 @@
 		font-family: $font-alternative2;
 		margin-bottom: -1rem;
 		margin-top: -3.5rem;
-	}
-	&__title {
-		font-size: 1.0625rem;
-		font-weight: 300;
-		margin-bottom: 0rem;
-		letter-spacing: -0.0625rem;
 	}
 	&__username {
 		color: #fff;
@@ -253,16 +277,17 @@
 	}
 	}
 	&__description {
+		p {
 		color: #8e8e8e;
 		font-size: 1.0625rem;
 		font-weight: 200;
-		font-style: italic;
 		margin-bottom: 0;
+		text-align: left;
+		}
 	}
 	&__image {
-		width: 7rem;
-		height: 7rem;
-		margin-bottom: 1rem;
+		width: 9rem;
+		height: 9rem;
 		@include border-radius(50%);
 	}
 	&__image-top {
@@ -274,6 +299,5 @@
 	.portfolio-portfolio-header {
 		width: 350px;
 		margin: auto;
-		margin-top: 12rem;
 	}
 }

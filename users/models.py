@@ -50,7 +50,7 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     email_verified = models.BooleanField(default=False)
     is_freelancer = models.BooleanField(default=False)
-    bio = models.TextField(max_length=250, blank=True)
+    bio = models.TextField(max_length=500, blank=True)
     phone = PhoneNumberField(blank=True)
     avatar = models.ImageField(default="default.jpg", upload_to=upload_location)
     location = PlacesField()

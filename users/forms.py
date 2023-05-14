@@ -2,7 +2,8 @@ from django.forms import TextInput, FileInput, ChoiceField, NumberInput
 from django.forms.widgets import Textarea
 from shootbe.widgets import CountableWidget
 from django import forms
-from country_list import countries_for_language
+
+# from country_list import countries_for_language
 from django.contrib.auth import get_user_model
 from allauth.account.forms import (
     LoginForm,
@@ -14,7 +15,7 @@ from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 User = get_user_model()
-country_choices = [(name, name) for code, name in countries_for_language("en")]
+# country_choices = [(name, name) for code, name in countries_for_language("en")]
 
 
 # for SignInView(LoginView)
@@ -195,8 +196,13 @@ class SettingsForm(forms.ModelForm):
             attrs={
                 "data-count": "characters",
                 "data-min-count": 30,
-                "data-max-count": 250,
+                "data-max-count": 500,
                 "data-count-direction": "down",
                 "class": "add-listing__textarea",
             }
         )
+
+
+class FreelancerSignupForm(SignupForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)

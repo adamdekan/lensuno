@@ -38,6 +38,7 @@ if socket.gethostname() == "server.lensuno.com":
         "lensuno.com",
         "142.4.9.202",
         "localhost",
+        "ergp.policyschool.ca",
     ]
 else:
     DEBUG = True
@@ -152,6 +153,7 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
+        # trunk-ignore(ruff/E501)
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
@@ -201,15 +203,6 @@ else:
 
 MEDIA_URL = "/media/"
 
-# COMPRESS_ROOT = BASE_DIR / "static"
-# COMPRESS_ENABLED = True
-
-# if DEBUG:
-# STATIC_ROOT = BASE_DIR / "static"
-
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-# if DEBUG:
-#     STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
@@ -239,6 +232,7 @@ GOOGLE_MAPS_API_KEY = os.environ["GOOGLE_MAPS_API_KEY"]
 PLACES_MAPS_API_KEY = os.environ["PLACES_MAPS_API_KEY"]
 PLACES_MAP_WIDGET_HEIGHT = 250
 GOOGLE_OAUTH2_CREDENTIALS = {
+    # trunk-ignore(ruff/E501)
     "client_id": "645533288604-d4knjqpji4e0otp5ol3s7gh5n30e7dbo.apps.googleusercontent.com",
     "project_id": "lens-uno",
     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
@@ -246,9 +240,11 @@ GOOGLE_OAUTH2_CREDENTIALS = {
     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
     "client_secret": os.environ["CLIENT_SECRET"],
     "javascript_origins": ["https://www.lensuno.com"],
+    # trunk-ignore(ruff/E501)
     "access_token": "ya29.a0Ael9sCOILSiRU8NObA6Ecemx3j9Q5ZqJPOEvw196bfmNG5M1mfy7uS4air1Wg1B-BVVPE9c0oQ1SViI4ABWAxN-oJ6h8q05d4FEPmkM6zwl6XWMRYmhLOgfEJR0oXj8SPUYLvmMPspMBqO-gYXYvJFAtvjoTaCgYKAQgSARMSFQF4udJhYatqPcCtc7rZjrqY9iBFKA0163",
     "token_expiry": datetime.datetime.now(),
     "user_agent": None,
+    # trunk-ignore(ruff/E501)
     "refresh_token": "1//09JJzS-Yhi7vGCgYIARAAGAkSNwF-L9IrkskMLU0l8Mf3kYwbvC46xHQE6ccjtni-v18AdOZjzds994RuKYNaV_xEmaekekyso9s",
     "scope": "https://www.googleapis.com/auth/drive",
     "token_type": "Bearer",
@@ -261,13 +257,15 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]  # ! use str(os.getenv('EMAIL_USER'))
+EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
 EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
 
 SITE_ID = 1
 
 # allauth
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
+ACCOUNT_EMAIL_VERIFICATION = "optional"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
@@ -293,7 +291,7 @@ STRIPE_SECRET_KEY = os.environ["STRIPE_SECRET_KEY"]
 STRIPE_API_VERSION = "2022-08-01"
 
 
-# galler_field
+# gallery_field
 if DEBUG:
     SENDFILE_URL = "/media/protected"
     SENDFILE_ROOT = BASE_DIR / "media"
@@ -303,17 +301,10 @@ else:
 SENDFILE_BACKEND = "django_sendfile.backends.development"
 DJANGO_GALLERY_FIELD_CONFIG = {
     "bootstrap_version": 4,
-    # "assets": {
-    #     "bootstrap_css": "https://cdnjs.cloudflare.com/ajax/libs/"
-    #                      "twitter-bootstrap/3.4.1/css/bootstrap.min.css",
-    #     "bootstrap_js": "https://cdnjs.cloudflare.com/ajax/libs/"
-    #                     "twitter-bootstrap/3.4.1/css/bootstrap.min.js"
-    # }
 }
 
 STARFIELD_STARS = 10
 STARFIELD_COLOUR = "#A13333"
-
 
 
 if not DEBUG:

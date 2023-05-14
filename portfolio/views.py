@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import get_user_model
 from django.views.generic.edit import CreateView
@@ -20,32 +21,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 # users.user
 User = get_user_model()
-
-
-# ----------------------------------------------
-# PATH
-# ----------------------------------------------
-@login_required
-def start_portfolio(response):
-    return render(response, "portfolio/start.html", {})
-
-
-@login_required
-def first_step(request):
-    template = "portfolio/step-one.html"
-    context = {}
-
-    obj = get_object_or_404(User, id=request.user.pk)
-    form = SettingsForm(request.POST or None, instance=obj)
-
-    if form.is_valid():
-        form.save()
-        return HttpResponseRedirect(reverse("portfolio:create"))
-
-    context["form"] = form
-    context["is_portfolio"] = True
-
-    return TemplateResponse(request, template, context)
 
 
 # ----------------------------------------------
@@ -147,7 +122,7 @@ def gig_detail_view(request, slug, pk):
 
     try:
         context["gallery"] = get_object_or_404(DemoGallery, gig_id=gig.id)
-    except DemoGallery.DoesNotExist:
+    except:
         context["gallery"] = None
 
     if request.method == "POST":
@@ -199,13 +174,6 @@ class GigCreateView(LoginRequiredMixin, CreateView):
         context = super().get_context_data(**kwargs)
         context["create"] = True
 
-        return context
-
-
-class FirstGig(GigCreateView):
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["is_portfolio"] = True
         return context
 
 
@@ -312,3 +280,62 @@ def delete_package(request, package, gig_pk):
     package.delete()
     messages.success(request, f"Package {package} deleted.")
     return HttpResponseRedirect(gig.get_absolute_url())
+
+
+# ----------------------------------------------
+# FREELANCER PATH
+# ----------------------------------------------
+@login_required
+def start_portfolio(response):
+    return render(response, "portfolio/start.html", {})
+
+
+@login_required
+def first_step(request):
+    template = "portfolio/step-one.html"
+    context = {}
+
+    obj = get_object_or_404(User, id=request.user.pk)
+    form = SettingsForm(request.POST or None, instance=obj)
+
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse("portfolio:create"))
+
+    context["form"] = form
+    context["is_portfolio"] = True
+
+    return TemplateResponse(request, template, context)
+
+
+class StepTwo(PortfolioCreateView):
+    def get_context_data(self, **kwargs):
+        """Insert the form into the context dict."""
+        if "form" not in kwargs:
+            kwargs["form"] = self.get_form()
+        kwargs["is_portfolio"] = True
+        return super().get_context_data(**kwargs)
+
+    def get_initial(self):
+        """Return the initial data to use for forms on this view."""
+        return self.initial.copy()
+
+    def get_success_url(self):
+        return reverse_lazy("portfolio:first-gig")
+
+
+class FirstGig(LoginRequiredMixin, CreateView):
+    model = Gig
+    form_class = GigUpdateForm
+    template_name = "gigs/gig-update.html"
+
+    def form_valid(self, form):
+        form.instance.portfolio = self.request.user.portfolio
+        # add slug for link from Portfolio
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        kwargs["is_portfolio"] = True
+        kwargs["create"] = True
+
+        return super().get_context_data(**kwargs)

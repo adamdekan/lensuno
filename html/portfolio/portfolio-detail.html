@@ -9,13 +9,13 @@
                 <div class="row">
                     <div class="col-lg-7"></div>
                     <div class="col-lg-5">
-                        <!-- testimonial-post module -->
-                        <div class="testimonial-post portfolio-testimonial">
+                        <!-- testimonial module -->
+                        <div class="testimonial portfolio-testimonial">
                             <a href="{{ portfolio.user.get_absolute_url }}" class="">
-                                <img class="testimonial-post__image testimonial-post__image-top" src="{{ portfolio.user.avatar.url }}" alt="testimonial-image">
+                                <img class="testimonial__image testimonial__image-top" src="{{ portfolio.user.avatar.url }}" alt="testimonial-image">
                             </a>
-                            <div class="testimonial-post__content testimonial-post__content-bottom">
-                                <ul class="team-post__social">
+                            <div class="testimonial__content testimonial__content-bottom">
+                                <ul class="team__social">
                                     {% if portfolio.website %}
                                         <li>
                                             <a href="{{ portfolio.website }}" class="website" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>
@@ -42,62 +42,64 @@
                                         </li>
                                     {% endif %}
                                 </ul>
-                                <p class="testimonial-post__description">{{ portfolio.about }}</p>
+                                <p class="testimonial__description">{{ portfolio.about }}</p>
                             </div>
                         </div>
-                        <!-- end testimonial-post module -->
+                        <!-- end testimonial module -->
                     </div>
                 </div>
             </div>
         </div> {% endcomment %}
         <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="portfolio-header-post">
-                        <a href="{{ portfolio.user.get_absolute_url }}" class="">
-                            <img class="portfolio-header-post__image portfolio-header-post"
-                                 src="{{ portfolio.user.avatar.url }}"
-                                 alt="testimonial-image">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <!-- testimonial-post module -->
-                    <div class="portfolio-header-post portfolio-portfolio-header">
-                        <div class="portfolio-header-post__content">
-                            <ul class="team-post__social">
-                                {% if portfolio.website %}
-                                    <li>
-                                        <a href="{{ portfolio.website }}" class="website" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>
-                                    </li>
-                                {% endif %}
-                                {% if social_ig %}
-                                    <li>
-                                        <a href="{{ portfolio.social_ig }}" class="instagram" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                    </li>
-                                {% endif %}
-                                {% if social_fb %}
-                                    <li>
-                                        <a href="{{ portfolio.social_fb }}" class="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    </li>
-                                {% endif %}
-                                {% if social_yt %}
-                                    <li>
-                                        <a href="{{ portfolio.social_yt }}" class="youtube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-                                    </li>
-                                {% endif %}
-                                {% if social_vm %}
-                                    <li>
-                                        <a href="{{ portfolio.social_vm }}" class="vimeo" target="_blank"><i class="fa fa-vimeo" aria-hidden="true"></i></a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                            <p class="portfolio-header-post__description">{{ portfolio.about }}</p>
+            <div class="portfolio__top">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="portfolio__avatar">
+                            <a href="{{ portfolio.user.get_absolute_url }}" class="">
+                                <img class="portfolio-header__image"
+                                     src="{{ portfolio.user.avatar.url }}"
+                                     alt="testimonial-image">
+                            </a>
                         </div>
                     </div>
+                    <div class="col-lg-10">
+                        <!-- testimonial module -->
+                        <div class="portfolio-header">
+                            <div class="portfolio-header__content">
+                                <div class="portfolio-header__title">{{ portfolio.user.get_full_name }}</div>
+                                <ul class="portfolio-header__social">
+                                    {% if portfolio.website %}
+                                        <li>
+                                            <a href="{{ portfolio.website }}" class="website" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>
+                                        </li>
+                                    {% endif %}
+                                    {% if social_ig %}
+                                        <li>
+                                            <a href="{{ portfolio.social_ig }}" class="instagram" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                        </li>
+                                    {% endif %}
+                                    {% if social_fb %}
+                                        <li>
+                                            <a href="{{ portfolio.social_fb }}" class="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        </li>
+                                    {% endif %}
+                                    {% if social_yt %}
+                                        <li>
+                                            <a href="{{ portfolio.social_yt }}" class="youtube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                        </li>
+                                    {% endif %}
+                                    {% if social_vm %}
+                                        <li>
+                                            <a href="{{ portfolio.social_vm }}" class="vimeo" target="_blank"><i class="fa fa-vimeo" aria-hidden="true"></i></a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                                <div class="portfolio-header__description">{{ portfolio.user.bio|linebreaks }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end testimonial module -->
                 </div>
-                <!-- end testimonial-post module -->
-                <div class="col-lg-5"></div>
             </div>
         </div>
     </section>
@@ -107,10 +109,11 @@
     <section class="team">
         <div class="container">
             <!-- section-header module -->
-            <div class="section-header">
+            {% comment %} <div class="section-header">
                 <h1 class="section-header__title">{{ portfolio.user.get_full_name }}</h1>
                 <p class="section-header__description2">{{ portfolio.service }}</p>
-            </div>
+            </div> {% endcomment %}
+            <div class="portfolio__line"></div>
             <!-- end section-header module -->
             <div class="team__box">
                 <div class="row">

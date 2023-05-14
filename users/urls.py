@@ -8,8 +8,7 @@ urlpatterns = [
     path("signup-hx/", views.signup_modal, name="signup-hx"),
     path("signin-hx/", views.signin_modal, name="signin-hx"),
     path("signup/check-email/", views.signup_done, name="signup-success"),
-    # path("sign/", views.sign, name="sign"),
-    # path("", views.UsersList.as_view(), name="users"),
+    path("signup-freelancer/", views.signup_freelancer, name="signup-freelancer"),
     path("<int:pk>/", profile_view, name="profile"),  # PROFILE website of every user
     path("settings/", views.settings_view, name="settings"),  # SETTINGS of user
     path(

@@ -1,0 +1,44 @@
+{% extends '_base.html' %}
+{% block content %}
+    <!-- sign-block
+================================================== -->
+    <section class="sign">
+        <div class="sign__area">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active"
+                     id="nav-register"
+                     role="tabpanel"
+                     aria-labelledby="nav-register-tab">
+                    <!-- sign-form-module -->
+                    <form class="sign-form" method="post">
+                        {% csrf_token %}
+                        {% load widget_tweaks %}
+                        <label class="sign-form__label" for="username">Email address:</label>
+                        {{ form_signup.email|add_class:"sign-form__input-text" }}
+                        {{ form_signup.email.errors }}
+                        <label class="sign-form__label" for="username">Password:</label>
+                        {{ form_signup.password1|add_class:"sign-form__input-text" }}
+                        {{ form_signup.password1.errors }}
+                        <label class="sign-form__label" for="username">Password:</label>
+                        {{ form_signup.password2|add_class:"sign-form__input-text" }}
+                        {{ form_signup.password2.errors }}
+                        <div class="sign-form__checkbox">
+                            <input class="sign-form__input-checkbox"
+                                   type="checkbox"
+                                   name="rememb-check2"
+                                   id="rememb-check2" />
+                            <span class="sign-form__checkbox-style"></span>
+                            <span class="sign-form__checkbox-text">I've read and accept terms & conditions</span>
+                        </div>
+                        <button class="sign-form__submit">
+                            <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            Sign Up
+                        </button>
+                    </form>
+                    <!-- End sign-form-module -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End sign-block -->
+{% endblock content %}

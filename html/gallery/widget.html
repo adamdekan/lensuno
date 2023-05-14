@@ -40,25 +40,25 @@
             {% endblock %}
             {% block GALLERY_WIDGET_BUTTON_BAR_CONTROL %}
               <button type="submit"
-                      class="btn btn-primary start {% if uploader_disabled %} hidden disabled{% endif %}"
+                      class="btn btn-primary start {% if uploader_disabled %}hidden disabled{% endif %}"
                       style="display: none">
                 <i class="si-solid si-upload"></i>
                 <span>{% trans "Start upload" %}</span>
               </button>
               <button type="reset"
-                      class="btn btn-warning cancel {% if uploader_disabled %} hidden disabled{% endif %}"
+                      class="btn btn-warning cancel {% if uploader_disabled %}hidden disabled{% endif %}"
                       style="display: none">
                 <i class="si si-cancel"></i>
                 <span>{% trans "Cancel upload" %}</span>
               </button>
               <button type="button"
-                      class="btn btn-danger delete {% if uploader_disabled %} hidden disabled{% endif %}"
+                      class="btn btn-danger delete {% if uploader_disabled %}hidden disabled{% endif %}"
                       style="display: none">
                 <i class="si-regular si-trash-can"></i>
                 <span>{% trans "Delete" %}</span>
               </button>
               <input type="checkbox"
-                     class="toggle {% if uploader_disabled %} hidden disabled{% endif %}"
+                     class="toggle {% if uploader_disabled %}hidden disabled{% endif %}"
                      style="display: none">
             {% endblock %}
             {% block GALLERY_WIDGET_BUTTON_BAR_EXTRA %}{% endblock %}
@@ -253,7 +253,7 @@
           function before_submit(evt) {
             input_changed = false;
 
-            $(".gallery-widget-submit-button").each(
+            $(".btn-default").each(
               function () {
                 const clone = $(this).clone();
                 $(clone).attr("disabled", "1");

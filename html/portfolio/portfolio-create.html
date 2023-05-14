@@ -65,7 +65,7 @@
                                 {{ form.errors.social_vm }}
                             </div>
                         </div>
-                        <label class="add-listing__label" for="description">{{ form.about.label }}</label>
+                        {% comment %} <label class="add-listing__label" for="description">{{ form.about.label }}</label>
                         {{ form.about }}
                         {{ form.errors.about }}
                         {{ form.media }}
@@ -80,12 +80,8 @@
                                 </label>
                                 {{ form.photo }}
                                 {{ form.errors.photo }}
-                                {% comment %} <div class="add-listing__input-file-wrap">
-                                    <i class="la la-cloud-upload"></i>
-                                    <p>Click here to upload your avatar</p>
-                                </div> {% endcomment %}
                             </div>
-                        </div>
+                        </div> {% endcomment %}
                         <button class="add-listing__submit" type="submit">
                             <i class="fa fa-cog" aria-hidden="true"></i>
                             Continue
