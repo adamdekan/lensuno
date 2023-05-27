@@ -7,5 +7,10 @@
                 </a>
             </div>
         {% endfor %}
+        {% for obj in gallery.images.objects.all|slice:"5:" %}
+            <div class="gallery-item" style="display: none">
+                <a data-fslightbox="gallery" href="{{ obj.image.url }}"></a>
+            </div>
+        {% endfor %}
     </div>
 {% endif %}
