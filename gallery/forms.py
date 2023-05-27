@@ -24,9 +24,13 @@ class GalleryForm(forms.ModelForm):
 
         # self.fields["images"].widget = Textarea()
         # self.fields["images"].widget.attrs["readonly"] = True
-        self.fields["images"].widget.template = "galleryfield/widget2.html"
+        self.fields["images"].widget.template = "galleryfield/widget.html"
 
         self.helper = FormHelper(self)
         self.helper.layout.append(
-            Submit("Submit", "Submit", css_class="btn-default-red")
+            Submit(
+                "Submit",
+                "Submit",
+                css_class="btn-default-red",
+            )
         )

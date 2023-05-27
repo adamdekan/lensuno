@@ -58,7 +58,9 @@ class GalleryUpdateView(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["form_description"] = "Update gallery"
+        context[
+            "form_description"
+        ] = "Update gallery - maximum image size 1.5Mb and maximum resolution 1024x1024px"
         context["gig_detail"] = Gig.objects.get(
             pk=self.kwargs.get("pk")
         ).get_absolute_url()

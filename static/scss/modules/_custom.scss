@@ -301,3 +301,14 @@
 		margin: auto;
 	}
 }
+
+.gallery-box {
+	width: 150px;
+	display: inline-block;
+	margin-bottom: 20px;
+	.gallery-row {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
