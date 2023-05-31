@@ -704,9 +704,28 @@
 .sign {
 	position: relative;
 	&__area {
-		padding: 12.5rem 10.625rem;
+		padding: 12.5rem 4rem;
 		background: #fff;
 		width: 40%;
+	}
+	&__right {
+		position: absolute;
+		background: #fff;
+		margin-top: 4rem;
+		width: 60%;
+		/* height: 100% !important; */
+		display: flex;
+		right: 0;
+		top: 0;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-content: center;
+	}
+	&__video {
+		position: relative;
+		background: #fff;
+		width: 30%;
 	}
 	&__slideshow {
 		position: fixed;
@@ -772,10 +791,18 @@
 		&__area {
 			padding: 10rem 3.5rem;
 		}
+		&__right {
+			margin-top: 8rem;
+			height: 50%;
+		}
 	}
 	@media (max-width: 1199px) {		
 		&__area {
 			padding: 8rem 2.5rem;
+		}
+		&__right {
+			margin-top: 8rem;
+			height: 40%;
 		}
 	}
 
@@ -783,14 +810,27 @@
 		&__area {
 			padding: 6.5rem 1.875rem 3rem;
 		}
+		&__right {
+			margin-top: 8rem;
+			height: 40%;
+		}
 	}
 
 	@media (max-width: 767px) {
 		&__area {
-			width: 50%;
+			width: 100%;
 		}
 		&__slideshow {
 			width: 50%;
+		}
+		&__right {
+			    /* display: flex; */
+			/* flex: inherit; */
+			position: relative;
+			margin-top: 0;
+			width: 100%;
+			align-content: center;
+			justify-content: center;
 		}
 	}
 	@media (max-width: 576px) {

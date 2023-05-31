@@ -1,4 +1,5 @@
 {% extends '_base.html' %}
+{% load static %}
 {% block content %}
     <!-- sign-block
 ================================================== -->
@@ -37,6 +38,13 @@
                     </form>
                     <!-- End sign-form-module -->
                 </div>
+            </div>
+        </div>
+        <div class="sign__right">
+            <div>
+                <video autoplay muted width="600">
+                    <source src="{% static 'onboarding.mp4' %}" type="video/mp4">
+                </video>
             </div>
         </div>
     </section>

@@ -108,7 +108,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "shootbe.urls"
-FORM_RENDERER = "django.forms.renderers.TemplatesSetting" # check widgets for 
+FORM_RENDERER = (
+    "django.forms.renderers.TemplatesSetting"  # check widgets for html folder
+)
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",

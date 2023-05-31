@@ -59,7 +59,7 @@ def signin_modal(request):
 
 def signup_freelancer(request):
     context = {}
-    template = "users/signup-freelancer.html"
+    template = "users/onboarding.html"
     if request.method == "POST":
         context["form_signup"] = form = FreelancerSignupForm(request.POST)
         if form.is_valid():
