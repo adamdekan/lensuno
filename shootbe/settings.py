@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import socket
 from pathlib import Path
 import os
-import datetime
+
+# import datetime
 
 # anti broken pipe error
 from django.core.servers.basehttp import WSGIServer
@@ -88,10 +89,10 @@ INSTALLED_APPS = [
     "widget_tweaks",  # https://pypi.org/project/django-widget-tweaks/
     "allauth",
     "allauth.account",
-    # "allauth.socialaccount",
+    "allauth.socialaccount",
     # "allauth.socialaccount.providers.apple",
     # "allauth.socialaccount.providers.facebook",
-    # "allauth.socialaccount.providers.google",
+    "allauth.socialaccount.providers.google",
 ]
 
 MIDDLEWARE = [
@@ -107,7 +108,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "shootbe.urls"
-
+FORM_RENDERER = "django.forms.renderers.TemplatesSetting" # check widgets for 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -153,7 +154,6 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        # trunk-ignore(ruff/E501)
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
@@ -221,7 +221,7 @@ COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/main"
 LOGOUT_REDIRECT_URL = "/"
 LOGIN_URL = "/"
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
@@ -231,25 +231,20 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ["SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET"
 GOOGLE_MAPS_API_KEY = os.environ["GOOGLE_MAPS_API_KEY"]
 PLACES_MAPS_API_KEY = os.environ["PLACES_MAPS_API_KEY"]
 PLACES_MAP_WIDGET_HEIGHT = 250
-GOOGLE_OAUTH2_CREDENTIALS = {
-    # trunk-ignore(ruff/E501)
-    "client_id": "645533288604-d4knjqpji4e0otp5ol3s7gh5n30e7dbo.apps.googleusercontent.com",
-    "project_id": "lens-uno",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_secret": os.environ["CLIENT_SECRET"],
-    "javascript_origins": ["https://www.lensuno.com"],
-    # trunk-ignore(ruff/E501)
-    "access_token": "ya29.a0Ael9sCOILSiRU8NObA6Ecemx3j9Q5ZqJPOEvw196bfmNG5M1mfy7uS4air1Wg1B-BVVPE9c0oQ1SViI4ABWAxN-oJ6h8q05d4FEPmkM6zwl6XWMRYmhLOgfEJR0oXj8SPUYLvmMPspMBqO-gYXYvJFAtvjoTaCgYKAQgSARMSFQF4udJhYatqPcCtc7rZjrqY9iBFKA0163",
-    "token_expiry": datetime.datetime.now(),
-    "user_agent": None,
-    # trunk-ignore(ruff/E501)
-    "refresh_token": "1//09JJzS-Yhi7vGCgYIARAAGAkSNwF-L9IrkskMLU0l8Mf3kYwbvC46xHQE6ccjtni-v18AdOZjzds994RuKYNaV_xEmaekekyso9s",
-    "scope": "https://www.googleapis.com/auth/drive",
-    "token_type": "Bearer",
-    "scopes": ["https://www.googleapis.com/auth/calendar"],
-}
+# GOOGLE_OAUTH2_CREDENTIALS = {
+#     "client_id": "645533288604-d4knjqpji4e0otp5ol3s7gh5n30e7dbo.apps.googleusercontent.com",
+#     "project_id": "lens-uno",
+#     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+#     "token_uri": "https://oauth2.googleapis.com/token",
+#     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+#     "client_secret": os.environ["CLIENT_SECRET"],
+#     "javascript_origins": ["https://www.lensuno.com"],
+#     "token_expiry": datetime.datetime.now(),
+#     "user_agent": None,
+#     "scope": "https://www.googleapis.com/auth/drive",
+#     "token_type": "Bearer",
+#     "scopes": ["https://www.googleapis.com/auth/calendar"],
+# }
 
 
 # email configs

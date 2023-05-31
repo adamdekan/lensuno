@@ -23,6 +23,8 @@
         <a hx-get="{% url 'account_login' %}" hx-target="#signin-dialog" data-modal-target="signin-modal" data-modal-toggle="signin-modal" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
     </p> 
 </form> {% endcomment %}
+{% load socialaccount %}
+{% get_providers as socialaccount_providers %}
 <form class="sign-form" hx-post="{{ request.path }}">
     {% csrf_token %}
     {% load widget_tweaks %}
@@ -54,13 +56,17 @@
     data-toggle="modal"
     data-dismiss="modal">Login here.</a>
     </p>
-    {% comment %} <p class="sign-form__text">or Sign Up With</p>
     <ul class="sign-form__social">
-        <li>
-            <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-        </li>
-        <li>
-            <a href="#" class="google"><i class="fa fa-google" aria-hidden="true"></i></a>
-        </li>
-    </ul> {% endcomment %}
+        {% comment %} <li>
+          <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        </li> {% endcomment %}
+        {% for provider in socialaccount_providers %}
+            {% if provider.name == "Google" %}
+                <li>
+                    <a href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %} "
+                       class="google"><i class="fa fa-google" aria-hidden="true"></i></a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 </form>

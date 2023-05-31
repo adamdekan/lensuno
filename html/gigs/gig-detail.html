@@ -83,7 +83,9 @@
                                 </a>
                                 <div class="add-listing__input-file-wrap">
                                     {% comment %} <i class="la la-cloud-upload"></i> {% endcomment %}
-                                    <p>Click here to create a gallery of photos representing this service to activate it in search of the website. Maximum resolution 1920 x 1920px</p>
+                                    <p>
+                                        Click here to create a gallery of photos representing this service to activate it in search of the website. Maximum resolution 1920 x 1920px
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -183,6 +185,10 @@
                                             <img src="{{ user.avatar.url }}" alt="">
                                             <div class="inner-review__form-box">
                                                 {{ form.comment }}
+                                                <div class="row">
+                                                    <div class="col-md-6">{{ form.rating }}</div>
+                                                    <div class="col-md-6"></div>
+                                                </div>
                                                 <button type="submit"
                                                         class="contact-form__submit"
                                                         _="on click wait 50ms then add [@disabled]">

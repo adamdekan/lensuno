@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
+
 # from django.contrib.auth.decorators import user_passes_test
 from country_list import countries_for_language
 from portfolio.models import Portfolio, Gig
 from users.models import User
+
 # from shootbe.decorators import is_freelancer
 from django.views.generic.base import TemplateView
 from .filters import GigFilter
@@ -17,6 +19,10 @@ from django.contrib.admin.views.decorators import staff_member_required
 # Create your views here.
 def index(response):
     return render(response, "main/index.html", {})
+
+
+def redirect_to_portal(response):
+    return redirect("https://portal.lensuno.com")
 
 
 class Home(TemplateView):
