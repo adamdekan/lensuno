@@ -17,6 +17,17 @@ from allauth.account.forms import (
     LoginForm,
     SignupForm,
 )
+from main.helpers import send_mail
+
+
+def send_email_admin(subject, body):
+    send_mail(
+        subject,
+        body,
+        "admin@lensuno.com",
+        ["lensunocom@gmail.com"],
+        fail_silently=True,
+    )
 
 
 def signup_done(request):
@@ -68,6 +79,7 @@ def signup_freelancer(request):
             password = form.cleaned_data.get("password1")
             user = authenticate(request, email=email, password=password)
             auth_login(request, user)
+            send_email_admin("New Freelancer Signup", f"{email}")
             return HttpResponseRedirect(reverse_lazy("portfolio:step-one"))
         else:
             return TemplateResponse(request, template, context)

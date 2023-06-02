@@ -1,4 +1,3 @@
-from typing import Any, Dict
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import get_user_model
 from django.views.generic.edit import CreateView
@@ -18,6 +17,7 @@ from gallery.models import DemoGallery
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from users.forms import SettingsForm
 from django.views.decorators.csrf import csrf_exempt
+from main.helpers import send_email_admin
 
 # users.user
 User = get_user_model()
@@ -122,6 +122,7 @@ def gig_detail_view(request, slug, pk):
 
     try:
         context["gallery"] = get_object_or_404(DemoGallery, gig_id=gig.id)
+    # trunk-ignore(ruff/E722)
     except:
         context["gallery"] = None
 
@@ -331,6 +332,10 @@ class FirstGig(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.portfolio = self.request.user.portfolio
+        send_email_admin(
+            f"User: {self.request.user.email} has created a new gig.",
+            f"Portfolio: {self.request.user.portfolio.slug}",
+        )
         # add slug for link from Portfolio
         return super().form_valid(form)
 
