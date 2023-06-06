@@ -20,7 +20,7 @@
     </button>
     <p class="text-sm font-light text-gray-500 dark:text-gray-400">
         Already have an account?
-        <a hx-get="{% url 'account_login' %}" hx-target="#signin-dialog" data-modal-target="signin-modal" data-modal-toggle="signin-modal" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
+        <a hx-get="{% url 'account_login' %}" hx-target="#signin-dialog" data-modal-target="signin-modal" data-modal-toggle="signin-modal" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Signin here</a>
     </p> 
 </form> {% endcomment %}
 {% load socialaccount %}
@@ -54,7 +54,7 @@
     hx-get="{% url 'users:signin-hx' %}"
     hx-target="#dialog2"
     data-toggle="modal"
-    data-dismiss="modal">Login here.</a>
+    data-dismiss="modal">Signin here.</a>
     </p>
     <ul class="sign-form__social">
         {% comment %} <li>

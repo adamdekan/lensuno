@@ -4,7 +4,8 @@
 <header class="clearfix {% if is_home or is_portfolio %}{% else %}white-header-style fullwidth-with-search{% endif %}">
     <nav class="navbar navbar-expand-lg {% if is_home or is_portfolio %}navbar-dark bg-dark{% else %}navbar-light bg-light{% endif %}">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'main:index' %}">
+            {% comment %} <a class="navbar-brand" href="{% url 'main:index' %}"> {% endcomment %}
+            <a class="navbar-brand" href="https://portal.lensuno.com">
                 <img src="{% if is_home or is_portfolio %}{% static 'upload/logo@2x.png' %}{% else %}{% static 'upload/logo-black@2x.png' %}{% endif %}"
                      alt="Logo"
                      class="navbar-brand"
@@ -37,7 +38,7 @@
                         {% include "main/sign-hx.html" %}
                         {% comment %} <li>
                             <a href="{% url 'users:sign' %}">
-                                <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Login</a>
+                                <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Signin</a>
                         </li>
                         <li>
                             <a href="{% url 'users:sign' %}">
@@ -109,7 +110,7 @@
                                         {% endif %}
                                         <hr style="margin-top: 5px; margin-bottom: 5px;" />
                                         <li>
-                                            <a href="{% url 'users:signout' %}">Logout</a>
+                                            <a href="{% url 'users:signout' %}">Signout</a>
                                         </li>
                                     </ul>
                                 </li>
