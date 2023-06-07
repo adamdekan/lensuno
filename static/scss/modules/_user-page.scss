@@ -21,6 +21,7 @@
 		img {
 			width: 70px;
 			height: 70px;
+			object-fit: cover;
 			@include border-radius(3px);
 		}
 	}
