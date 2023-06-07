@@ -91,6 +91,9 @@ class GigManager(models.Manager):
             is_active=True, gallery__isnull=False, portfolio__user=user
         )
 
+    def portfolio_active(self, user):
+        return self.get_queryset().filter(gallery__isnull=False, portfolio__user=user)
+
     def is_owner(self, user):
         if user.pk == self.get_queryset().portfolio.user.pk:
             return True

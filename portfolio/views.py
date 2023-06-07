@@ -80,7 +80,7 @@ class PortfolioDetailView(DetailView):
         context["social_ig"] = self.validate_url(self.object.social_ig, "instagram")
         context["social_yt"] = self.validate_url(self.object.social_yt, "youtube")
         context["social_vm"] = self.validate_url(self.object.social_vm, "vimeo")
-        context["gigs"] = Gig.query.active(self.object.user)
+        context["gigs"] = Gig.query.portfolio_active(self.object.user)
         context["is_portfolio"] = True
         return context
 
