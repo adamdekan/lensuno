@@ -146,11 +146,12 @@ class PortfolioUpdateForm(forms.ModelForm):
 
 class PackageForm(forms.ModelForm):
     price = forms.DecimalField(widget=FormNumberField())
-    time = forms.IntegerField(widget=FormNumberField())
+    time = forms.IntegerField(widget=FormNumberField(), required=False)
+    photos_amount = forms.IntegerField(widget=FormNumberField(), required=False)
 
     class Meta:
         model = Package
-        fields = ["price", "time", "description"]
+        fields = ["price", "time", "description", "photos_amount"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -163,7 +164,3 @@ class PackageForm(forms.ModelForm):
                 "data-count-direction": "down",
             }
         )
-
-        self.fields["price"].label = "How much do you ask for this package?"
-        self.fields["time"].label = "For how long are you hired?"
-        self.fields["description"].label = "A short info about this package"

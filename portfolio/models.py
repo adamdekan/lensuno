@@ -180,7 +180,8 @@ class Package(models.Model):
         max_length=10, choices=PACKAGE_TYPE_CHOICES, default="standard"
     )
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    time = models.IntegerField(blank=False)
+    time = models.IntegerField(blank=True, null=True)
+    photos_amount = models.IntegerField(blank=True, null=True)
     description = models.CharField(max_length=255)
     created_at = models.DateTimeField(editable=False, auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

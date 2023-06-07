@@ -26,34 +26,46 @@
                     <div class="add-listing__form-box element-waypoint" id="general-info">
                         {% comment %} <h2 class="add-listing__form-title">Don't be afraid to add as much detail about your services as you can</h2> {% endcomment %}
                         <div class="add-listing__form-content">
-                            <label class="add-listing__label" for="description">Write more details about your work</label>
-                            {{ form.description }}
+                            <div class="row" style="padding-left: 15px; padding-right: 15px;">
+                                <label class="add-listing__label" for="description">
+                                    Describe the details of your service such as estimated time for post-production, deliverables etc.
+                                </label>
+                                {{ form.description }}
+                            </div>
                             {{ form.errors.description }}
                             {{ form.media }}
                             <!-- 3 FIELDS -->
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label class="add-listing__label" for="keyword">Set the price for this package:</label>
+                                    <label class="add-listing__label" for="keyword">Set the price for this session</label>
                                     {{ form.price }}
                                     {{ form.errors.price }}
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="add-listing__label" for="website">How many hours for shooting?</label>
+                                    <label class="add-listing__label" for="website">Number of hours included (optional)</label>
                                     {{ form.time }}
                                     {{ form.errors.time }}
                                 </div>
-                                {% comment %} <div class="col-md-4">
-                                    <label class="add-listing__label" for="website">{{ form.time.label }}</label>
-                                    {{ form.time }}
-                                    {{ form.errors.time }}
-                                </div> {% endcomment %}
+                                <div class="col-md-4">
+                                    <label class="add-listing__label" for="website">Number of final photos included (optional)</label>
+                                    {{ form.photos_amount }}
+                                    {{ form.errors.photos_amount }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="add-listing__label"
+                                       for="description"
+                                       style="padding-left: 15px;
+                                              padding-right: 15px">
+                                    Sessions without set price will be automatically categorised as <a href="https://en.wikipedia.org/wiki/Time_for_print" target="_blank">Time for prints</a>.
+                                </label>
                             </div>
                         </br>
                         <button class="add-listing__submit" type="submit">
                             {% if create %}
                                 Create
                             {% else %}
-                                Update{% endif %} Package
+                                Update{% endif %}
                             </button>
                             <a href="{% url 'main:gig-detail' gig.portfolio gig.id %}"
                                class="btn-cancel">Cancel</a>

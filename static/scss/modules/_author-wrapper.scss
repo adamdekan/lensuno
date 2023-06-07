@@ -124,6 +124,7 @@
 		img {
 			width: 60px;
 			height: 60px;
+			object-fit: cover;
 			@include border-radius(50%);
 		}
 	}

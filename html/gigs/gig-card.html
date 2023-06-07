@@ -58,10 +58,19 @@
             <i class="fa fa-map-marker" aria-hidden="true"></i> {{ gig.location.place|truncatechars:50 }}
         </p>
         <p class="place-post__info jus">
-            <i class="fa fa-clock-o" aria-hidden="true"></i>
-            <span class="open">{{ gig.packages.first.time }} h</span> |
-            <span class="open">{{ gig.packages.first.price }}</span>
-            <i class="fa fa-eur red-col" aria-hidden="true"></i>
+            {% if gig.packages.first.price %}
+                <i class="fa fa-eur red-col" aria-hidden="true" style="margin-left:3px"></i>
+                <span class="open">{{ gig.packages.first.price }}</span>
+            {% else %}
+                <span class="open">TFP</span>
+            {% endif %}
+            {% if gig.packages.first.time %}
+                |
+                {% comment %}<i class="fa fa-clock-o" aria-hidden="true"></i> {% endcomment %}
+                <span class="open">{{ gig.packages.first.time }} h</span>
+            {% else %}
+                <span class="open">Session</span>
+            {% endif %}
         </p>
         <!-- end place-post module -->
     </div>

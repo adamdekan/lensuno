@@ -23,8 +23,16 @@
                 </div>
                 <div class="col-3">
                     <div class="packages__price">
-                        <h2 class="packages__price">€{{ package.price }}</h2>
-                        <div class="packages__avail">{{ package.time }} hours</div>
+                        <h2 class="packages__price">
+                            {% if package.price != 0 %}
+                                €{{ package.price }}
+                            {% else %}
+                                TFP
+                            {% endif %}
+                        </h2>
+                        <div class="packages__avail">
+                            {% if package.time %}{{ package.time }} hours{% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
