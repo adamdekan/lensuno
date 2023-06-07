@@ -10,23 +10,23 @@ class SingleChoiceSelectMultiple(forms.CheckboxSelectMultiple):
 
 
 class GigFilter(django_filters.FilterSet):
-    CHOICES = (
-        ("ascending", "Lowest price"),
-        ("desending", "Highest price"),
-    )
-    ordering = django_filters.ChoiceFilter(
-        label="Ordering",
-        choices=CHOICES,
-        method="filter_by_order",
-        widget=forms.RadioSelect(),
-        empty_label="Newest",
-    )
+    # CHOICES = (
+    #     ("ascending", "Lowest price"),
+    #     ("desending", "Highest price"),
+    # )
+    # ordering = django_filters.ChoiceFilter(
+    #     label="Ordering",
+    #     choices=CHOICES,
+    #     method="filter_by_order",
+    #     widget=forms.RadioSelect(),
+    #     empty_label="Newest",
+    # )
 
-    def filter_by_order(self, queryset, name, value):
-        expression = "price" if value == "ascending" else "-price"
-        return queryset.order_by(expression)
+    # def filter_by_order(self, queryset, name, value):
+    #     expression = "price" if value == "ascending" else "-price"
+    #     return queryset.order_by(expression)
 
-    price = django_filters.RangeFilter(label="Price range")
+    # price = django_filters.RangeFilter(label="Price range")
     category = django_filters.MultipleChoiceFilter(
         choices=Gig.CATEGORY_CHOICES,
         widget=SingleChoiceSelectMultiple(
@@ -39,6 +39,6 @@ class GigFilter(django_filters.FilterSet):
     class Meta:
         model = Gig
         fields = [
-            "price",
+            # "price",
             "category",
         ]

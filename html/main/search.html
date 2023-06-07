@@ -34,13 +34,13 @@
         {% comment %} <span>Price range:</span> {% endcomment %}
         {% comment %} <span class="multi-range-field my-5 pb-5">
         <span>{% render_field filter.form.price class="multi-range" id="multi1" type="range" %}</span></span> {% endcomment %}
-        <span>{{ filter.form.ordering }}</span>
+        {% comment %} <span>{{ filter.form.ordering }}</span>
         <input type="submit"
                class="btn-default btn-default-red"
                style="margin-bottom: 10px;
                       display: none"
                value="Filter"
-               id="filter_button"/>
+               id="filter_button" /> {% endcomment %}
     </form>
     <section class="trending-places" style="margin-top: -180px">
         <div class="container">
