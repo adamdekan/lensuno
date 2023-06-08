@@ -129,7 +129,7 @@ class Gig(models.Model):
     equipment = models.TextField(max_length=500, blank=True)
     service = models.TextField(max_length=1000, blank=True)
     photo = models.FileField(upload_to=upload_location_gig, blank=True)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(editable=False, auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=255)

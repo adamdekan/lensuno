@@ -261,8 +261,9 @@ def update_package(request, package, gig_pk):
     if request.method == "POST":
         form = PackageForm(request.POST, instance=obj)
         if form.is_valid():
-            obj.gig.is_active = True
-            obj.gig.save()
+            # activates the gig when updates the package
+            # obj.gig.is_active = True
+            # obj.gig.save()
             form.save()
             messages.success(request, f"Package {package} updated.")
             return HttpResponseRedirect(obj.gig.get_absolute_url())
