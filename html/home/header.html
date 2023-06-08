@@ -6,13 +6,12 @@
         <div class="container-fluid">
             {% comment %} <a class="navbar-brand" href="{% url 'main:index' %}"> {% endcomment %}
             <a class="navbar-brand" href="https://portal.lensuno.com">
-                <img src="{% if is_home or is_portfolio %}{% static 'upload/logo@2x.png' %}{% else %}{% static 'upload/logo-black@2x.png' %}{% endif %}"
+                <img src="{% if is_home or is_portfolio %}{% static 'upload/weblogod.svg' %}{% else %}{% static 'upload/weblogoa.svg' %}{% endif %}"
                      alt="Logo"
                      class="navbar-brand"
-                     style="height: 50px;
-                            margin-left: 10px;
-                            padding-bottom: 10px">
-                LENS UNO
+                     style="height: 60px;
+                            margin-left: 10px">
+                {% comment %} LENS UNO {% endcomment %}
             </a>
             <button class="navbar-toggler"
                     type="button"
