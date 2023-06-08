@@ -43,6 +43,8 @@ def signup_modal(request):
         context["form_signup"] = form = SignupForm(request.POST)
         if form.is_valid():
             form.save(request)
+            email = form.cleaned_data.get("email")
+            send_email_admin("New Signup", f"{email}")
             return HttpResponseClientRefresh()
         else:
             return TemplateResponse(request, template, context)
@@ -79,7 +81,7 @@ def signup_freelancer(request):
             password = form.cleaned_data.get("password1")
             user = authenticate(request, email=email, password=password)
             auth_login(request, user)
-            send_email_admin("New Freelancer Signup", f"{email}")
+            send_email_admin("New Onboarding Signup", f"{email}")
             return HttpResponseRedirect(reverse_lazy("portfolio:step-one"))
         else:
             return TemplateResponse(request, template, context)
