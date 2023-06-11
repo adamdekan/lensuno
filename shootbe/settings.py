@@ -39,6 +39,7 @@ if socket.gethostname() == "server.lensuno.com":
         "lensuno.com",
         "142.4.9.202",
         "localhost",
+        "server.lensuno.com",
         "ergp.policyschool.ca",
     ]
 else:
