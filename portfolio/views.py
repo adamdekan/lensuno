@@ -47,7 +47,7 @@ class PortfolioCreateView(LoginRequiredMixin, CreateView):
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
     #     context["form"] = PortfolioUpdateForm()
-    #     context["is_portfolio"] = True
+    #     context["black_header"] = True
 
 
 class PortfolioDetailView(DetailView):
@@ -81,7 +81,7 @@ class PortfolioDetailView(DetailView):
         context["social_yt"] = self.validate_url(self.object.social_yt, "youtube")
         context["social_vm"] = self.validate_url(self.object.social_vm, "vimeo")
         context["gigs"] = Gig.query.portfolio_active(self.object.user)
-        context["is_portfolio"] = True
+        context["black_header"] = True
         return context
 
 
@@ -305,7 +305,7 @@ def first_step(request):
         return HttpResponseRedirect(reverse("portfolio:create"))
 
     context["form"] = form
-    context["is_portfolio"] = True
+    context["black_header"] = True
 
     return TemplateResponse(request, template, context)
 
@@ -315,7 +315,7 @@ class StepTwo(PortfolioCreateView):
         """Insert the form into the context dict."""
         if "form" not in kwargs:
             kwargs["form"] = self.get_form()
-        kwargs["is_portfolio"] = True
+        kwargs["black_header"] = True
         return super().get_context_data(**kwargs)
 
     def get_initial(self):
@@ -341,7 +341,7 @@ class FirstGig(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
-        kwargs["is_portfolio"] = True
+        kwargs["black_header"] = True
         kwargs["create"] = True
 
         return super().get_context_data(**kwargs)

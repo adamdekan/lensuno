@@ -14,3 +14,7 @@ def forms(request):
         "form_search": SearchForm(),
         "google_maps_api_key": settings.GOOGLE_MAPS_API_KEY,
     }
+
+
+def header(request):
+    return {"black_header": False}

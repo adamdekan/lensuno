@@ -288,6 +288,7 @@
 		width: 9rem;
 		height: 9rem;
 		object-fit: cover;
+		margin-right: 80px;
 		@include border-radius(50%);
 	}
 	&__image-top {
@@ -299,6 +300,14 @@
 	.portfolio-portfolio-header {
 		width: 350px;
 		margin: auto;
+	}
+	.portfolio {
+		&__avatar {
+			a {
+			align-content: start;
+			justify-content: left;
+			}
+		}
 	}
 }
 

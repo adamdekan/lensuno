@@ -126,6 +126,7 @@ TEMPLATES = [
                 "social_django.context_processors.login_redirect",
                 "gallery.utils.static_context_processor",
                 "main.context_processors.forms",
+                "main.context_processors.header",
             ],
             "builtins": [
                 "main.templatetags.shootbe_tags",

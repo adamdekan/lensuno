@@ -40,7 +40,7 @@ class Home(TemplateView):
         )
         context["portfolios"] = Portfolio.objects.filter(is_featured=True)
         context["profiles"] = User.objects.all()
-        context["is_home"] = True
+        context["black_header"] = True
         context["index_search"] = IndexSearchForm()
         context["categories"] = Gig.CATEGORY_CHOICES
         return context

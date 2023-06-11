@@ -1,12 +1,12 @@
 <!-- Header
 ================================================== -->
 {% load static %}
-<header class="clearfix {% if is_home or is_portfolio %}{% else %}white-header-style fullwidth-with-search{% endif %}">
-    <nav class="navbar navbar-expand-lg {% if is_home or is_portfolio %}navbar-dark bg-dark{% else %}navbar-light bg-light{% endif %}">
+<header class="clearfix {% if black_header %}{% else %}white-header-style fullwidth-with-search{% endif %}">
+    <nav class="navbar navbar-expand-lg {% if black_header %}navbar-dark bg-dark{% else %}navbar-light bg-light{% endif %}">
         <div class="container-fluid">
             {% comment %} <a class="navbar-brand" href="{% url 'main:index' %}"> {% endcomment %}
             <a class="navbar-brand" href="https://portal.lensuno.com">
-                <img src="{% if is_home or is_portfolio %}{% static 'upload/weblogod.svg' %}{% else %}{% static 'upload/weblogoa.svg' %}{% endif %}"
+                <img src="{% if black_header %}{% static 'upload/weblogod.svg' %}{% else %}{% static 'upload/weblogoa.svg' %}{% endif %}"
                      alt="Logo"
                      class="navbar-brand"
                      style="height: 60px;
@@ -23,7 +23,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                {% if is_home or is_portfolio %}
+                {% if black_header %}
                 {% else %}
                     <form class="search-form" type="get" action="{% url 'main:search' %}">
                         <div class="search-form__input-holders">{{ form_search.search }}</div>

@@ -44,7 +44,7 @@
                                                 </a>
                                                 <h3 class="author-wrapper__title">
                                                     <a href="{{ gig.portfolio.get_absolute_url }}">{% full_name gig.portfolio.user %}</a>
-                                                    <span class="author-wrapper__location">{{ gig.portfolio.user.city }}</span>
+                                                    {% comment %} <span class="author-wrapper__location">{{ gig.portfolio.user.city }}</span> {% endcomment %}
                                                 </h3>
                                             </div>
                                         </div>
