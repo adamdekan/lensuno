@@ -26,10 +26,11 @@
                                         <a href="#">5 Gigs</a>
                                     </li> {% endcomment %}
                                     <li class="place-gal__list-item">
-                                        <a href="search/world/?category={{ category.0 }}">{{ category.1 }}</a>
+                                        <a href="{% url 'main:search' %}world/?category={{ category.0 }}">{{ category.1 }}</a>
                                     </li>
                                 </ul>
-                                <a class="btn-default" href="search/world/?category={{ category.0 }}">
+                                <a class="btn-default"
+                                   href="{% url 'main:search' %}world/?category={{ category.0 }}">
                                     <i class="fa fa-caret-right" aria-hidden="true"></i>
                                     Explore
                                 </a>
