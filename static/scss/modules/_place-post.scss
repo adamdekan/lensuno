@@ -7,6 +7,7 @@
 	&__gal-box {
 		position: relative;
 		margin-bottom: 0.625rem;
+		aspect-ratio: 1 / 1;
 		overflow: hidden;
 		width: 100%;
 		.input-file-missing {
@@ -33,7 +34,8 @@
 	}
 	&__image {
 		width: 100%;
-		height: 270px;
+		height: 100%;
+		aspect-ratio: 1 / 1;
 		object-fit: cover;
 		@include border-radius(0.5rem);
 		// @include transition(0.3s);

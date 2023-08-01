@@ -9,69 +9,69 @@
                         {% with gig.gallery.images.objects.all|slice:":5" as photos %}
                             {% for photo in photos %}
                                 <a href="{{ gig.get_absolute_url }}" class="clear-pointer">
-                                    {% thumbnail photo.image "x300" crop="center" as im %}
-                                    <img class="place-post__image" src="{{ im.url }}" alt="place-image">
-                                </a>
-                            {% endthumbnail %}
-                        {% endfor %}
-                    {% endwith %}
-                {% else %}
-                    <div class="place-post input-file-missing">
-                        <i class="la la-cloud-upload"></i>
-                        <p>Missing gallery.</p>
-                    </div>
-                {% endif %}
+                                    {% thumbnail photo.image "x700" crop="center" as im %}
+                                        <img class="place-post__image" src="{{ im.url }}" alt="place-image">
+                                    </a>
+                                {% endthumbnail %}
+                            {% endfor %}
+                        {% endwith %}
+                    {% else %}
+                        <div class="place-post input-file-missing">
+                            <i class="la la-cloud-upload"></i>
+                            <p>Missing gallery.</p>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
+            {% comment %} <span class="place-post__rating">9.3</span> {% endcomment %}
+            {% if user.is_authenticated %}
+                {% load static %}
+                {% load wishlist_tags %}
+                {% wishlist_button gig "card" %}
+            {% endif %}
         </div>
-        {% comment %} <span class="place-post__rating">9.3</span> {% endcomment %}
-        {% if user.is_authenticated %}
-            {% load static %}
-            {% load wishlist_tags %}
-            {% wishlist_button gig "card" %}
-        {% endif %}
-    </div>
-    <!-- GALLERY END -->
-    <div class="place-post__content">
-        <div class="row">
-            <div class="col-12">
-                <div class="author-wrapper__content">
-                    <a class="author-wrapper__image"
-                       href="{{ gig.portfolio.get_absolute_url }}">
-                        <img src="{{ gig.portfolio.user.avatar.url }}" alt="">
-                    </a>
-                    <h3 class="author-wrapper__title">
-                        <a href="{{ gig.portfolio.get_absolute_url }}">{% full_name gig.portfolio.user %}</a>
-                        <span class="author-wrapper__location">
-                            {% comment %} <a href="{% url 'main:search' %}{{ gig.location.place|slugify }}" class="hover:underline">{{ gig.location.place|truncatechars:33 }}</a></span> {% endcomment %}
-                        </h3>
+        <!-- GALLERY END -->
+        <div class="place-post__content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="author-wrapper__content">
+                        <a class="author-wrapper__image"
+                           href="{{ gig.portfolio.get_absolute_url }}">
+                            <img src="{{ gig.portfolio.user.avatar.url }}" alt="">
+                        </a>
+                        <h3 class="author-wrapper__title">
+                            <a href="{{ gig.portfolio.get_absolute_url }}">{% full_name gig.portfolio.user %}</a>
+                            <span class="author-wrapper__location">
+                                {% comment %} <a href="{% url 'main:search' %}{{ gig.location.place|slugify }}" class="hover:underline">{{ gig.location.place|truncatechars:33 }}</a></span> {% endcomment %}
+                            </h3>
+                        </div>
                     </div>
                 </div>
             </div>
+            <p class="place-post__address"></p>
+            <h2 class="place-post__title">
+                <a href="{{ gig.get_absolute_url }}">{{ gig.title }}</a>
+            </h2>
+            <p class="place-post__description">
+                {{ gig.get_category_display }}
+                <br />
+                <i class="fa fa-map-marker" aria-hidden="true"></i> {{ gig.location.place|truncatechars:50 }}
+            </p>
+            <p class="place-post__info jus">
+                {% if gig.packages.first.price %}
+                    <i class="fa fa-eur red-col" aria-hidden="true" style="margin-left:3px"></i>
+                    <span class="open">{{ gig.packages.first.price }}</span>
+                {% else %}
+                    <span class="open">TFP</span>
+                {% endif %}
+                {% if gig.packages.first.time %}
+                    |
+                    {% comment %}<i class="fa fa-clock-o" aria-hidden="true"></i> {% endcomment %}
+                    <span class="open">{{ gig.packages.first.time }} h</span>
+                {% else %}
+                    <span class="open">Session</span>
+                {% endif %}
+            </p>
+            <!-- end place-post module -->
         </div>
-        <p class="place-post__address"></p>
-        <h2 class="place-post__title">
-            <a href="{{ gig.get_absolute_url }}">{{ gig.title }}</a>
-        </h2>
-        <p class="place-post__description">
-            {{ gig.get_category_display }}
-            <br />
-            <i class="fa fa-map-marker" aria-hidden="true"></i> {{ gig.location.place|truncatechars:50 }}
-        </p>
-        <p class="place-post__info jus">
-            {% if gig.packages.first.price %}
-                <i class="fa fa-eur red-col" aria-hidden="true" style="margin-left:3px"></i>
-                <span class="open">{{ gig.packages.first.price }}</span>
-            {% else %}
-                <span class="open">TFP</span>
-            {% endif %}
-            {% if gig.packages.first.time %}
-                |
-                {% comment %}<i class="fa fa-clock-o" aria-hidden="true"></i> {% endcomment %}
-                <span class="open">{{ gig.packages.first.time }} h</span>
-            {% else %}
-                <span class="open">Session</span>
-            {% endif %}
-        </p>
-        <!-- end place-post module -->
     </div>
-</div>

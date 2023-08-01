@@ -220,7 +220,7 @@ STATICFILES_FINDERS = (
 COMPRESS_OFFLINE = True
 LIBSASS_OUTPUT_STYLE = "compressed"
 COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
-
+THUMBNAIL_QUALITY = 95
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
@@ -235,20 +235,6 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ["SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET"
 GOOGLE_MAPS_API_KEY = os.environ["GOOGLE_MAPS_API_KEY"]
 PLACES_MAPS_API_KEY = os.environ["PLACES_MAPS_API_KEY"]
 PLACES_MAP_WIDGET_HEIGHT = 250
-# GOOGLE_OAUTH2_CREDENTIALS = {
-#     "client_id": "645533288604-d4knjqpji4e0otp5ol3s7gh5n30e7dbo.apps.googleusercontent.com",
-#     "project_id": "lens-uno",
-#     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-#     "token_uri": "https://oauth2.googleapis.com/token",
-#     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-#     "client_secret": os.environ["CLIENT_SECRET"],
-#     "javascript_origins": ["https://www.lensuno.com"],
-#     "token_expiry": datetime.datetime.now(),
-#     "user_agent": None,
-#     "scope": "https://www.googleapis.com/auth/drive",
-#     "token_type": "Bearer",
-#     "scopes": ["https://www.googleapis.com/auth/calendar"],
-# }
 
 
 # email configs
