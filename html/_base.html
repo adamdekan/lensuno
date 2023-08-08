@@ -25,7 +25,6 @@
                   href="{% static 'scss/style.scss' %}"
                   rel="stylesheet" />
         {% endcompress %}
-        <script src="{% static 'js/jquery.min.js' %}"></script>
         <script src="https://unpkg.com/hyperscript.org@0.9.8"></script>
         <script defer
                 src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -48,6 +47,9 @@
             {% endblock footer %}
         </div>
         <!-- End Container -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
         <script type="text/javascript" src=" {% static 'js/base.js' %} "></script>
         <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=places&callback=onLoaded"
                 async
@@ -66,7 +68,6 @@
         {% comment %} <script src="{% static 'js/infobox.min.js' %}"></script> {% endcomment %}
         <script src="{% static 'js/markerclusterer.js' %}"></script>
         {% comment %} <script src="{% static 'js/maps.js' %}"></script> {% endcomment %}
-        <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
         <!-- endbuild -->
         <script src="{% static 'js/popper.js' %}"></script>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -75,5 +76,13 @@
         <script src="{% static 'js/htmx.min.js' %}"></script>
         <script src="{% static 'js/fslightbox.js' %}"></script>
         <script type="text/javascript" src=" {% static 'js/dialog.js' %} "></script>
+        <script>
+            $(".masonry").imagesLoaded(function() {
+                $(".masonry").masonry({
+                  itemSelector: ".masonry-item",
+                  columnWidth: 200,
+                });
+              });
+        </script>
     </body>
 </html>

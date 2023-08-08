@@ -1,15 +1,10 @@
 {% if gallery %}
-    <div class="gallery-container">
-        {% for obj in gallery.images.objects.all|slice:":5" %}
-            <div class="gallery-item">
+    <div class="masonry">
+        {% for obj in gallery.images.objects.all %}
+            <div class="masonry-item">
                 <a data-fslightbox="gallery" href="{{ obj.image.url }}">
-                    <img src="{{ obj.image.url }}" alt="gallery-item">
+                    <img src="{{ obj.image.url }}" alt="gallery-item" width="590">
                 </a>
-            </div>
-        {% endfor %}
-        {% for obj in gallery.images.objects.all|slice:"5:" %}
-            <div class="gallery-item" style="display: none">
-                <a data-fslightbox="gallery" href="{{ obj.image.url }}"></a>
             </div>
         {% endfor %}
     </div>

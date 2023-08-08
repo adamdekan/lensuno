@@ -44,7 +44,7 @@ img.addons {
     cursor: pointer;
 }
 
-/* .grid {
+/* .masonry {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
@@ -101,5 +101,50 @@ span {
 
     .gallery-item {
         flex: 1 0 47.5%;
+    }
+}
+
+/* ------------------------- Masonry ------------------------- */
+/* Step 2: center things inside the grid and clear some space around it by setting a device based max-width and margin*/
+
+.masonry {
+    text-align: center;
+    max-width: 95vw;
+    margin: auto;
+}
+
+
+/* Step 3: how big should the gap be between grid items? remember that the total gap between two items would be double what you set here since both would have that amount set as their individual padding. Also add box-sizing:border-box to make sure the padding doesn't affect the total widh of the item */
+
+.masonry-item {
+    padding: 5px;
+    box-sizing: border-box;
+    display: inline;
+}
+
+
+/* Step 4: Add media queries (subjective) to make the whole grid resposive. */
+
+@media(min-width: 500px) {
+    .masonry-item {
+        width: 50%;
+    }
+}
+
+@media(min-width: 1000px) {
+    .masonry-item {
+        width: 33.333%;
+    }
+}
+
+@media(min-width: 1700px) {
+    .masonry-item {
+        width: 25%;
+    }
+}
+
+@media(min-width: 2100px) {
+    .masonry-item {
+        width: 20%;
     }
 }
