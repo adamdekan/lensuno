@@ -91,7 +91,7 @@ def search_city(request, search):
         )
     f = GigFilter(request.GET, queryset=search_query)
     filtered_qs = GigFilter(request.GET, queryset=search_query).qs
-    paginator = Paginator(filtered_qs, 12)
+    paginator = Paginator(filtered_qs, 9)
     page = request.GET.get("page")
     try:
         query = paginator.page(page)
