@@ -9,9 +9,9 @@ urlpatterns = [
     path("test/", views.test_page, name="test"),
     # path("search/<str:search>/", views.results, name="results"),
     # redirect to portal page
-    path("", views.redirect_to_portal, name="redirect-to-portal"),
+    # path("", views.redirect_to_portal, name="redirect-to-portal"),
     # index page
-    path("main/", views.Home.as_view(), name="index"),
+    path("", views.Home.as_view(), name="index"),
     path("about/", views.about_us, name="about-us"),
     # path("404/", views.my_404_view, name="404"),
     path("copy-url/", views.copy_url, name="copy-url"),
